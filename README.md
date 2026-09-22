@@ -2,6 +2,18 @@
 
 PlayJoy is now a complete static storefront built with HTML, CSS and vanilla JavaScript. It requires no build step or framework and can be deployed directly to Vercel.
 
+## Premium 3D Experience
+
+- Unified responsive header, navigation, cart drawer and cinematic footer
+- Nunito Sans rounded brand typography across the storefront
+- Mouse-aware 3D product-card tilt, magnetic buttons and scroll reveals
+- AI-generated cinematic homepage artwork and dedicated B2B sample artwork
+- Four distinct AI-generated gallery views for every catalog product
+- Persistent left-side cart drawer, full cart and validated checkout
+- Animated two-step sample request with locally stored submission and success celebration
+
+AI gallery sheets are stored in `assets/images/galleries/`. The homepage and form artwork are stored in `assets/images/hero/hero-premium-v2.png` and `assets/images/modal/sample-premium-v2.png`.
+
 ## Storefront Pages
 
 - `index.html` — Stitch-matched homepage
