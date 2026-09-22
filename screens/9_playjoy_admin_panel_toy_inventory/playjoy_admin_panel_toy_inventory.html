@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PlayJoy Toys Admin &amp; Inventory Management</title>
+<!-- Tailwind CSS CDN with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            playjoy: {
+              pink: '#E60049',
+              pinkHover: '#C7003F',
+              cyan: '#00A3E0',
+              yellow: '#FFB800',
+              navy: '#1A2942',
+              lightBg: '#F8FAFC',
+              border: '#E2E8F0',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Stylesheet -->
+<style data-purpose="custom-scrollbars">
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+<!-- END: Custom Stylesheet -->
+</head>
+<body class="bg-[#F4F7FB] text-slate-800 antialiased font-sans min-h-screen flex flex-col">
+<!-- BEGIN: TopNavigationBar -->
+<header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+<div class="px-6 py-3 flex items-center justify-between gap-4">
+<!-- Brand & Status Area -->
+<div class="flex items-center gap-6 min-w-max">
+<div class="flex items-center gap-2">
+<div class="flex items-center tracking-tight font-extrabold text-2xl">
+<span class="text-playjoy-pink">Play</span><span class="text-playjoy-cyan">Joy</span>
+</div>
+<span class="bg-slate-100 text-slate-600 text-xs px-2.5 py-1 rounded-full font-semibold border border-slate-200">
+            Admin Portal
+          </span>
+</div>
+<div class="hidden md:flex items-center gap-2 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-xs font-semibold border border-emerald-200">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+          Store Online • All Systems Live
+        </div>
+</div>
+<!-- Search Bar -->
+<div class="flex-1 max-w-xl mx-4">
+<div class="relative">
+<input class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-2 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-playjoy-pink/20 focus:border-playjoy-pink transition-all" placeholder="Search toys by SKU, title, category, barcode..." type="text"/>
+<svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<!-- Quick Actions, Notifications & Profile -->
+<div class="flex items-center gap-3 min-w-max">
+<!-- New Toy Button -->
+<button class="bg-playjoy-pink hover:bg-playjoy-pinkHover text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 shadow-sm shadow-playjoy-pink/20 transition-colors" data-purpose="add-toy-action" id="openModalBtn">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Add New Toy
+        </button>
+<!-- Notification Bell -->
+<div class="relative">
+<button class="w-10 h-10 rounded-xl border border-slate-200 bg-white flex items-center justify-center text-slate-600 hover:bg-slate-50 transition-colors relative">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="absolute top-2 right-2 w-2 h-2 bg-playjoy-pink rounded-full ring-2 ring-white"></span>
+</button>
+</div>
+<div class="h-6 w-px bg-slate-200"></div>
+<!-- Profile Widget -->
+<div class="flex items-center gap-3 pl-1 cursor-pointer">
+<div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-playjoy-cyan text-white flex items-center justify-center font-bold text-sm shadow-sm">
+            RP
+          </div>
+<div class="text-left hidden lg:block">
+<p class="text-xs font-bold leading-tight text-slate-800">Rahul Patel</p>
+<p class="text-[11px] text-slate-400 font-medium">Operations Mgr</p>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- END: TopNavigationBar -->
+<!-- BEGIN: Dashboard Stats Bar -->
+<section class="bg-white border-b border-slate-200 px-6 py-4" data-purpose="dashboard-metrics">
+<div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Metric 1: Total Toys Listed -->
+<div class="flex items-center gap-3.5 p-3 rounded-xl bg-slate-50 border border-slate-100">
+<div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Toys Listed</p>
+<div class="flex items-baseline gap-2">
+<span class="text-xl font-extrabold text-slate-800">248</span>
+<span class="text-xs font-semibold text-emerald-600">+12 this wk</span>
+</div>
+</div>
+</div>
+<!-- Metric 2: Low Stock Alerts -->
+<div class="flex items-center gap-3.5 p-3 rounded-xl bg-amber-50/60 border border-amber-100">
+<div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="text-xs font-semibold text-amber-800 uppercase tracking-wider">Low Stock Alerts</p>
+<div class="flex items-baseline gap-2">
+<span class="text-xl font-extrabold text-amber-900">14 items</span>
+<span class="text-xs font-semibold text-amber-600">Action needed</span>
+</div>
+</div>
+</div>
+<!-- Metric 3: Active B2B Sample Requests -->
+<div class="flex items-center gap-3.5 p-3 rounded-xl bg-purple-50/70 border border-purple-100">
+<div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="text-xs font-semibold text-purple-800 uppercase tracking-wider">Active B2B Sample Leads</p>
+<div class="flex items-baseline gap-2">
+<span class="text-xl font-extrabold text-purple-900">38 leads</span>
+<span class="text-xs font-bold text-playjoy-pink">12 new</span>
+</div>
+</div>
+</div>
+<!-- Metric 4: Monthly Revenue -->
+<div class="flex items-center gap-3.5 p-3 rounded-xl bg-emerald-50/70 border border-emerald-100">
+<div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<p class="text-xs font-semibold text-emerald-800 uppercase tracking-wider">Total Revenue (Month)</p>
+<div class="flex items-baseline gap-2">
+<span class="text-xl font-extrabold text-emerald-900">₹14.8L</span>
+<span class="text-xs font-semibold text-emerald-600">↑ 18.4%</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Dashboard Stats Bar -->
+<!-- BEGIN: Main Layout Structure -->
+<div class="flex-1 flex max-w-[1600px] w-full mx-auto">
+<!-- BEGIN: Left Navigation Sidebar -->
+<aside class="w-64 border-r border-slate-200 bg-white p-4 hidden md:flex flex-col gap-6 shrink-0" data-purpose="sidebar-navigation">
+<!-- Primary Nav Menu -->
+<div class="space-y-1">
+<div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 px-3 mb-2">Main Menu</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Dashboard Overview
+        </a>
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-bold bg-playjoy-pink/10 text-playjoy-pink border border-playjoy-pink/20" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 text-playjoy-pink" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+            Toy Catalog
+          </div>
+<span class="bg-playjoy-pink text-white text-[10px] px-2 py-0.5 rounded-full font-bold">248</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors" href="#">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+            B2B Sample Enquiries
+          </div>
+<span class="bg-amber-100 text-amber-800 text-[11px] font-bold px-2 py-0.5 rounded-full">12 New</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Wholesale &amp; Tier Pricing
+        </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Warehouse &amp; Inventory
+        </a>
+</div>
+<!-- Management Nav Menu -->
+<div class="space-y-1">
+<div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 px-3 mb-2">Operations</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Orders (B2C &amp; B2B)
+        </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Distributors &amp; Clients
+        </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Analytics &amp; Reports
+        </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Settings &amp; BIS Config
+        </a>
+</div>
+<!-- Quick Wholesale Help Card -->
+<div class="mt-auto bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+<div class="flex items-center gap-2 mb-2">
+<span class="w-2 h-2 rounded-full bg-playjoy-yellow"></span>
+<p class="text-xs font-bold text-slate-700">BIS Compliance Node</p>
+</div>
+<p class="text-[11px] text-slate-500 leading-relaxed">
+          All catalog toys are synced with Bureau of Indian Standards toy safety certification IS 9873.
+        </p>
+</div>
+</aside>
+<!-- END: Left Navigation Sidebar -->
+<!-- BEGIN: Main Content Area -->
+<main class="flex-1 p-6 md:p-8 space-y-6 overflow-x-hidden">
+<!-- Content Header & Action Filters -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">Toy Catalog &amp; Product Management</h1>
+<p class="text-sm text-slate-500">Manage real-time inventory, B2C consumer prices, and bulk B2B wholesale pricing slabs.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shadow-sm transition-colors">
+<svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+            Export CSV
+          </button>
+<button class="bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shadow-sm transition-colors">
+<svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+            Import Slabs
+          </button>
+</div>
+</div>
+<!-- Filters Toolbar -->
+<section class="bg-white p-4 rounded-2xl border border-slate-200/90 shadow-sm space-y-3" data-purpose="table-filters">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3">
+<!-- Category Filter -->
+<div>
+<label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Category</label>
+<select class="w-full bg-slate-50 border border-slate-200 text-xs font-semibold rounded-lg px-2.5 py-2 text-slate-700 focus:ring-playjoy-pink focus:border-playjoy-pink">
+<option value="all">All Categories (6)</option>
+<option value="ride-on">Ride On Toys</option>
+<option value="educational">Educational Toys</option>
+<option value="soft-toys">Soft Toys &amp; Plushies</option>
+<option value="remote-control">RC &amp; Vehicles</option>
+<option value="figures">Action Figures &amp; Playsets</option>
+<option value="outdoor">Outdoor &amp; Sports</option>
+</select>
+</div>
+<!-- Stock Status Filter -->
+<div>
+<label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Stock Status</label>
+<select class="w-full bg-slate-50 border border-slate-200 text-xs font-semibold rounded-lg px-2.5 py-2 text-slate-700 focus:ring-playjoy-pink focus:border-playjoy-pink">
+<option value="all">All Inventory Levels</option>
+<option value="in-stock">In Stock (&gt; 25)</option>
+<option value="low-stock">Low Stock Alerts (&lt; 20)</option>
+<option value="out-of-stock">Out of Stock (0)</option>
+</select>
+</div>
+<!-- Sales Channel Filter -->
+<div>
+<label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Channel Eligibility</label>
+<select class="w-full bg-slate-50 border border-slate-200 text-xs font-semibold rounded-lg px-2.5 py-2 text-slate-700 focus:ring-playjoy-pink focus:border-playjoy-pink">
+<option value="both">Both B2B &amp; B2C</option>
+<option value="b2c-only">B2C Retail Only</option>
+<option value="b2b-only">B2B Wholesale Only</option>
+<option value="sample-ready">Sample Lead Ready</option>
+</select>
+</div>
+<!-- Sort By Filter -->
+<div>
+<label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Sort Catalog By</label>
+<select class="w-full bg-slate-50 border border-slate-200 text-xs font-semibold rounded-lg px-2.5 py-2 text-slate-700 focus:ring-playjoy-pink focus:border-playjoy-pink">
+<option value="newest">Newest Added</option>
+<option value="bestseller">Best Sellers</option>
+<option value="stock-low">Lowest Stock First</option>
+<option value="price-desc">Price: High to Low</option>
+<option value="margin">Highest Margin (B2B)</option>
+</select>
+</div>
+<!-- Quick Search Button / Reset -->
+<div class="flex items-end">
+<button class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold py-2 px-3 rounded-lg border border-slate-200 transition-colors flex items-center justify-center gap-1.5 h-[38px]">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+              Reset Filters
+            </button>
+</div>
+</div>
+</section>
+<!-- BEGIN: Products Inventory Table -->
+<section class="bg-white rounded-2xl border border-slate-200/90 shadow-sm overflow-hidden" data-purpose="inventory-data-table">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50/80 border-b border-slate-200 text-[11px] uppercase tracking-wider font-bold text-slate-500">
+<th class="p-4 w-10 text-center">
+<input class="rounded border-slate-300 text-playjoy-pink focus:ring-playjoy-pink" type="checkbox"/>
+</th>
+<th class="p-4">Toy Product Details</th>
+<th class="p-4">SKU / Barcode</th>
+<th class="p-4">Category</th>
+<th class="p-4">Stock Level</th>
+<th class="p-4">B2C Retail</th>
+<th class="p-4">B2B Wholesale Slab</th>
+<th class="p-4 text-center">Sample Toggle</th>
+<th class="p-4">Status</th>
+<th class="p-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-xs font-medium text-slate-700">
+<!-- Row 1: Happy Ride Car -->
+<tr class="hover:bg-slate-50/60 transition-colors">
+<td class="p-4 text-center">
+<input class="rounded border-slate-300 text-playjoy-pink focus:ring-playjoy-pink" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 p-1 flex items-center justify-center overflow-hidden shrink-0">
+<!-- Product Image using available asset -->
+<img alt="Happy Ride Car" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZougeM3ueSn-G7w6JGfWlVHMW695kIoQfrcIM7K2Vea9S6TxhQy0A8gs9J9wEdvSEQCYHM4jZdI9oyP_XoByDDZ36Aszp6Qxxf--bepENeTWDtepDdu5_frYNmgvGbp-xTOOO4OQjygTjS6eKQSp_l1rq2A8J2-nF2xwWMxfJeTx7fSiHnZrWtEJYUVN8QJsxe6QdZk2OL1rwV2b9XSjg1SwmE6qPfB8JwNZngj2P9ttyuTSuVLJkXm9Z2PyVyvjUYY4"/>
+</div>
+<div>
+<span class="font-bold text-slate-900 text-sm block">Happy Ride Car (Flame Red)</span>
+<span class="text-[11px] text-slate-400 font-semibold">Age: 1–4 Years • Virgin Plastic</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="font-mono text-slate-800 font-bold block">PJ-RC-001</span>
+<span class="text-[10px] text-slate-400 font-mono">890432109811</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
+                    Ride On Toys
+                  </span>
+</td>
+<td class="p-4">
+<div class="w-28">
+<div class="flex items-center justify-between text-[11px] mb-1">
+<span class="font-bold text-slate-800">142 pcs</span>
+<span class="text-emerald-600 font-semibold">Healthy</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5">
+<div class="bg-emerald-500 h-1.5 rounded-full" style="width: 72%"></div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="font-bold text-slate-900 text-sm">₹1,299</div>
+<div class="text-[10px] text-slate-400 line-through">MRP ₹1,699</div>
+</td>
+<td class="p-4">
+<div class="font-bold text-emerald-700 text-xs">₹790 <span class="font-normal text-slate-500">/ pc</span></div>
+<div class="text-[10px] text-slate-500">Min. order 50 pcs</div>
+</td>
+<td class="p-4 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-8 h-4 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-playjoy-pink"></div>
+</label>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Published
+                  </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="p-1.5 rounded-lg text-slate-500 hover:text-playjoy-pink hover:bg-slate-100" title="Edit Product">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+<button class="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100" title="Duplicate">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+<button class="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-slate-100" title="Delete">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Soft Cuddly Teddy Bear -->
+<tr class="hover:bg-slate-50/60 transition-colors">
+<td class="p-4 text-center">
+<input class="rounded border-slate-300 text-playjoy-pink focus:ring-playjoy-pink" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 p-1 flex items-center justify-center overflow-hidden shrink-0">
+<img alt="Teddy Bear" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA36nIYFrCKSAqPPaWyTyWyXdKr09_3gM8z-5WTYTCXMO_yRgogUpR5N4jzdHuSZl74gl4SdVjktmMZIer7lrskJJSbiStWcKJ1kTJ4QuGCqqu7yC9-YcNcpEApkkm4yNXfbSG0O0XC83-mW7eQMUO9eAOoCdaXnvo6ey0enRv5OWq4XfIXSGxfvfDuaLvmPxMDpOcsRZQFLuhal8cA2bsHd1uQh0cqk00mWzqjTpzRuucJq2ehFxBqSSHB0C0d0emrxVI"/>
+</div>
+<div>
+<span class="font-bold text-slate-900 text-sm block">Soft Cuddly Teddy Bear</span>
+<span class="text-[11px] text-slate-400 font-semibold">For All Ages • Non-Allergic Fabric</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="font-mono text-slate-800 font-bold block">PJ-TB-045</span>
+<span class="text-[10px] text-slate-400 font-mono">890432109845</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-pink-50 text-pink-700 border border-pink-200">
+                    Indoor / Plush
+                  </span>
+</td>
+<td class="p-4">
+<div class="w-28">
+<div class="flex items-center justify-between text-[11px] mb-1">
+<span class="font-bold text-slate-800">320 pcs</span>
+<span class="text-emerald-600 font-semibold">Surplus</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5">
+<div class="bg-emerald-500 h-1.5 rounded-full" style="width: 90%"></div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="font-bold text-slate-900 text-sm">₹699</div>
+<div class="text-[10px] text-slate-400 line-through">MRP ₹999</div>
+</td>
+<td class="p-4">
+<div class="font-bold text-emerald-700 text-xs">₹390 <span class="font-normal text-slate-500">/ pc</span></div>
+<div class="text-[10px] text-slate-500">Min. order 100 pcs</div>
+</td>
+<td class="p-4 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-8 h-4 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-playjoy-pink"></div>
+</label>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Published
+                  </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="p-1.5 rounded-lg text-slate-500 hover:text-playjoy-pink hover:bg-slate-100"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-slate-100"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Rainbow Stacking Rings -->
+<tr class="hover:bg-slate-50/60 transition-colors">
+<td class="p-4 text-center">
+<input class="rounded border-slate-300 text-playjoy-pink focus:ring-playjoy-pink" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 p-1 flex items-center justify-center overflow-hidden shrink-0">
+<img alt="Stacking Rings" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAerDzYGT_Da8LzcF99hsJa4z2zdhgXM0D2ilHMAe558dzoXL6-s-UlZloQ8pMWzX5o35jS-sm1lO8ZMYLSBQTlsDPQX2Q5EfrRREmGqlsbQVKP9HRqrHDydvgcQo1pEnfPd6TDZhP8ldOYHp7Vj1H3UA1IlpGhY8kZyF_sKzEz_HgEhchaOfuPg50JBhASDd3Axo1a7x_axu5N6D26yto5QDfo1nr_x64TS1y1SivllSVt2_O7u_IiewxPLHKxY1_6ZTU"/>
+</div>
+<div>
+<span class="font-bold text-slate-900 text-sm block">Rainbow Stacking Rings</span>
+<span class="text-[11px] text-slate-400 font-semibold">6+ Months • Motor Skill Dev</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="font-mono text-slate-800 font-bold block">PJ-ST-012</span>
+<span class="text-[10px] text-slate-400 font-mono">890432109812</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-cyan-50 text-cyan-700 border border-cyan-200">
+                    Educational
+                  </span>
+</td>
+<td class="p-4">
+<div class="w-28">
+<div class="flex items-center justify-between text-[11px] mb-1">
+<span class="font-bold text-slate-800">85 pcs</span>
+<span class="text-amber-600 font-semibold">Medium</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5">
+<div class="bg-amber-400 h-1.5 rounded-full" style="width: 45%"></div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="font-bold text-slate-900 text-sm">₹499</div>
+<div class="text-[10px] text-slate-400 line-through">MRP ₹699</div>
+</td>
+<td class="p-4">
+<div class="font-bold text-emerald-700 text-xs">₹240 <span class="font-normal text-slate-500">/ pc</span></div>
+<div class="text-[10px] text-slate-500">Min. order 150 pcs</div>
+</td>
+<td class="p-4 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-8 h-4 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-playjoy-pink"></div>
+</label>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Published
+                  </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="p-1.5 rounded-lg text-slate-500 hover:text-playjoy-pink hover:bg-slate-100"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-slate-100"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</div>
+</td>
+</tr>
+<!-- Row 4: RC Monster Truck -->
+<tr class="hover:bg-slate-50/60 transition-colors">
+<td class="p-4 text-center">
+<input class="rounded border-slate-300 text-playjoy-pink focus:ring-playjoy-pink" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 p-1 flex items-center justify-center overflow-hidden shrink-0">
+<img alt="RC Monster Truck" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbWexWKPoUfoVk-oL6cZKXWauR8fiH24qHrYYbOkVPHA3dfUi0J51FufwBv6HjvKp0wkT0n5NvrpUzxlT9bQVbFxJ-9HWnA3Ysut6KGr5JyfnJ3spB22clogZwlwdd0W6uUQPaCTAhvJw2hxmat-Smu8l3IKzCKdOtxyVkiCxGir4uQ0pHwUuXPygXkuHgX70DNtZixMKpboAliTEA3n4YZnns8rmtBMyorMPfaJjIpI3wLzYyPfYXBH5WUmsE2tRu-0k"/>
+</div>
+<div>
+<span class="font-bold text-slate-900 text-sm block">RC High-Speed Monster Truck</span>
+<span class="text-[11px] text-slate-400 font-semibold">6+ Years • 2.4GHz Suspension</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="font-mono text-slate-800 font-bold block">PJ-RC-880</span>
+<span class="text-[10px] text-slate-400 font-mono">890432109880</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-violet-50 text-violet-700 border border-violet-200">
+                    Remote Control
+                  </span>
+</td>
+<td class="p-4">
+<div class="w-28">
+<div class="flex items-center justify-between text-[11px] mb-1">
+<span class="font-bold text-slate-800">64 pcs</span>
+<span class="text-emerald-600 font-semibold">Optimal</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5">
+<div class="bg-emerald-500 h-1.5 rounded-full" style="width: 55%"></div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="font-bold text-slate-900 text-sm">₹1,499</div>
+<div class="text-[10px] text-slate-400 line-through">MRP ₹1,999</div>
+</td>
+<td class="p-4">
+<div class="font-bold text-emerald-700 text-xs">₹880 <span class="font-normal text-slate-500">/ pc</span></div>
+<div class="text-[10px] text-slate-500">Min. order 40 pcs</div>
+</td>
+<td class="p-4 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-8 h-4 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-playjoy-pink"></div>
+</label>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Published
+                  </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="p-1.5 rounded-lg text-slate-500 hover:text-playjoy-pink hover:bg-slate-100"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-slate-100"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Building Blocks Set -->
+<tr class="hover:bg-slate-50/60 transition-colors">
+<td class="p-4 text-center">
+<input class="rounded border-slate-300 text-playjoy-pink focus:ring-playjoy-pink" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 p-1 flex items-center justify-center overflow-hidden shrink-0">
+<img alt="Building Blocks" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfryTCkrAE33FJe7UC0peB7sHKgo2bNYpCmqIk7NPARMzhTMbZC7bfJoSTUMEcOc-_QWh6UyjjkzNGf73ynuIH5VqwQUkxQhl9wlJS2UZ7sJ4SLXadfdy6W62MQToR8RR5cusc_-ZFnr9sP79eHtPUMs_GSgs7Q8xNnMZ9LD0z0tDriW6zXSA65o60cK0zvzBBKLF5rACMjcR5TTzXSkYZd7lz8fysy1U7S739qmjqVeDgVI7LHTB7Icj34E6uZu8GzP4"/>
+</div>
+<div>
+<span class="font-bold text-slate-900 text-sm block">Building Blocks Creative Set</span>
+<span class="text-[11px] text-slate-400 font-semibold">6+ Years • 120 Interlocking Blocks</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="font-mono text-slate-800 font-bold block">PJ-BB-108</span>
+<span class="text-[10px] text-slate-400 font-mono">890432109108</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-cyan-50 text-cyan-700 border border-cyan-200">
+                    Educational
+                  </span>
+</td>
+<td class="p-4">
+<div class="w-28">
+<div class="flex items-center justify-between text-[11px] mb-1">
+<span class="font-bold text-slate-800">210 pcs</span>
+<span class="text-emerald-600 font-semibold">Healthy</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5">
+<div class="bg-emerald-500 h-1.5 rounded-full" style="width: 80%"></div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="font-bold text-slate-900 text-sm">₹799</div>
+<div class="text-[10px] text-slate-400 line-through">MRP ₹1,199</div>
+</td>
+<td class="p-4">
+<div class="font-bold text-emerald-700 text-xs">₹450 <span class="font-normal text-slate-500">/ pc</span></div>
+<div class="text-[10px] text-slate-500">Min. order 80 pcs</div>
+</td>
+<td class="p-4 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-8 h-4 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-playjoy-pink"></div>
+</label>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Published
+                  </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="p-1.5 rounded-lg text-slate-500 hover:text-playjoy-pink hover:bg-slate-100"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-slate-100"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Dinosaur Explorer Toy Pack (Low Stock Alert) -->
+<tr class="bg-rose-50/20 hover:bg-rose-50/40 transition-colors">
+<td class="p-4 text-center">
+<input class="rounded border-slate-300 text-playjoy-pink focus:ring-playjoy-pink" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 p-1 flex items-center justify-center overflow-hidden shrink-0">
+<img alt="Dinosaur Pack" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeTbet-KFZxpAa5OnhTglJnjnIUrxgokjVzpTomi9UwqgW8dT3sO9evntI_LYqAhRv8euAWZz8W3RRL_zhCUG7Xa6vVigFLLQbfzmdaLZZFLSL6SHrrb4pwLysadB-75D0Q-0AjZaU8KmtpfVcrFsqecdLqa02Rv9s6PoIArpcrkNLEy8hkXptV_Ngi-wkhCnAbmQ79B6uX9mDzI1lU_kQ-lkMg3CFeLYDI_mLkSqLBgF7fw_jCtGMF4mqsRbHtlj0thk"/>
+</div>
+<div>
+<span class="font-bold text-slate-900 text-sm block">Dinosaur Explorer Toy Pack</span>
+<span class="text-[11px] text-slate-400 font-semibold">3+ Years • Jurassic Action Pack</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="font-mono text-slate-800 font-bold block">PJ-DN-092</span>
+<span class="text-[10px] text-slate-400 font-mono">890432109092</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                    Figures &amp; Playsets
+                  </span>
+</td>
+<td class="p-4">
+<div class="w-28">
+<div class="flex items-center justify-between text-[11px] mb-1">
+<span class="font-bold text-rose-600">18 pcs</span>
+<span class="text-rose-500 font-bold">Low Alert</span>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5">
+<div class="bg-rose-500 h-1.5 rounded-full" style="width: 18%"></div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="font-bold text-slate-900 text-sm">₹999</div>
+<div class="text-[10px] text-slate-400 line-through">MRP ₹1,399</div>
+</td>
+<td class="p-4">
+<div class="font-bold text-emerald-700 text-xs">₹560 <span class="font-normal text-slate-500">/ pc</span></div>
+<div class="text-[10px] text-slate-500">Min. order 60 pcs</div>
+</td>
+<td class="p-4 text-center">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-8 h-4 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-playjoy-pink"></div>
+</label>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span> Low Supply
+                  </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="p-1.5 rounded-lg text-slate-500 hover:text-playjoy-pink hover:bg-slate-100"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-slate-100"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="px-6 py-4 border-t border-slate-200 bg-slate-50/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="text-xs font-semibold text-slate-500">
+            Showing <span class="font-bold text-slate-900">1 to 6</span> of <span class="font-bold text-slate-900">248</span> registered toys
+          </div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition-colors disabled:opacity-50" disabled="">
+              Previous
+            </button>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 rounded-lg text-xs font-bold bg-playjoy-pink text-white">1</button>
+<button class="w-8 h-8 rounded-lg text-xs font-bold hover:bg-slate-200 text-slate-700">2</button>
+<button class="w-8 h-8 rounded-lg text-xs font-bold hover:bg-slate-200 text-slate-700">3</button>
+<span class="px-1 text-slate-400 font-bold">...</span>
+<button class="w-8 h-8 rounded-lg text-xs font-bold hover:bg-slate-200 text-slate-700">25</button>
+</div>
+<button class="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 transition-colors">
+              Next
+            </button>
+</div>
+</div>
+</section>
+<!-- END: Products Inventory Table -->
+</main>
+<!-- END: Main Content Area -->
+</div>
+<!-- END: Main Layout Structure -->
+<!-- BEGIN: Add/Edit Product Slide-Over Modal Drawer -->
+<div aria-labelledby="slide-over-title" aria-modal="true" class="fixed inset-0 z-50 overflow-hidden hidden" id="productDrawer" role="dialog">
+<div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" id="drawerBackdrop"></div>
+<div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+<div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+<!-- Drawer Header -->
+<div class="px-6 py-5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+<div>
+<h2 class="text-lg font-bold text-slate-900" id="slide-over-title">Add New Toy Product</h2>
+<p class="text-xs text-slate-500">Configure catalog specs, BIS details, &amp; B2B slabs.</p>
+</div>
+<button class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:text-slate-600 hover:bg-slate-100" id="closeDrawerBtn">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+<!-- Drawer Body (Form) -->
+<div class="flex-1 overflow-y-auto p-6 space-y-4 text-xs font-medium">
+<!-- Toy Name -->
+<div>
+<label class="block text-slate-700 font-bold mb-1">Toy Name / Title *</label>
+<input class="w-full text-xs rounded-xl border-slate-300 focus:border-playjoy-pink focus:ring-playjoy-pink" placeholder="e.g. Turbo Speedster RC Quad" type="text"/>
+</div>
+<!-- SKU & Barcode Grid -->
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block text-slate-700 font-bold mb-1">SKU Code *</label>
+<input class="w-full text-xs rounded-xl border-slate-300 focus:border-playjoy-pink focus:ring-playjoy-pink font-mono" placeholder="PJ-RC-101" type="text"/>
+</div>
+<div>
+<label class="block text-slate-700 font-bold mb-1">Barcode / EAN</label>
+<input class="w-full text-xs rounded-xl border-slate-300 focus:border-playjoy-pink focus:ring-playjoy-pink font-mono" placeholder="8904..." type="text"/>
+</div>
+</div>
+<!-- Category & Age Group -->
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block text-slate-700 font-bold mb-1">Category *</label>
+<select class="w-full text-xs rounded-xl border-slate-300 focus:border-playjoy-pink focus:ring-playjoy-pink font-semibold">
+<option>Ride On Toys</option>
+<option>Educational Toys</option>
+<option>Indoor / Plush</option>
+<option>Remote Control</option>
+<option>Action Figures</option>
+<option>Outdoor &amp; Sports</option>
+</select>
+</div>
+<div>
+<label class="block text-slate-700 font-bold mb-1">Target Age Bracket</label>
+<input class="w-full text-xs rounded-xl border-slate-300 focus:border-playjoy-pink focus:ring-playjoy-pink" placeholder="e.g. 1-4 Years, 6+ Mos" type="text"/>
+</div>
+</div>
+<!-- Price Slabs: Retail & Wholesale -->
+<div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-3">
+<span class="text-[11px] font-bold text-slate-900 uppercase tracking-wider block">Pricing &amp; Bulk Slabs</span>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block text-slate-600 font-semibold mb-1">Retail (B2C) ₹</label>
+<input class="w-full text-xs rounded-lg border-slate-300 font-bold" placeholder="1299" type="number"/>
+</div>
+<div>
+<label class="block text-slate-600 font-semibold mb-1">B2B Wholesale ₹</label>
+<input class="w-full text-xs rounded-lg border-slate-300 font-bold text-emerald-700" placeholder="790" type="number"/>
+</div>
+</div>
+<div>
+<label class="block text-slate-600 font-semibold mb-1">Minimum B2B Order Qty (MOQ)</label>
+<input class="w-full text-xs rounded-lg border-slate-300" placeholder="50" type="number"/>
+</div>
+</div>
+<!-- BIS Safety Certificate Upload -->
+<div>
+<label class="block text-slate-700 font-bold mb-1">BIS Safety Certificate (IS 9873)</label>
+<div class="border-2 border-dashed border-slate-200 rounded-xl p-4 text-center hover:border-playjoy-cyan transition-colors cursor-pointer bg-slate-50">
+<svg class="w-6 h-6 text-slate-400 mx-auto mb-1" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<p class="text-xs text-slate-600 font-semibold">Click to upload BIS test report (PDF)</p>
+<p class="text-[10px] text-slate-400">Max size: 5MB</p>
+</div>
+</div>
+<!-- B2B Sample Piece Checkbox -->
+<div class="flex items-start gap-2.5 pt-2">
+<input checked="" class="mt-0.5 rounded border-slate-300 text-playjoy-pink focus:ring-playjoy-pink" id="sampleEligibility" type="checkbox"/>
+<label class="text-xs text-slate-700 cursor-pointer" for="sampleEligibility">
+<span class="font-bold block">Enable "Get a Sample Piece" for Wholesalers</span>
+<span class="text-slate-400 text-[11px]">Allows verified retailers to request single unit evaluation sample.</span>
+</label>
+</div>
+</div>
+<!-- Drawer Footer -->
+<div class="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-end gap-3">
+<button class="px-4 py-2 border border-slate-300 rounded-xl text-xs font-bold text-slate-700 hover:bg-slate-100" id="cancelDrawerBtn">
+            Cancel
+          </button>
+<button class="px-5 py-2 bg-playjoy-pink hover:bg-playjoy-pinkHover rounded-xl text-xs font-bold text-white shadow-sm transition-colors">
+            Publish Toy to Store
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- END: Add/Edit Product Slide-Over Modal Drawer -->
+<!-- BEGIN: Interactive Drawer Script -->
+<script data-purpose="drawer-interactivity">
+    const openBtn = document.getElementById('openModalBtn');
+    const closeBtn = document.getElementById('closeDrawerBtn');
+    const cancelBtn = document.getElementById('cancelDrawerBtn');
+    const drawerBackdrop = document.getElementById('drawerBackdrop');
+    const drawer = document.getElementById('productDrawer');
+
+    function toggleDrawer(show) {
+      if (show) {
+        drawer.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+      }
+    }
+
+    if (openBtn) openBtn.addEventListener('click', () => toggleDrawer(true));
+    if (closeBtn) closeBtn.addEventListener('click', () => toggleDrawer(false));
+    if (cancelBtn) cancelBtn.addEventListener('click', () => toggleDrawer(false));
+    if (drawerBackdrop) drawerBackdrop.addEventListener('click', () => toggleDrawer(false));
+  </script>
+<!-- END: Interactive Drawer Script -->
+</body></html>

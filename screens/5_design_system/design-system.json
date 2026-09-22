@@ -1,0 +1,164 @@
+{
+  "displayName": "Playful Commerce",
+  "styleGuidelines": "## Brand & Style\n\nThis design system blends cheerful, high-spirited childhood wonder with reliable, industrial-grade commerce credibility. It serves two interconnected audiences: retail parents looking for safe, joyful, well-made toys, and B2B distributors or shop owners seeking competitive wholesale volume, predictable supply chains, and verified manufacturing standards.\n\nThe visual style is **Tactile Modern Commerce** infused with friendly consumer cues:\n- **Warmth & Safety First**: Soft, rounded surfaces, smooth pill corners, and pastel tinting replace harsh borders to evoke child-safe tactility.\n- **Dual-Channel Distinction**: Retail consumer interactions (Add to Cart, Buy Now, Reviews) lean into high-energy coral magenta, while wholesale business touchpoints (Get a Sample, B2B Portal, Wholesale Pricing Tiers) utilize structured electric blue and emerald verification accents.\n- **Clean Structure**: Information density remains high and scannable for B2B procurement without sacrificing the celebratory, emotional charm essential for toy merchandising.\n\n## Layout & Spacing\n\nThe layout is built upon an 8pt rhythmic base inside a responsive 12-column grid container with a maximum desktop width of 1320px.\n\n- **Desktop (\u2265 1024px)**: 12-column layout with 24px/1.5rem gutters and 32px canvas margins. Category rows display 6 to 8 items horizontally; product carousels showcase 5 to 6 cards.\n- **Tablet (768px - 1023px)**: 8-column layout with 16px gutters and 24px margins. Spec sheets and wholesale lead capture forms adapt to stacked halves.\n- **Mobile (< 768px)**: 4-column layout with 12px gutters and 16px safe margins. Category roundels and best-seller rails transition into smooth-scrolling horizontal cards with subtle edge-bleed peek cues.\n- **Spacing Rhythm**: Internal card padding uses `space-md` (16px), banner heroes use `space-xl` (40px) vertical padding, and interactive form groups maintain `space-sm` (8px) gaps between labels and inputs.\n\n## Elevation & Depth\n\nVisual hierarchy uses plush, pillowy elevation rather than stark drop shadows, reinforcing a safe, friendly toy universe:\n\n- **Level 0 (Flat / Inset)**: Tinted pastel wells (`#F8FAFC`, `#EFF6FF`, `#FFF7ED`) with subtle hairline outlines (`#E2E8F0` or 15% opacity primary/secondary colors).\n- **Level 1 (Card Rest)**: Product grids and category icons rest with `0 2px 8px -2px rgba(15, 23, 42, 0.05), 0 1px 3px 0 rgba(15, 23, 42, 0.03)` wrapped in a 1px soft border (`#F1F5F9`).\n- **Level 2 (Hover & Active Product Card)**: Cards lift on cursor interaction: `0 12px 24px -6px rgba(225, 29, 72, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.04)`.\n- **Level 3 (Overlays & Lead Modals)**: Multi-step B2B quote sheets and sample requisition dialogues sit atop a 40% dimmed backdrop blur (`backdrop-filter: blur(8px)`) using an expansive soft drop shadow: `0 25px 50px -12px rgba(15, 23, 42, 0.22)`.\n\n## Components\n\n### Buttons\n- **Retail Primary**: Full pill shape, filled with primary coral (`#E11D48`), white bold text, accompanied by directional arrow or cart iconography. Hover activates `#BE123C` with subtle scale transition (1.02).\n- **B2B Secondary**: Electric blue (`#2563EB`) solid button for business conversions (\"Get a Sample (B2B)\", \"Submit Request\"). Hover state darkens to `#1D4ED8`.\n- **Wholesale Outlined**: White surface with a 1.5px solid `#2563EB` border, royal blue typography, and pill curvature.\n- **Quantity Selector**: Segmented horizontal pill with gentle `#F1F5F9` background, minus/plus icon buttons, and centered bold numeral.\n\n### Badges & Pill Chips\n- **Discount Badges**: Solid coral red (`#FFE4E6` background with `#E11D48` bold text) placed on top corners of product photos.\n- **Safety / BIS Verification Badges**: Soft mint fill (`#ECFDF5`) with emerald text (`#047857`) and green check shield icon.\n- **B2B Status Tag**: Dual-tone amber/sky pill (`#FEF3C7` with `#92400E` label) designating items available for bulk wholesale tiers.\n\n### Product Cards\n- **Structure**: Clean white container with `rounded-xl` borders, 1px `#F1F5F9` edge, and subtle top-right wishlist heart toggle.\n- **Image Staging**: Clean, neutral, soft-shadowed toy renders centered in a 1:1 aspect ratio with pastel tinted background on hover.\n- **Price Block**: Prominent bold sales price with strike-through MRP and red percentage-off callout. Bottom pinned with full-width primary or outline CTA.\n\n### Input Fields & Modals\n- **Form Controls**: Crisp white background, 1px `#CBD5E1` border, 8px corner radius, and slate placeholder. Focus state blooms with a 3px `#BFDBFE` glow ring and `#2563EB` border.\n- **Two-Column Inquiry Modals**: Left illustrative side panel featuring pastel sky background (`#EFF6FF`), brand trust anchors, and manufacturer certifications; right column structured with numerical stepped progress bars and paired field grids.\n\n### Specification & Trust Grids\n- **Spec Tables**: Alternating soft rows (`#F8FAFC` vs `#FFFFFF`) with muted metric names and bold specification outputs.\n- **Trust Badges Bar**: Horizontal card strip highlighting \"Safe & Non-Toxic\", \"Durable Quality\", \"Fast Dispatch\", and \"Dedicated B2B Support\" using tinted dual-ring icon badges.",
+  "theme": {
+    "colorMode": "LIGHT",
+    "font": "PLUS_JAKARTA_SANS",
+    "roundness": "ROUND_EIGHT",
+    "customColor": "#e11d48",
+    "headlineFont": "PLUS_JAKARTA_SANS",
+    "bodyFont": "PLUS_JAKARTA_SANS",
+    "labelFont": "PLUS_JAKARTA_SANS",
+    "namedColors": {
+      "outline_variant": "#e5bdbe",
+      "on_surface_variant": "#5c3f40",
+      "secondary_fixed": "#dbe1ff",
+      "on_tertiary_fixed": "#2a1700",
+      "on_secondary_fixed": "#00174b",
+      "on_error_container": "#93000a",
+      "on_primary_fixed": "#40000c",
+      "secondary_container": "#316bf3",
+      "surface_container": "#eaedff",
+      "error_container": "#ffdad6",
+      "inverse_surface": "#283044",
+      "on_error": "#ffffff",
+      "tertiary": "#815100",
+      "surface_container_highest": "#dae2fd",
+      "on_primary": "#ffffff",
+      "on_tertiary_container": "#fffaf9",
+      "primary_fixed_dim": "#ffb3b6",
+      "surface_container_high": "#e2e7ff",
+      "on_tertiary_fixed_variant": "#653e00",
+      "inverse_primary": "#ffb3b6",
+      "tertiary_fixed": "#ffddb8",
+      "surface_variant": "#dae2fd",
+      "on_secondary": "#ffffff",
+      "on_tertiary": "#ffffff",
+      "error": "#ba1a1a",
+      "on_background": "#131b2e",
+      "on_secondary_container": "#fefcff",
+      "primary_container": "#e11d48",
+      "secondary_fixed_dim": "#b4c5ff",
+      "on_primary_fixed_variant": "#920028",
+      "surface_tint": "#be0037",
+      "on_surface": "#131b2e",
+      "on_secondary_fixed_variant": "#003ea8",
+      "tertiary_fixed_dim": "#ffb95f",
+      "secondary": "#0051d5",
+      "outline": "#906f70",
+      "surface_bright": "#faf8ff",
+      "on_primary_container": "#fffaf9",
+      "primary": "#b80035",
+      "surface_container_low": "#f2f3ff",
+      "surface": "#faf8ff",
+      "surface_dim": "#d2d9f4",
+      "primary_fixed": "#ffdada",
+      "tertiary_container": "#a36700",
+      "background": "#faf8ff",
+      "inverse_on_surface": "#eef0ff",
+      "surface_container_lowest": "#ffffff"
+    },
+    "designMd": "---\nname: Playful Commerce\ncolors:\n  surface: '#faf8ff'\n  surface-dim: '#d2d9f4'\n  surface-bright: '#faf8ff'\n  surface-container-lowest: '#ffffff'\n  surface-container-low: '#f2f3ff'\n  surface-container: '#eaedff'\n  surface-container-high: '#e2e7ff'\n  surface-container-highest: '#dae2fd'\n  on-surface: '#131b2e'\n  on-surface-variant: '#5c3f40'\n  inverse-surface: '#283044'\n  inverse-on-surface: '#eef0ff'\n  outline: '#906f70'\n  outline-variant: '#e5bdbe'\n  surface-tint: '#be0037'\n  primary: '#b80035'\n  on-primary: '#ffffff'\n  primary-container: '#e11d48'\n  on-primary-container: '#fffaf9'\n  inverse-primary: '#ffb3b6'\n  secondary: '#0051d5'\n  on-secondary: '#ffffff'\n  secondary-container: '#316bf3'\n  on-secondary-container: '#fefcff'\n  tertiary: '#815100'\n  on-tertiary: '#ffffff'\n  tertiary-container: '#a36700'\n  on-tertiary-container: '#fffaf9'\n  error: '#ba1a1a'\n  on-error: '#ffffff'\n  error-container: '#ffdad6'\n  on-error-container: '#93000a'\n  primary-fixed: '#ffdada'\n  primary-fixed-dim: '#ffb3b6'\n  on-primary-fixed: '#40000c'\n  on-primary-fixed-variant: '#920028'\n  secondary-fixed: '#dbe1ff'\n  secondary-fixed-dim: '#b4c5ff'\n  on-secondary-fixed: '#00174b'\n  on-secondary-fixed-variant: '#003ea8'\n  tertiary-fixed: '#ffddb8'\n  tertiary-fixed-dim: '#ffb95f'\n  on-tertiary-fixed: '#2a1700'\n  on-tertiary-fixed-variant: '#653e00'\n  background: '#faf8ff'\n  on-background: '#131b2e'\n  surface-variant: '#dae2fd'\ntypography:\n  display-hero:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 52px\n    fontWeight: '800'\n    lineHeight: 60px\n    letterSpacing: -0.03em\n  display-hero-mobile:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 34px\n    fontWeight: '800'\n    lineHeight: 42px\n    letterSpacing: -0.02em\n  headline-lg:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 32px\n    fontWeight: '700'\n    lineHeight: 40px\n    letterSpacing: -0.02em\n  headline-lg-mobile:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 26px\n    fontWeight: '700'\n    lineHeight: 34px\n    letterSpacing: -0.01em\n  headline-md:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 24px\n    fontWeight: '700'\n    lineHeight: 32px\n    letterSpacing: -0.01em\n  headline-sm:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 18px\n    fontWeight: '700'\n    lineHeight: 26px\n  title-md:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 16px\n    fontWeight: '600'\n    lineHeight: 24px\n  body-lg:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 16px\n    fontWeight: '400'\n    lineHeight: 26px\n  body-md:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 14px\n    fontWeight: '400'\n    lineHeight: 22px\n  body-sm:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 12px\n    fontWeight: '400'\n    lineHeight: 18px\n  label-md:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 13px\n    fontWeight: '600'\n    lineHeight: 18px\n    letterSpacing: 0.01em\n  label-sm:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 11px\n    fontWeight: '700'\n    lineHeight: 16px\n    letterSpacing: 0.04em\nrounded:\n  sm: 0.25rem\n  DEFAULT: 0.5rem\n  md: 0.75rem\n  lg: 1rem\n  xl: 1.5rem\n  full: 9999px\nspacing:\n  gutter: 1.25rem\n  gutter-mobile: 0.75rem\n  margin: 2rem\n  margin-mobile: 1rem\n  space-xs: 0.25rem\n  space-sm: 0.5rem\n  space-md: 1rem\n  space-lg: 1.5rem\n  space-xl: 2.5rem\n---\n\n## Brand & Style\n\nThis design system blends cheerful, high-spirited childhood wonder with reliable, industrial-grade commerce credibility. It serves two interconnected audiences: retail parents looking for safe, joyful, well-made toys, and B2B distributors or shop owners seeking competitive wholesale volume, predictable supply chains, and verified manufacturing standards.\n\nThe visual style is **Tactile Modern Commerce** infused with friendly consumer cues:\n- **Warmth & Safety First**: Soft, rounded surfaces, smooth pill corners, and pastel tinting replace harsh borders to evoke child-safe tactility.\n- **Dual-Channel Distinction**: Retail consumer interactions (Add to Cart, Buy Now, Reviews) lean into high-energy coral magenta, while wholesale business touchpoints (Get a Sample, B2B Portal, Wholesale Pricing Tiers) utilize structured electric blue and emerald verification accents.\n- **Clean Structure**: Information density remains high and scannable for B2B procurement without sacrificing the celebratory, emotional charm essential for toy merchandising.\n\n## Colors\n\nThe palette balances energetic retail action, wholesale authority, safety signaling, and comforting pastel bases:\n\n- **Primary (`#E11D48`)**: High-saturation rose-coral used for primary retail CTAs (\"Add to Cart\", \"Shop Now\"), discount chips, promotional banners, and consumer highlights.\n- **Secondary (`#2563EB`)**: Confident electric royal blue driving wholesale actions (\"Get a Sample\", \"B2B Wholesale Portal\", primary step actions, and link states).\n- **Tertiary (`#F59E0B`)**: Warm marigold amber for star ratings, shipping incentives, and limited-edition badges.\n- **Verification Emerald (`#10B981`)**: Dedicated to child safety endorsements, BIS/non-toxic certification badges, and wholesale in-stock stock availability.\n- **Backgrounds & Tinted Canvases**: Pure white (`#FFFFFF`) for crisp product cards and modals, cushioned by soft sky pastels (`#EFF6FF`), delicate blush tint (`#FFF1F2`), cream sand (`#FFFBEB`), and structural canvas slate (`#F8FAFC`).\n- **Text & Borders**: Primary text anchors on deep slate (`#0F172A`), muted supporting labels rest at `#64748B`, with hairline container outlines at `#E2E8F0`.\n\n## Typography\n\nThe typography leverages **Plus Jakarta Sans** across all levels to retain geometric balance with organic, friendly terminal cuts.\n\n- **Hero & Section Headers**: Rendered in Bold and Extra-Bold weights (700/800) with slight negative tracking to give toy category names and campaign slogans an energetic, punchy poster feel.\n- **Numbers, Pricing, & Spec Keys**: Prices feature bold numerals paired with stacked fractional/currency signs and clear discount strikes (`line-through`) in muted slate.\n- **Micro-copy & Badges**: Set in uppercase or capitalized Title case with positive letter tracking (0.02em to 0.04em) at sizes between 11px and 13px for immediate scannability on badges and certification tags.\n\n## Layout & Spacing\n\nThe layout is built upon an 8pt rhythmic base inside a responsive 12-column grid container with a maximum desktop width of 1320px.\n\n- **Desktop (\u2265 1024px)**: 12-column layout with 24px/1.5rem gutters and 32px canvas margins. Category rows display 6 to 8 items horizontally; product carousels showcase 5 to 6 cards.\n- **Tablet (768px - 1023px)**: 8-column layout with 16px gutters and 24px margins. Spec sheets and wholesale lead capture forms adapt to stacked halves.\n- **Mobile (< 768px)**: 4-column layout with 12px gutters and 16px safe margins. Category roundels and best-seller rails transition into smooth-scrolling horizontal cards with subtle edge-bleed peek cues.\n- **Spacing Rhythm**: Internal card padding uses `space-md` (16px), banner heroes use `space-xl` (40px) vertical padding, and interactive form groups maintain `space-sm` (8px) gaps between labels and inputs.\n\n## Elevation & Depth\n\nVisual hierarchy uses plush, pillowy elevation rather than stark drop shadows, reinforcing a safe, friendly toy universe:\n\n- **Level 0 (Flat / Inset)**: Tinted pastel wells (`#F8FAFC`, `#EFF6FF`, `#FFF7ED`) with subtle hairline outlines (`#E2E8F0` or 15% opacity primary/secondary colors).\n- **Level 1 (Card Rest)**: Product grids and category icons rest with `0 2px 8px -2px rgba(15, 23, 42, 0.05), 0 1px 3px 0 rgba(15, 23, 42, 0.03)` wrapped in a 1px soft border (`#F1F5F9`).\n- **Level 2 (Hover & Active Product Card)**: Cards lift on cursor interaction: `0 12px 24px -6px rgba(225, 29, 72, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.04)`.\n- **Level 3 (Overlays & Lead Modals)**: Multi-step B2B quote sheets and sample requisition dialogues sit atop a 40% dimmed backdrop blur (`backdrop-filter: blur(8px)`) using an expansive soft drop shadow: `0 25px 50px -12px rgba(15, 23, 42, 0.22)`.\n\n## Shapes\n\nThe interface embraces softened geometric radii, ensuring all corners look ergonomic and child-friendly:\n\n- **Base Radius (`0.5rem` / `8px`)**: Standard input fields, quantity counter buttons, tabular spec cells, and small status tags.\n- **Card & Banner Radius (`rounded-lg` / `1rem` and `rounded-xl` / `1.5rem`)**: Product cards, category tiles, and feature callout blocks.\n- **Large Container Radius (`rounded-2xl` / `1.5rem` - `2rem`)**: B2B sample inquiry dialogs, hero banners, and value-proposition bands.\n- **Full Pill (`rounded-full`)**: Primary action buttons (\"Add to Cart\", \"Submit Request\"), carousel navigation circles, pill notification count badges, and verification status indicators.\n\n## Components\n\n### Buttons\n- **Retail Primary**: Full pill shape, filled with primary coral (`#E11D48`), white bold text, accompanied by directional arrow or cart iconography. Hover activates `#BE123C` with subtle scale transition (1.02).\n- **B2B Secondary**: Electric blue (`#2563EB`) solid button for business conversions (\"Get a Sample (B2B)\", \"Submit Request\"). Hover state darkens to `#1D4ED8`.\n- **Wholesale Outlined**: White surface with a 1.5px solid `#2563EB` border, royal blue typography, and pill curvature.\n- **Quantity Selector**: Segmented horizontal pill with gentle `#F1F5F9` background, minus/plus icon buttons, and centered bold numeral.\n\n### Badges & Pill Chips\n- **Discount Badges**: Solid coral red (`#FFE4E6` background with `#E11D48` bold text) placed on top corners of product photos.\n- **Safety / BIS Verification Badges**: Soft mint fill (`#ECFDF5`) with emerald text (`#047857`) and green check shield icon.\n- **B2B Status Tag**: Dual-tone amber/sky pill (`#FEF3C7` with `#92400E` label) designating items available for bulk wholesale tiers.\n\n### Product Cards\n- **Structure**: Clean white container with `rounded-xl` borders, 1px `#F1F5F9` edge, and subtle top-right wishlist heart toggle.\n- **Image Staging**: Clean, neutral, soft-shadowed toy renders centered in a 1:1 aspect ratio with pastel tinted background on hover.\n- **Price Block**: Prominent bold sales price with strike-through MRP and red percentage-off callout. Bottom pinned with full-width primary or outline CTA.\n\n### Input Fields & Modals\n- **Form Controls**: Crisp white background, 1px `#CBD5E1` border, 8px corner radius, and slate placeholder. Focus state blooms with a 3px `#BFDBFE` glow ring and `#2563EB` border.\n- **Two-Column Inquiry Modals**: Left illustrative side panel featuring pastel sky background (`#EFF6FF`), brand trust anchors, and manufacturer certifications; right column structured with numerical stepped progress bars and paired field grids.\n\n### Specification & Trust Grids\n- **Spec Tables**: Alternating soft rows (`#F8FAFC` vs `#FFFFFF`) with muted metric names and bold specification outputs.\n- **Trust Badges Bar**: Horizontal card strip highlighting \"Safe & Non-Toxic\", \"Durable Quality\", \"Fast Dispatch\", and \"Dedicated B2B Support\" using tinted dual-ring icon badges.",
+    "colorVariant": "FIDELITY",
+    "overridePrimaryColor": "#e11d48",
+    "overrideSecondaryColor": "#2563eb",
+    "overrideTertiaryColor": "#f59e0b",
+    "overrideNeutralColor": "#0f172a",
+    "spacingScale": 2,
+    "typography": {
+      "headline-lg-mobile": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "26px",
+        "fontWeight": "700",
+        "lineHeight": "34px",
+        "letterSpacing": "-0.01em"
+      },
+      "title-md": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "lineHeight": "24px"
+      },
+      "headline-md": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "24px",
+        "fontWeight": "700",
+        "lineHeight": "32px",
+        "letterSpacing": "-0.01em"
+      },
+      "body-lg": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "26px"
+      },
+      "headline-lg": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "32px",
+        "fontWeight": "700",
+        "lineHeight": "40px",
+        "letterSpacing": "-0.02em"
+      },
+      "headline-sm": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "18px",
+        "fontWeight": "700",
+        "lineHeight": "26px"
+      },
+      "body-sm": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "lineHeight": "18px"
+      },
+      "label-md": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "13px",
+        "fontWeight": "600",
+        "lineHeight": "18px",
+        "letterSpacing": "0.01em"
+      },
+      "label-sm": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "11px",
+        "fontWeight": "700",
+        "lineHeight": "16px",
+        "letterSpacing": "0.04em"
+      },
+      "display-hero-mobile": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "34px",
+        "fontWeight": "800",
+        "lineHeight": "42px",
+        "letterSpacing": "-0.02em"
+      },
+      "display-hero": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "52px",
+        "fontWeight": "800",
+        "lineHeight": "60px",
+        "letterSpacing": "-0.03em"
+      },
+      "body-md": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "22px"
+      }
+    },
+    "spacing": {
+      "margin-mobile": "1rem",
+      "space-xs": "0.25rem",
+      "space-xl": "2.5rem",
+      "space-lg": "1.5rem",
+      "margin": "2rem",
+      "gutter": "1.25rem",
+      "gutter-mobile": "0.75rem",
+      "space-md": "1rem",
+      "space-sm": "0.5rem"
+    },
+    "headlineFontFamily": "Plus Jakarta Sans",
+    "bodyFontFamily": "Plus Jakarta Sans",
+    "labelFontFamily": "Plus Jakarta Sans"
+  }
+}

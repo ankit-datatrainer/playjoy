@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PlayJoy - Small Toys, Big Smiles | India's Trusted Toy Manufacturer</title>
+<!-- Tailwind CSS CDN with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              pink: '#E60067',
+              pinkHover: '#C8005A',
+              navy: '#1E293B',
+              blue: '#0284C7',
+              darkBlue: '#0F172A',
+              yellow: '#FBBF24',
+              cream: '#FFFBEB'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- Phosphor Icons for crisp, playful vector UI icons -->
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<style data-purpose="custom-utilities">
+    /* Subtle decorative typography styles */
+    .doodle-font {
+      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive, sans-serif;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-slate-800 antialiased font-sans">
+<!-- BEGIN: AnnouncementBar -->
+<div class="bg-[#1E293B] text-white text-xs py-2 px-4 border-b border-slate-700" data-purpose="top-announcement-bar">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+<!-- USP Marquee / Key points -->
+<div class="flex items-center space-x-3 text-slate-300 font-medium">
+<span>India's Trusted Toy Manufacturer</span>
+<span class="text-slate-500">|</span>
+<span>Pan India Delivery</span>
+<span class="text-slate-500">|</span>
+<span>B2B &amp; Bulk Orders</span>
+<span class="text-slate-500">|</span>
+<span class="text-amber-300">Safe, Non-Toxic, Durable</span>
+</div>
+<!-- Quick Nav Links -->
+<div class="flex items-center space-x-4 text-slate-300 text-xs">
+<a class="hover:text-amber-400 transition-colors" href="#b2b-section">Become a Distributor</a>
+<span class="text-slate-600">|</span>
+<a class="hover:text-amber-400 transition-colors" href="#support">Track Order</a>
+<span class="text-slate-600">|</span>
+<a class="hover:text-amber-400 transition-colors" href="#support">Help</a>
+</div>
+</div>
+</div>
+<!-- END: AnnouncementBar -->
+<!-- BEGIN: MainHeader -->
+<header class="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
+<div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+<!-- Brand Logo -->
+<a class="flex flex-col flex-shrink-0" data-purpose="brand-logo" href="index.html">
+<div class="flex items-center">
+<span class="text-3xl font-black tracking-tight text-pink-600">Play</span>
+<span class="text-3xl font-black tracking-tight text-sky-500">Joy</span>
+</div>
+<span class="text-[9px] font-semibold tracking-wider text-slate-500 uppercase -mt-1">Small Toys, Big Smiles</span>
+</a>
+<!-- Search Bar -->
+<div class="flex-1 max-w-xl mx-2 hidden sm:block">
+<div class="relative flex items-center">
+<input class="w-full pl-4 pr-12 py-2 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="Search for toys, games, ride-ons and more..." type="text"/>
+<button class="absolute right-0 top-0 bottom-0 bg-[#334155] hover:bg-[#1E293B] text-white px-3.5 rounded-r-md flex items-center justify-center transition-colors">
+<i class="ph ph-magnifying-glass text-lg"></i>
+</button>
+</div>
+</div>
+<!-- Right Action Items (Account, Wishlist, Cart) -->
+<div class="flex items-center space-x-6 text-sm font-medium">
+<!-- Account / Login -->
+<a class="flex items-center space-x-1.5 text-slate-700 hover:text-pink-600 transition-colors" href="account.html">
+<i class="ph ph-user text-xl text-slate-600"></i>
+<span class="hidden md:inline">Login / Register</span>
+</a>
+<!-- Wishlist -->
+<a class="flex items-center space-x-1.5 text-slate-700 hover:text-pink-600 transition-colors" href="shop.html">
+<i class="ph ph-heart text-xl text-slate-600"></i>
+<span class="hidden md:inline">Wishlist</span>
+<span class="bg-slate-100 text-slate-700 text-xs px-1.5 py-0.5 rounded-full font-bold" id="wishlist-badge">0</span>
+</a>
+<!-- Cart -->
+<a class="flex items-center space-x-1 text-slate-700 hover:text-pink-600 relative transition-colors" href="cart.html">
+<div class="relative">
+<i class="ph ph-shopping-cart-simple text-2xl text-slate-700"></i>
+<span class="absolute -top-1.5 -right-2 bg-pink-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold" id="cart-counter">0</span>
+</div>
+</a>
+</div>
+</div>
+<!-- Category Secondary Navbar -->
+<nav class="border-t border-slate-100 bg-white">
+<div class="max-w-7xl mx-auto px-4 flex items-center space-x-7 overflow-x-auto hide-scrollbar text-xs font-semibold text-slate-700 py-2.5">
+<a class="flex items-center space-x-1 hover:text-pink-600 whitespace-nowrap" href="shop.html">
+<span>All Categories</span>
+<i class="ph ph-caret-down text-[10px]"></i>
+</a>
+<a class="flex items-center space-x-1 hover:text-pink-600 whitespace-nowrap" href="#by-age">
+<span>By Age</span>
+<i class="ph ph-caret-down text-[10px]"></i>
+</a>
+<a class="hover:text-pink-600 whitespace-nowrap" href="shop.html">Brands</a>
+<a class="hover:text-pink-600 whitespace-nowrap" href="shop.html?sort=new">New Arrivals</a>
+<a class="hover:text-pink-600 whitespace-nowrap text-pink-600 font-bold" href="shop.html?sort=rating">Best Sellers</a>
+<a class="hover:text-pink-600 whitespace-nowrap" href="#ride-ons">Ride Ons</a>
+<a class="hover:text-pink-600 whitespace-nowrap" href="#outdoor-toys">Outdoor Toys</a>
+<a class="hover:text-pink-600 whitespace-nowrap" href="#educational-toys">Educational Toys</a>
+<a class="text-blue-600 hover:text-blue-800 whitespace-nowrap flex items-center gap-1 font-bold" href="get_a_sample.html">
+<span>Bulk Enquiry</span>
+<span class="bg-blue-100 text-blue-700 text-[10px] px-1.5 py-0.2 rounded font-medium">B2B</span>
+</a>
+</div>
+</nav>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: HeroSection -->
+<section class="relative bg-gradient-to-br from-sky-50 via-white to-amber-50 overflow-hidden border-b border-slate-100" data-purpose="hero-banner">
+<div class="max-w-7xl mx-auto px-4 py-12 md:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Left Content Column -->
+<div class="lg:col-span-6 space-y-6 z-10">
+<div class="inline-block text-xs font-extrabold tracking-widest text-pink-600 uppercase bg-pink-100/70 px-3 py-1 rounded-full">
+          PLAY • LEARN • GROW
+        </div>
+<h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
+          Toys for <br/>
+<span class="text-pink-600">Brighter</span> <br/>
+          Tomorrows
+        </h1>
+<p class="text-slate-600 text-base md:text-lg max-w-lg font-normal leading-relaxed">
+          High-quality, safe and fun toys for every stage of your child's journey. Engineered with care, certified for safety.
+        </p>
+<!-- CTA Action Buttons -->
+<div class="flex flex-wrap items-center gap-4 pt-2">
+<a class="bg-pink-600 hover:bg-pink-700 text-white font-bold px-6 py-3 rounded-lg shadow-sm hover:shadow flex items-center space-x-2 transition-all" href="#best-sellers">
+<span>Shop Now (B2C)</span>
+<i class="ph ph-arrow-right font-bold"></i>
+</a>
+<button class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-bold px-6 py-3 rounded-lg shadow-sm transition-all hover:border-slate-400" onclick="openModal()">
+            Get a Sample (B2B)
+          </button>
+</div>
+<!-- Trust Mini Badges -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-200/60">
+<div class="flex items-center space-x-2 text-xs text-slate-700 font-medium">
+<i class="ph ph-shield-check text-xl text-amber-500 flex-shrink-0"></i>
+<span>Safe &amp; Non-Toxic</span>
+</div>
+<div class="flex items-center space-x-2 text-xs text-slate-700 font-medium">
+<i class="ph ph-sparkle text-xl text-sky-500 flex-shrink-0"></i>
+<span>Durable Quality</span>
+</div>
+<div class="flex items-center space-x-2 text-xs text-slate-700 font-medium">
+<i class="ph ph-truck text-xl text-emerald-500 flex-shrink-0"></i>
+<span>Pan India Delivery</span>
+</div>
+<div class="flex items-center space-x-2 text-xs text-slate-700 font-medium">
+<i class="ph ph-users text-xl text-indigo-500 flex-shrink-0"></i>
+<span>Trusted by Thousands</span>
+</div>
+</div>
+</div>
+<!-- Right Hero Graphic Column -->
+<div class="lg:col-span-6 relative flex justify-center">
+<!-- Floating Doodles & Stickers -->
+<div class="absolute -top-4 left-6 doodle-font text-sky-600 text-sm md:text-base font-bold rotate-[-6deg] bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-sky-100 shadow-sm z-20">
+          ✨ Play Create Imagine ♡
+        </div>
+<div class="absolute top-10 right-4 doodle-font text-amber-600 text-sm md:text-base font-bold rotate-[8deg] bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-amber-100 shadow-sm z-20">
+          Happy Kids, Happier World 😊
+        </div>
+<!-- Hero Snapshot visual presentation -->
+<div class="relative w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-amber-100 aspect-[4/3] flex items-center justify-center">
+<img alt="PlayJoy Kids Toys and Cheerful Child Playing" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByNyNOd0sG4A5ephE4KqhGUc1ixJCX6iUGPGh3GpgSuWjqdM-5q2F7MZXReOF8DXW5DFU89ZC2LJzzhr5PMFJrHAMFEK7uXgGoqPWbHMpL-9pLTxCLBJaI3uaFGIGjRdG8t9gCVXmIFmw21IW-93aYKupcW4ZGUilBSViKWyCfp-kyJJ9Mv-ZjcZR5r6xAORp2mPrSRxWXl-cqylvX7QjK_q8_L60bzxRO2SPjSYSiBN8dh5x7z45FmcW2NRFY4-2RAbU"/>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: ShopByCategory -->
+<section class="max-w-7xl mx-auto px-4 py-12" data-purpose="categories-grid" id="categories">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-2xl font-black text-slate-800 tracking-tight">Shop by Category</h2>
+<a class="text-sky-600 hover:text-sky-700 text-sm font-bold flex items-center gap-1 group" href="#all-categories">
+<span>View All Categories</span>
+<i class="ph ph-arrow-right font-bold group-hover:translate-x-0.5 transition-transform"></i>
+</a>
+</div>
+<!-- Category Pill Cards -->
+<div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 text-center">
+<!-- Ride On Toys -->
+<a class="group flex flex-col items-center p-3 bg-white rounded-xl border border-slate-200/80 hover:border-pink-500 hover:shadow-md transition-all" href="#ride-ons">
+<div class="w-16 h-16 rounded-full bg-red-50 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform mb-2">
+          🚗
+        </div>
+<span class="text-xs font-semibold text-slate-700 group-hover:text-pink-600">Ride On Toys</span>
+</a>
+<!-- Educational Toys -->
+<a class="group flex flex-col items-center p-3 bg-white rounded-xl border border-slate-200/80 hover:border-pink-500 hover:shadow-md transition-all" href="#educational-toys">
+<div class="w-16 h-16 rounded-full bg-emerald-50 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform mb-2">
+          🎯
+        </div>
+<span class="text-xs font-semibold text-slate-700 group-hover:text-pink-600">Educational Toys</span>
+</a>
+<!-- Indoor Toys -->
+<a class="group flex flex-col items-center p-3 bg-white rounded-xl border border-slate-200/80 hover:border-pink-500 hover:shadow-md transition-all" href="#indoor-toys">
+<div class="w-16 h-16 rounded-full bg-amber-50 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform mb-2">
+          🧸
+        </div>
+<span class="text-xs font-semibold text-slate-700 group-hover:text-pink-600">Indoor Toys</span>
+</a>
+<!-- Outdoor Toys -->
+<a class="group flex flex-col items-center p-3 bg-white rounded-xl border border-slate-200/80 hover:border-pink-500 hover:shadow-md transition-all" href="#outdoor-toys">
+<div class="w-16 h-16 rounded-full bg-sky-50 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform mb-2">
+          ⚽
+        </div>
+<span class="text-xs font-semibold text-slate-700 group-hover:text-pink-600">Outdoor Toys</span>
+</a>
+<!-- Remote Control Toys -->
+<a class="group flex flex-col items-center p-3 bg-white rounded-xl border border-slate-200/80 hover:border-pink-500 hover:shadow-md transition-all" href="#rc-toys">
+<div class="w-16 h-16 rounded-full bg-indigo-50 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform mb-2">
+          🏎️
+        </div>
+<span class="text-xs font-semibold text-slate-700 group-hover:text-pink-600">RC Toys</span>
+</a>
+<!-- Baby Toys -->
+<a class="group flex flex-col items-center p-3 bg-white rounded-xl border border-slate-200/80 hover:border-pink-500 hover:shadow-md transition-all" href="#baby-toys">
+<div class="w-16 h-16 rounded-full bg-yellow-50 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform mb-2">
+          🐥
+        </div>
+<span class="text-xs font-semibold text-slate-700 group-hover:text-pink-600">Baby Toys</span>
+</a>
+<!-- Action Figures -->
+<a class="group flex flex-col items-center p-3 bg-white rounded-xl border border-slate-200/80 hover:border-pink-500 hover:shadow-md transition-all" href="#action-figures">
+<div class="w-16 h-16 rounded-full bg-purple-50 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform mb-2">
+          🦸‍♂️
+        </div>
+<span class="text-xs font-semibold text-slate-700 group-hover:text-pink-600">Action Figures</span>
+</a>
+<!-- Games & Puzzles -->
+<a class="group flex flex-col items-center p-3 bg-white rounded-xl border border-slate-200/80 hover:border-pink-500 hover:shadow-md transition-all" href="#games-puzzles">
+<div class="w-16 h-16 rounded-full bg-teal-50 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform mb-2">
+          🧩
+        </div>
+<span class="text-xs font-semibold text-slate-700 group-hover:text-pink-600">Games &amp; Puzzles</span>
+</a>
+</div>
+</section>
+<!-- END: ShopByCategory -->
+<!-- BEGIN: B2BBanner -->
+<section class="max-w-7xl mx-auto px-4 py-4" data-purpose="b2b-distributor-banner" id="b2b-section">
+<div class="bg-gradient-to-r from-amber-50 via-orange-50 to-amber-100 rounded-2xl p-6 md:p-8 border border-amber-200/80 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+<!-- B2B Intro -->
+<div class="md:max-w-md space-y-3">
+<h3 class="text-2xl md:text-3xl font-black text-slate-900">
+          For Wholesalers &amp; Distributors
+        </h3>
+<p class="text-sm text-slate-600">
+          Get exclusive factory pricing, large inventory access, and scale your business with India's fastest growing toy maker.
+        </p>
+<button class="inline-flex items-center space-x-2 bg-white text-slate-800 hover:bg-slate-900 hover:text-white px-5 py-2.5 rounded-lg font-bold text-sm border border-slate-300 shadow-sm transition-all mt-2" onclick="openModal()">
+<span>Get a Sample Piece</span>
+<i class="ph ph-arrow-right"></i>
+</button>
+</div>
+<!-- Feature Badges -->
+<div class="grid grid-cols-2 gap-4 text-xs font-semibold text-slate-700">
+<div class="flex items-center space-x-2 bg-white/80 p-2.5 rounded-lg border border-amber-200">
+<i class="ph ph-tag text-amber-600 text-lg"></i>
+<span>Competitive Pricing</span>
+</div>
+<div class="flex items-center space-x-2 bg-white/80 p-2.5 rounded-lg border border-amber-200">
+<i class="ph ph-package text-amber-600 text-lg"></i>
+<span>Bulk Order Support</span>
+</div>
+<div class="flex items-center space-x-2 bg-white/80 p-2.5 rounded-lg border border-amber-200">
+<i class="ph ph-map-pin-line text-amber-600 text-lg"></i>
+<span>Pan India Supply</span>
+</div>
+<div class="flex items-center space-x-2 bg-white/80 p-2.5 rounded-lg border border-amber-200">
+<i class="ph ph-user-gear text-amber-600 text-lg"></i>
+<span>Dedicated B2B Team</span>
+</div>
+</div>
+<!-- Callout Doodle -->
+<div class="hidden lg:flex flex-col items-center justify-center p-4 doodle-font text-center text-amber-900">
+<span class="text-xl font-bold">📦 Let's Grow Together! 🚀</span>
+<span class="text-xs font-normal text-amber-700 mt-1">Direct from OEM Manufacturer</span>
+</div>
+</div>
+</section>
+<!-- END: B2BBanner -->
+<!-- BEGIN: BestSellersSection -->
+<section class="max-w-7xl mx-auto px-4 py-12" data-purpose="best-sellers-products" id="best-sellers">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h2 class="text-2xl font-black text-slate-800 tracking-tight">Best Sellers</h2>
+<p class="text-xs text-slate-500 font-medium">Loved by thousands of happy kids &amp; parents across India</p>
+</div>
+<a class="text-sky-600 hover:text-sky-700 text-sm font-bold flex items-center gap-1 group" href="#all-products">
+<span>View All</span>
+<i class="ph ph-arrow-right font-bold group-hover:translate-x-0.5 transition-transform"></i>
+</a>
+</div>
+<!-- Product Grid: 6 Cards -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+<!-- Product 1: Happy Ride Car -->
+<div class="bg-white rounded-xl border border-slate-200 p-3 flex flex-col justify-between hover:shadow-lg transition-all group relative">
+<button class="absolute top-2.5 right-2.5 text-slate-400 hover:text-pink-600 z-10 transition-colors" onclick="toggleWishlist(this)">
+<i class="ph ph-heart text-xl"></i>
+</button>
+<div>
+<div class="w-full aspect-square bg-slate-50 rounded-lg flex items-center justify-center text-5xl mb-2 group-hover:scale-105 transition-transform">
+            🏎️
+          </div>
+<span class="text-[10px] uppercase font-bold text-slate-400">Push Ride On (1-4 Years)</span>
+<h3 class="text-sm font-bold text-slate-800 mt-0.5 line-clamp-1">Happy Ride Car</h3>
+<div class="flex items-center space-x-1 mt-1 text-xs">
+<div class="flex text-amber-400">
+<i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-bold ph-star-half"></i>
+</div>
+<span class="text-slate-400 text-[11px]">(120)</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1.5">
+<span class="text-base font-extrabold text-slate-900">₹1,299</span>
+<span class="text-xs text-slate-400 line-through">₹1,699</span>
+<span class="text-[10px] text-pink-600 font-bold bg-pink-50 px-1 rounded">24% OFF</span>
+</div>
+</div>
+<button class="w-full mt-3 bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold py-2 rounded-lg flex items-center justify-center space-x-1.5 transition-colors" onclick="addToCart('Happy Ride Car')">
+<i class="ph ph-shopping-cart-simple text-sm"></i>
+<span>Add to Cart</span>
+</button>
+</div>
+<!-- Product 2: Rainbow Stacking Rings -->
+<div class="bg-white rounded-xl border border-slate-200 p-3 flex flex-col justify-between hover:shadow-lg transition-all group relative">
+<button class="absolute top-2.5 right-2.5 text-slate-400 hover:text-pink-600 z-10 transition-colors" onclick="toggleWishlist(this)">
+<i class="ph ph-heart text-xl"></i>
+</button>
+<div>
+<div class="w-full aspect-square bg-slate-50 rounded-lg flex items-center justify-center text-5xl mb-2 group-hover:scale-105 transition-transform">
+            🟡
+          </div>
+<span class="text-[10px] uppercase font-bold text-slate-400">6+ Months</span>
+<h3 class="text-sm font-bold text-slate-800 mt-0.5 line-clamp-1">Rainbow Stacking Rings</h3>
+<div class="flex items-center space-x-1 mt-1 text-xs">
+<div class="flex text-amber-400">
+<i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+</div>
+<span class="text-slate-400 text-[11px]">(98)</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1.5">
+<span class="text-base font-extrabold text-slate-900">₹499</span>
+<span class="text-xs text-slate-400 line-through">₹699</span>
+<span class="text-[10px] text-pink-600 font-bold bg-pink-50 px-1 rounded">29% OFF</span>
+</div>
+</div>
+<button class="w-full mt-3 bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold py-2 rounded-lg flex items-center justify-center space-x-1.5 transition-colors" onclick="addToCart('Rainbow Stacking Rings')">
+<i class="ph ph-shopping-cart-simple text-sm"></i>
+<span>Add to Cart</span>
+</button>
+</div>
+<!-- Product 3: Soft Teddy Bear -->
+<div class="bg-white rounded-xl border border-slate-200 p-3 flex flex-col justify-between hover:shadow-lg transition-all group relative">
+<button class="absolute top-2.5 right-2.5 text-slate-400 hover:text-pink-600 z-10 transition-colors" onclick="toggleWishlist(this)">
+<i class="ph ph-heart text-xl"></i>
+</button>
+<div>
+<div class="w-full aspect-square bg-slate-50 rounded-lg flex items-center justify-center text-5xl mb-2 group-hover:scale-105 transition-transform">
+            🧸
+          </div>
+<span class="text-[10px] uppercase font-bold text-slate-400">For All Ages</span>
+<h3 class="text-sm font-bold text-slate-800 mt-0.5 line-clamp-1">Soft Teddy Bear</h3>
+<div class="flex items-center space-x-1 mt-1 text-xs">
+<div class="flex text-amber-400">
+<i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-bold ph-star-half"></i>
+</div>
+<span class="text-slate-400 text-[11px]">(210)</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1.5">
+<span class="text-base font-extrabold text-slate-900">₹699</span>
+<span class="text-xs text-slate-400 line-through">₹999</span>
+<span class="text-[10px] text-pink-600 font-bold bg-pink-50 px-1 rounded">30% OFF</span>
+</div>
+</div>
+<button class="w-full mt-3 bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold py-2 rounded-lg flex items-center justify-center space-x-1.5 transition-colors" onclick="addToCart('Soft Teddy Bear')">
+<i class="ph ph-shopping-cart-simple text-sm"></i>
+<span>Add to Cart</span>
+</button>
+</div>
+<!-- Product 4: RC Monster Truck -->
+<div class="bg-white rounded-xl border border-slate-200 p-3 flex flex-col justify-between hover:shadow-lg transition-all group relative">
+<button class="absolute top-2.5 right-2.5 text-slate-400 hover:text-pink-600 z-10 transition-colors" onclick="toggleWishlist(this)">
+<i class="ph ph-heart text-xl"></i>
+</button>
+<div>
+<div class="w-full aspect-square bg-slate-50 rounded-lg flex items-center justify-center text-5xl mb-2 group-hover:scale-105 transition-transform">
+            🚙
+          </div>
+<span class="text-[10px] uppercase font-bold text-slate-400">6+ Years</span>
+<h3 class="text-sm font-bold text-slate-800 mt-0.5 line-clamp-1">RC Monster Truck</h3>
+<div class="flex items-center space-x-1 mt-1 text-xs">
+<div class="flex text-amber-400">
+<i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph ph-star text-slate-300"></i>
+</div>
+<span class="text-slate-400 text-[11px]">(86)</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1.5">
+<span class="text-base font-extrabold text-slate-900">₹1,499</span>
+<span class="text-xs text-slate-400 line-through">₹1,999</span>
+<span class="text-[10px] text-pink-600 font-bold bg-pink-50 px-1 rounded">25% OFF</span>
+</div>
+</div>
+<button class="w-full mt-3 bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold py-2 rounded-lg flex items-center justify-center space-x-1.5 transition-colors" onclick="addToCart('RC Monster Truck')">
+<i class="ph ph-shopping-cart-simple text-sm"></i>
+<span>Add to Cart</span>
+</button>
+</div>
+<!-- Product 5: Building Blocks Set -->
+<div class="bg-white rounded-xl border border-slate-200 p-3 flex flex-col justify-between hover:shadow-lg transition-all group relative">
+<button class="absolute top-2.5 right-2.5 text-slate-400 hover:text-pink-600 z-10 transition-colors" onclick="toggleWishlist(this)">
+<i class="ph ph-heart text-xl"></i>
+</button>
+<div>
+<div class="w-full aspect-square bg-slate-50 rounded-lg flex items-center justify-center text-5xl mb-2 group-hover:scale-105 transition-transform">
+            🧱
+          </div>
+<span class="text-[10px] uppercase font-bold text-slate-400">6+ Years</span>
+<h3 class="text-sm font-bold text-slate-800 mt-0.5 line-clamp-1">Building Blocks Set</h3>
+<div class="flex items-center space-x-1 mt-1 text-xs">
+<div class="flex text-amber-400">
+<i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+</div>
+<span class="text-slate-400 text-[11px]">(145)</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1.5">
+<span class="text-base font-extrabold text-slate-900">₹799</span>
+<span class="text-xs text-slate-400 line-through">₹1,199</span>
+<span class="text-[10px] text-pink-600 font-bold bg-pink-50 px-1 rounded">33% OFF</span>
+</div>
+</div>
+<button class="w-full mt-3 bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold py-2 rounded-lg flex items-center justify-center space-x-1.5 transition-colors" onclick="addToCart('Building Blocks Set')">
+<i class="ph ph-shopping-cart-simple text-sm"></i>
+<span>Add to Cart</span>
+</button>
+</div>
+<!-- Product 6: Dinosaur Toy Set -->
+<div class="bg-white rounded-xl border border-slate-200 p-3 flex flex-col justify-between hover:shadow-lg transition-all group relative">
+<button class="absolute top-2.5 right-2.5 text-slate-400 hover:text-pink-600 z-10 transition-colors" onclick="toggleWishlist(this)">
+<i class="ph ph-heart text-xl"></i>
+</button>
+<div>
+<div class="w-full aspect-square bg-slate-50 rounded-lg flex items-center justify-center text-5xl mb-2 group-hover:scale-105 transition-transform">
+            🦖
+          </div>
+<span class="text-[10px] uppercase font-bold text-slate-400">3+ Years</span>
+<h3 class="text-sm font-bold text-slate-800 mt-0.5 line-clamp-1">Dinosaur Toy Set</h3>
+<div class="flex items-center space-x-1 mt-1 text-xs">
+<div class="flex text-amber-400">
+<i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-bold ph-star-half"></i>
+</div>
+<span class="text-slate-400 text-[11px]">(102)</span>
+</div>
+<div class="mt-2 flex items-baseline gap-1.5">
+<span class="text-base font-extrabold text-slate-900">₹999</span>
+<span class="text-xs text-slate-400 line-through">₹1,399</span>
+<span class="text-[10px] text-pink-600 font-bold bg-pink-50 px-1 rounded">28% OFF</span>
+</div>
+</div>
+<button class="w-full mt-3 bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold py-2 rounded-lg flex items-center justify-center space-x-1.5 transition-colors" onclick="addToCart('Dinosaur Toy Set')">
+<i class="ph ph-shopping-cart-simple text-sm"></i>
+<span>Add to Cart</span>
+</button>
+</div>
+</div>
+</section>
+<!-- END: BestSellersSection -->
+<!-- BEGIN: CategoryHighlightBanners -->
+<section class="max-w-7xl mx-auto px-4 py-4" data-purpose="promo-category-cards">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1: Educational Toys -->
+<div class="bg-gradient-to-r from-sky-100 to-sky-50 rounded-2xl p-6 flex items-center justify-between border border-sky-200 shadow-sm relative overflow-hidden group">
+<div class="space-y-2 z-10">
+<span class="text-xs font-bold text-sky-700 uppercase tracking-wider">Learning through Play</span>
+<h4 class="text-xl font-black text-slate-900">Educational Toys</h4>
+<a class="inline-flex items-center space-x-1 text-xs font-bold text-sky-800 hover:text-sky-900 mt-2 bg-white px-3 py-1.5 rounded-md shadow-sm" href="#educational-toys">
+<span>Shop Now</span>
+<i class="ph ph-arrow-right"></i>
+</a>
+</div>
+<div class="text-6xl group-hover:scale-110 transition-transform">
+          🧩
+        </div>
+</div>
+<!-- Card 2: Ride Ons -->
+<div class="bg-gradient-to-r from-amber-100 to-yellow-50 rounded-2xl p-6 flex items-center justify-between border border-amber-200 shadow-sm relative overflow-hidden group">
+<div class="space-y-2 z-10">
+<span class="text-xs font-bold text-amber-700 uppercase tracking-wider">Little Rides, Big Adventures</span>
+<h4 class="text-xl font-black text-slate-900">Ride Ons</h4>
+<a class="inline-flex items-center space-x-1 text-xs font-bold text-amber-800 hover:text-amber-900 mt-2 bg-white px-3 py-1.5 rounded-md shadow-sm" href="#ride-ons">
+<span>Shop Now</span>
+<i class="ph ph-arrow-right"></i>
+</a>
+</div>
+<div class="text-6xl group-hover:scale-110 transition-transform">
+          🚗
+        </div>
+</div>
+<!-- Card 3: Outdoor Toys -->
+<div class="bg-gradient-to-r from-pink-100 to-rose-50 rounded-2xl p-6 flex items-center justify-between border border-pink-200 shadow-sm relative overflow-hidden group">
+<div class="space-y-2 z-10">
+<span class="text-xs font-bold text-pink-700 uppercase tracking-wider">More Play, More Fun</span>
+<h4 class="text-xl font-black text-slate-900">Outdoor Toys</h4>
+<a class="inline-flex items-center space-x-1 text-xs font-bold text-pink-800 hover:text-pink-900 mt-2 bg-white px-3 py-1.5 rounded-md shadow-sm" href="#outdoor-toys">
+<span>Shop Now</span>
+<i class="ph ph-arrow-right"></i>
+</a>
+</div>
+<div class="text-6xl group-hover:scale-110 transition-transform">
+          ⚽
+        </div>
+</div>
+</div>
+</section>
+<!-- END: CategoryHighlightBanners -->
+<!-- BEGIN: TrustBadgesBar -->
+<section class="max-w-7xl mx-auto px-4 py-8" data-purpose="guarantee-ribbon">
+<div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+<div class="flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl mb-2">
+<i class="ph ph-shield-check"></i>
+</div>
+<h5 class="text-xs font-bold text-slate-900">Safe for Children</h5>
+<span class="text-[11px] text-slate-500">Non-Toxic &amp; BIS Compliant</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-sky-50 text-sky-600 flex items-center justify-center text-2xl mb-2">
+<i class="ph ph-cube"></i>
+</div>
+<h5 class="text-xs font-bold text-slate-900">High-Quality Material</h5>
+<span class="text-[11px] text-slate-500">Built to Last Long</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl mb-2">
+<i class="ph ph-truck"></i>
+</div>
+<h5 class="text-xs font-bold text-slate-900">Pan India Delivery</h5>
+<span class="text-[11px] text-slate-500">Fast &amp; Reliable Express</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-2">
+<i class="ph ph-arrow-u-down-left"></i>
+</div>
+<h5 class="text-xs font-bold text-slate-900">Easy Returns</h5>
+<span class="text-[11px] text-slate-500">Hassle-Free Process</span>
+</div>
+<div class="flex flex-col items-center col-span-2 md:col-span-1">
+<div class="w-12 h-12 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center text-2xl mb-2">
+<i class="ph ph-lock-key"></i>
+</div>
+<h5 class="text-xs font-bold text-slate-900">Secure Payments</h5>
+<span class="text-[11px] text-slate-500">100% Safe UPI &amp; Cards</span>
+</div>
+</div>
+</section>
+<!-- END: TrustBadgesBar -->
+<!-- BEGIN: AboutSection -->
+<section class="max-w-7xl mx-auto px-4 py-12" data-purpose="about-company" id="about">
+<div class="bg-gradient-to-r from-pink-50 via-white to-sky-50 rounded-3xl p-8 md:p-12 border border-slate-200">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Story / Text -->
+<div class="lg:col-span-6 space-y-4">
+<span class="text-xs font-bold text-pink-600 uppercase tracking-widest">About PlayJoy</span>
+<h2 class="text-3xl md:text-4xl font-black text-slate-900">Spreading Joy Through Play</h2>
+<p class="text-slate-600 text-sm leading-relaxed">
+            We are a leading toy manufacturer in India committed to creating safe, innovative, and high-quality toys for children across India and beyond.
+          </p>
+<p class="text-slate-600 text-sm leading-relaxed">
+            From playful beginnings to a brighter future — we believe in the power of play to ignite curiosity and develop tomorrow's thinkers.
+          </p>
+<div class="pt-2">
+<a class="inline-flex items-center space-x-2 bg-pink-600 hover:bg-pink-700 text-white text-sm font-bold px-6 py-2.5 rounded-lg shadow-sm transition-colors" href="#know-more">
+<span>Know More</span>
+<i class="ph ph-arrow-right"></i>
+</a>
+</div>
+</div>
+<!-- Middle Graphic / Kids quote -->
+<div class="lg:col-span-3 flex flex-col items-center justify-center text-center">
+<div class="doodle-font text-sky-600 text-base font-bold bg-white/90 p-4 rounded-2xl shadow-sm border border-sky-100 max-w-xs">
+            Toys Build Brighter Futures ♡
+          </div>
+</div>
+<!-- Stats Counter -->
+<div class="lg:col-span-3 space-y-5 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-2xl font-bold">
+<i class="ph ph-package"></i>
+</div>
+<div>
+<div class="text-2xl font-black text-slate-900">1000+</div>
+<div class="text-xs text-slate-500 font-medium">Safe Products</div>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-2xl font-bold">
+<i class="ph ph-users-three"></i>
+</div>
+<div>
+<div class="text-2xl font-black text-slate-900">500+</div>
+<div class="text-xs text-slate-500 font-medium">B2B Partners</div>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-2xl font-bold">
+<i class="ph ph-trophy"></i>
+</div>
+<div>
+<div class="text-2xl font-black text-slate-900">10+</div>
+<div class="text-xs text-slate-500 font-medium">Years of Excellence</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: AboutSection -->
+<!-- BEGIN: Footer -->
+<footer class="bg-white border-t border-slate-200 pt-12 pb-6 text-sm text-slate-600" id="support">
+<div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-12">
+<!-- Brand & Mission -->
+<div class="space-y-4">
+<a class="flex flex-col" href="#">
+<div class="flex items-center">
+<span class="text-2xl font-black tracking-tight text-pink-600">Play</span>
+<span class="text-2xl font-black tracking-tight text-sky-500">Joy</span>
+</div>
+<span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase">Small Toys, Big Smiles</span>
+</a>
+<p class="text-xs text-slate-500 leading-relaxed">
+          A Proud Indian Toy Manufacturer crafting joy, creativity and smiles for kids worldwide.
+        </p>
+</div>
+<!-- Quick Shop Links -->
+<div class="space-y-2">
+<h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Shop</h4>
+<ul class="space-y-1.5 text-xs text-slate-500">
+<li><a class="hover:text-pink-600" href="#all-products">All Products</a></li>
+<li><a class="hover:text-pink-600" href="#new-arrivals">New Arrivals</a></li>
+<li><a class="hover:text-pink-600" href="#best-sellers">Best Sellers</a></li>
+<li><a class="hover:text-pink-600" href="#by-age">By Age</a></li>
+<li><a class="hover:text-pink-600" href="#categories">By Category</a></li>
+</ul>
+</div>
+<!-- B2B Inquiries -->
+<div class="space-y-2">
+<h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">B2B Wholesale</h4>
+<ul class="space-y-1.5 text-xs text-slate-500">
+<li><a class="hover:text-pink-600" href="javascript:void(0)" onclick="openModal()">Get a Sample</a></li>
+<li><a class="hover:text-pink-600" href="#b2b-section">Bulk Enquiry</a></li>
+<li><a class="hover:text-pink-600" href="#b2b-section">Become a Distributor</a></li>
+<li><a class="hover:text-pink-600" href="#login">B2B Login</a></li>
+</ul>
+</div>
+<!-- Support Links -->
+<div class="space-y-2">
+<h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Support</h4>
+<ul class="space-y-1.5 text-xs text-slate-500">
+<li><a class="hover:text-pink-600" href="#track">Track Order</a></li>
+<li><a class="hover:text-pink-600" href="#shipping">Shipping Policy</a></li>
+<li><a class="hover:text-pink-600" href="#refund">Return &amp; Refund</a></li>
+<li><a class="hover:text-pink-600" href="#faqs">FAQs</a></li>
+<li><a class="hover:text-pink-600" href="#contact">Contact Us</a></li>
+</ul>
+</div>
+<!-- Connect & Newsletter -->
+<div class="space-y-3">
+<h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Connect With Us</h4>
+<!-- Social Icons -->
+<div class="flex items-center space-x-2 text-white">
+<a class="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-500 to-pink-500 flex items-center justify-center hover:opacity-90" href="#">
+<i class="ph ph-instagram-logo"></i>
+</a>
+<a class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center hover:opacity-90" href="#">
+<i class="ph ph-facebook-logo"></i>
+</a>
+<a class="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center hover:opacity-90" href="#">
+<i class="ph ph-youtube-logo"></i>
+</a>
+<a class="w-8 h-8 rounded-full bg-sky-700 flex items-center justify-center hover:opacity-90" href="#">
+<i class="ph ph-linkedin-logo"></i>
+</a>
+</div>
+<!-- Newsletter Subscription Form -->
+<form class="pt-2" onsubmit="handleSubscribe(event)">
+<label class="text-[11px] text-slate-500 block mb-1">Get updates on new launches</label>
+<div class="flex">
+<input class="w-full text-xs px-3 py-2 border border-slate-300 rounded-l-md focus:outline-none focus:ring-1 focus:ring-pink-500" placeholder="Enter your email" required="" type="email"/>
+<button class="bg-blue-600 hover:bg-blue-700 text-white px-3 text-xs rounded-r-md flex items-center justify-center transition-colors" type="submit">
+<i class="ph ph-arrow-right font-bold"></i>
+</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Sub-footer copyright -->
+<div class="max-w-7xl mx-auto px-4 pt-6 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400 gap-2">
+<p>© 2026 PlayJoy Toys. All Rights Reserved.</p>
+<div class="flex space-x-4">
+<a class="hover:text-slate-600" href="#terms">Terms &amp; Conditions</a>
+<span>|</span>
+<a class="hover:text-slate-600" href="#privacy">Privacy Policy</a>
+<span>|</span>
+<a class="hover:text-slate-600" href="#sitemap">Sitemap</a>
+</div>
+</div>
+</footer>
+<!-- END: Footer -->
+<!-- BEGIN: B2BSampleModal -->
+<div class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center z-50 hidden p-4" id="sample-modal">
+<div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative animate-in fade-in zoom-in duration-200">
+<button class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl" onclick="closeModal()">
+<i class="ph ph-x"></i>
+</button>
+<div class="flex items-center space-x-3 mb-4">
+<div class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-xl">
+<i class="ph ph-package font-bold"></i>
+</div>
+<div>
+<h3 class="text-base font-bold text-slate-900">Request Sample Toy Kit</h3>
+<p class="text-xs text-slate-500">For retail stores, wholesalers &amp; school chains</p>
+</div>
+</div>
+<form class="space-y-3" onsubmit="handleSampleSubmit(event)">
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1">Business Name</label>
+<input class="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none" placeholder="e.g. Wonderland Retailers" required="" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1">Contact Person</label>
+<input class="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none" placeholder="Full Name" required="" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1">Mobile Number</label>
+<input class="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none" placeholder="+91" required="" type="tel"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1">Product Category of Interest</label>
+<select class="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none">
+<option>Ride On Toys</option>
+<option>Educational &amp; STEM Toys</option>
+<option>Soft Toys &amp; Plush</option>
+<option>RC &amp; Battery Operated</option>
+<option>Mixed Assortment Catalog</option>
+</select>
+</div>
+<button class="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-2.5 rounded-lg text-xs transition-colors mt-2" type="submit">
+          Submit Sample Request
+        </button>
+</form>
+</div>
+</div>
+<!-- END: B2BSampleModal -->
+<!-- Toast Notification Container -->
+<div class="fixed bottom-6 right-6 bg-slate-900 text-white text-xs px-4 py-3 rounded-lg shadow-xl z-50 flex items-center space-x-2 hidden" id="toast">
+<i class="ph ph-check-circle text-emerald-400 text-lg"></i>
+<span id="toast-message">Item added to cart!</span>
+</div>
+<!-- BEGIN: InteractiveHandlers -->
+<script data-purpose="ecommerce-interactions">
+    let cartCount = Object.values(JSON.parse(localStorage.getItem('playjoy-cart') || '{}')).reduce((a,b) => a + b, 0);
+    let wishlistCount = 0;
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toast-message');
+      toastMessage.textContent = message;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 2500);
+    }
+
+    function addToCart(productName) {
+      const productIds = {'Happy Ride Car':'ride-car','Rainbow Stacking Rings':'rings','Soft Teddy Bear':'teddy','RC Monster Truck':'monster','Building Blocks Set':'blocks','Dinosaur Toy Set':'dino'};
+      const cart = JSON.parse(localStorage.getItem('playjoy-cart') || '{}');
+      const id = productIds[productName] || productName.toLowerCase().replace(/\W+/g,'-');
+      cart[id] = (cart[id] || 0) + 1;
+      localStorage.setItem('playjoy-cart', JSON.stringify(cart));
+      cartCount = Object.values(cart).reduce((a,b) => a + b, 0);
+      document.getElementById('cart-counter').textContent = cartCount;
+      showToast(`Added ${productName} to your cart!`);
+    }
+
+    function toggleWishlist(btn) {
+      const heartIcon = btn.querySelector('i');
+      if (heartIcon.classList.contains('ph-fill')) {
+        heartIcon.classList.remove('ph-fill', 'text-pink-600');
+        heartIcon.classList.add('ph');
+        wishlistCount = Math.max(0, wishlistCount - 1);
+        showToast('Removed from wishlist');
+      } else {
+        heartIcon.classList.remove('ph');
+        heartIcon.classList.add('ph-fill', 'text-pink-600');
+        wishlistCount++;
+        showToast('Added to wishlist!');
+      }
+      document.getElementById('wishlist-badge').textContent = wishlistCount;
+    }
+
+    function openModal() {
+      document.getElementById('sample-modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('sample-modal').classList.add('hidden');
+    }
+
+    function handleSampleSubmit(e) {
+      e.preventDefault();
+      closeModal();
+      showToast('Sample request submitted! Our B2B rep will contact you.');
+    }
+
+    function handleSubscribe(e) {
+      e.preventDefault();
+      showToast('Thank you for subscribing to PlayJoy!');
+      e.target.reset();
+    }
+    document.getElementById('cart-counter').textContent = cartCount;
+  </script>
+<!-- END: InteractiveHandlers -->
+</body></html>
