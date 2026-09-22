@@ -1,24 +1,29 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>PlayJoy - Get a Sample (B2B Wholesale Request)</title>
+  
+  <!-- Tailwind CSS CDN with forms and container queries plugins -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- FontAwesome & Phosphor Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <!-- Google Fonts: Inter & Caveat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>PlayJoy - Get a Sample (B2B)</title>
-<!-- Tailwind CSS v3 with Forms & Container Plugins -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Font Awesome Icons -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
-<!-- Google Fonts: Inter & Caveat for handwritten notes -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<script>
+  <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            handwriting: ['"Caveat"', 'cursive'],
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            doodle: ['Caveat', 'cursive'],
           },
           colors: {
             playjoy: {
@@ -36,567 +41,505 @@
       }
     }
   </script>
-<!-- BEGIN: Custom Styles -->
-<style data-purpose="custom-enhancements">
-    /* Subtle custom scrollbar for modal content */
+
+  <style>
+    .font-doodle {
+      font-family: 'Caveat', cursive;
+    }
     .custom-scroll::-webkit-scrollbar {
       width: 6px;
-    }
-    .custom-scroll::-webkit-scrollbar-track {
-      background: #f1f5f9;
-      border-radius: 9999px;
     }
     .custom-scroll::-webkit-scrollbar-thumb {
       background: #cbd5e1;
       border-radius: 9999px;
     }
-    .custom-scroll::-webkit-scrollbar-thumb:hover {
-      background: #94a3b8;
-    }
-    .dashed-border-upload {
-      border: 2px dashed #cbd5e1;
-      transition: all 0.2s ease-in-out;
-    }
-    .dashed-border-upload:hover {
-      border-color: #3b82f6;
-      background-color: #eff6ff;
-    }
   </style>
-<!-- END: Custom Styles -->
 </head>
-<body class="font-sans bg-slate-100 text-slate-800 antialiased overflow-x-hidden selection:bg-blue-100 selection:text-blue-700">
-<!-- BEGIN: Background E-Commerce Storefront Simulation -->
-<div class="min-h-screen bg-white filter blur-[2px] pointer-events-none select-none" data-purpose="storefront-page">
-<!-- Top Navigation Bar -->
-<header class="border-b border-gray-200 bg-white sticky top-0 z-10 px-8 py-3.5 flex items-center justify-between">
-<div class="flex items-center space-x-10">
-<!-- Logo -->
-<div class="flex items-center space-x-2">
-<span class="text-3xl font-extrabold tracking-tight text-red-500 font-sans">Play<span class="text-blue-600">Joy</span></span>
-<span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold block ml-1 leading-none">Small Toys. Big Smiles.</span>
-</div>
-<!-- Search bar -->
-<div class="relative w-96">
-<input class="w-full text-sm bg-slate-50 border border-gray-300 rounded-full py-2 pl-4 pr-10 focus:outline-none" placeholder="Search for toys, categories, or more..." type="text"/>
-<i class="fa-solid fa-magnifying-glass absolute right-4 top-3 text-gray-400 text-sm"></i>
-</div>
-</div>
-<!-- Header actions -->
-<div class="flex items-center space-x-6 text-sm text-slate-700 font-medium">
-<div class="flex items-center space-x-2"><i class="fa-regular fa-user"></i><span>Login / Register</span></div>
-<div class="flex items-center space-x-2"><i class="fa-regular fa-heart"></i><span>Wishlist</span></div>
-<div class="flex items-center space-x-2 relative"><i class="fa-solid fa-cart-shopping"></i><span>Cart</span></div>
-<button class="border border-blue-600 text-blue-600 font-semibold px-4 py-2 rounded-lg text-sm">Get a Sample (B2B)</button>
-<button class="bg-red-600 text-white font-semibold px-5 py-2 rounded-lg text-sm">Buy Now (B2C)</button>
-</div>
-</header>
-<!-- Sub Navigation Categories -->
-<nav class="border-b border-gray-100 px-8 py-2.5 flex space-x-8 text-xs font-semibold text-slate-600">
-<span>Toys by Age</span>
-<span>Brands</span>
-<span>Categories</span>
-<span>New Arrivals</span>
-<span>Best Sellers</span>
-<span>Bulk Enquiry</span>
-</nav>
-<!-- Product Showcase (Simulated Backdrop) -->
-<main class="max-w-7xl mx-auto p-8 grid grid-cols-12 gap-8 opacity-75">
-<div class="col-span-6 flex gap-4">
-<div class="flex flex-col gap-3">
-<div class="w-16 h-16 border-2 border-red-500 rounded-lg p-1 bg-amber-50"></div>
-<div class="w-16 h-16 border rounded-lg bg-blue-50"></div>
-<div class="w-16 h-16 border rounded-lg bg-green-50"></div>
-</div>
-<div class="w-full h-96 bg-amber-100/50 rounded-2xl border flex items-center justify-center">
-<i class="fa-solid fa-paw text-8xl text-amber-200"></i>
-</div>
-</div>
-<div class="col-span-6 space-y-4">
-<div class="h-6 w-32 bg-slate-200 rounded"></div>
-<div class="h-10 w-96 bg-slate-300 rounded"></div>
-<div class="h-8 w-40 bg-red-100 rounded"></div>
-<div class="h-24 w-full bg-slate-100 rounded-xl"></div>
-</div>
-</main>
-</div>
-<!-- END: Background E-Commerce Storefront Simulation -->
-<!-- BEGIN: Modal Overlay Container -->
-<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 md:p-6 transition-all duration-300" id="sampleModalBackdrop">
-<!-- BEGIN: Main Modal Box -->
-<div class="relative w-full max-w-[1100px] h-[92vh] max-h-[820px] bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row border border-white/20 animate-in fade-in zoom-in-95 duration-200" data-purpose="b2b-sample-modal">
-<!-- ==============================================
-           LEFT SIDEBAR: B2B VALUE PROPOSITION & BRANDING
-           ============================================== -->
-<!-- BEGIN: LeftSidebar -->
-<aside class="w-full md:w-[360px] lg:w-[380px] bg-[#EAF2FD] p-6 lg:p-8 flex flex-col justify-between relative shrink-0 border-r border-blue-100 overflow-hidden" data-purpose="b2b-left-sidebar">
-<!-- Top branding and highlights -->
-<div class="space-y-6 relative z-10">
-<!-- PlayJoy Brand Logo Header -->
-<a href="index.html" class="flex items-center space-x-2 cursor-pointer hover:opacity-90 transition-opacity" title="Return to PlayJoy Home">
-<span class="text-3xl font-extrabold tracking-tight text-[#E8334A] leading-none">Play<span class="text-[#2563EB]">Joy</span></span>
-<div class="h-4 w-[1.5px] bg-slate-300 mx-1"></div>
-<span class="text-[11px] font-semibold text-slate-500 tracking-wide uppercase">B2B Partner</span>
-</a>
-<p class="text-xs text-slate-500 font-medium -mt-4">Toys for a Brighter Tomorrow</p>
-<!-- Headline -->
-<div class="space-y-2 pt-2">
-<h2 class="text-2xl lg:text-[26px] font-extrabold text-[#112344] leading-tight tracking-tight">
-              Partner<br/>with a Trusted<br/>Toy Manufacturer
-            </h2>
-<p class="text-xs text-slate-600 font-medium leading-relaxed">
-              High-quality toys. Better margins.<br/>Stronger partnerships.
-            </p>
-</div>
-<!-- Feature Badges List -->
-<div class="space-y-3.5 pt-1">
-<!-- Feature Item 1 -->
-<div class="flex items-center space-x-3 text-slate-700">
-<div class="w-8 h-8 rounded-full bg-[#FFEAEF] text-[#EA384D] flex items-center justify-center shrink-0 shadow-xs">
-<i class="fa-solid fa-industry text-xs"></i>
-</div>
-<span class="text-[13px] font-bold text-slate-800 tracking-tight">Direct from Manufacturer</span>
-</div>
-<!-- Feature Item 2 -->
-<div class="flex items-center space-x-3 text-slate-700">
-<div class="w-8 h-8 rounded-full bg-[#E0F7F6] text-[#0D9488] flex items-center justify-center shrink-0 shadow-xs">
-<i class="fa-solid fa-tag text-xs"></i>
-</div>
-<span class="text-[13px] font-bold text-slate-800 tracking-tight">Competitive B2B Pricing</span>
-</div>
-<!-- Feature Item 3 -->
-<div class="flex items-center space-x-3 text-slate-700">
-<div class="w-8 h-8 rounded-full bg-[#FEF3C7] text-[#D97706] flex items-center justify-center shrink-0 shadow-xs">
-<i class="fa-solid fa-cubes text-xs"></i>
-</div>
-<span class="text-[13px] font-bold text-slate-800 tracking-tight">Wide Product Range</span>
-</div>
-<!-- Feature Item 4 -->
-<div class="flex items-center space-x-3 text-slate-700">
-<div class="w-8 h-8 rounded-full bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center shrink-0 shadow-xs">
-<i class="fa-solid fa-truck-fast text-xs"></i>
-</div>
-<span class="text-[13px] font-bold text-slate-800 tracking-tight">Pan India &amp; International Supply</span>
-</div>
-<!-- Feature Item 5 -->
-<div class="flex items-center space-x-3 text-slate-700">
-<div class="w-8 h-8 rounded-full bg-[#DBEAFE] text-[#2563EB] flex items-center justify-center shrink-0 shadow-xs">
-<i class="fa-solid fa-headset text-xs"></i>
-</div>
-<span class="text-[13px] font-bold text-slate-800 tracking-tight">Dedicated B2B Support</span>
-</div>
-</div>
-</div>
-<!-- Sidebar Decorative Bottom Section -->
-<div class="relative mt-4 pt-4 border-t border-blue-200/60 z-10">
-<div class="flex items-end justify-between">
-<!-- Illustrated Toy Composition -->
-<div class="flex items-end space-x-2">
-<!-- Teddy Bear Icon Avatar -->
-<div class="relative w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-700 to-amber-500 shadow-md flex items-center justify-center border-2 border-white text-white">
-<i class="fa-solid fa-paw text-2xl opacity-90"></i>
-<div class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full p-1 text-[9px]">
-<i class="fa-solid fa-heart"></i>
-</div>
-</div>
-<!-- Stacking Rings / Toy car icons -->
-<div class="flex flex-col space-y-1 pb-1">
-<div class="flex space-x-1">
-<span class="w-3 h-3 rounded-full bg-emerald-400 inline-block shadow-sm"></span>
-<span class="w-3 h-3 rounded-full bg-amber-400 inline-block shadow-sm"></span>
-<span class="w-3 h-3 rounded-full bg-purple-400 inline-block shadow-sm"></span>
-</div>
-<div class="bg-red-500 text-white text-[10px] px-2 py-0.5 rounded-full font-bold flex items-center gap-1 shadow-sm">
-<i class="fa-solid fa-car-side"></i> <span>Play</span>
-</div>
-</div>
-</div>
-<!-- Hand-written playful slogan -->
-<div class="text-right">
-<p class="font-handwriting text-blue-800 text-base leading-tight font-bold rotate-[-3deg]">
-                Great Toys<br/>Build Greater<br/>Relationships <span class="text-red-500">♡</span>
-</p>
-</div>
-</div>
-</div>
-<!-- Subtle backdrop decorative circle -->
-<div class="absolute -bottom-10 -left-10 w-44 h-44 rounded-full bg-blue-100/60 blur-xl pointer-events-none"></div>
-</aside>
-<!-- END: LeftSidebar -->
-<!-- ==============================================
-           RIGHT CONTENT AREA: STEPPER & MULTI-STEP FORMS
-           ============================================== -->
-<!-- BEGIN: RightContent -->
-<section class="flex-1 flex flex-col justify-between bg-white relative overflow-hidden" data-purpose="modal-form-content">
-<!-- Header: Title, Description, and Close Button -->
-<div class="px-7 pt-6 pb-3 border-b border-gray-100 flex items-start justify-between relative shrink-0">
-<div class="flex items-start space-x-3.5 pr-12">
-<!-- Box Package Icon -->
-<div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 text-2xl shadow-inner mt-0.5">
-<i class="fa-solid fa-box-open"></i>
-</div>
-<div>
-<div class="flex items-center space-x-2">
-<h1 class="text-2xl font-black text-slate-900 tracking-tight">Get a Sample</h1>
-<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">B2B Verified</span>
-</div>
-<p class="text-xs text-slate-500 mt-1 max-w-xl leading-relaxed">
-                Partner with us and experience our quality. Share your business details and our B2B team will get in touch with you shortly.
-              </p>
-</div>
-</div>
-<!-- Playful Slogan at Top-Right & Close Button -->
-<div class="flex flex-col items-end space-y-1">
-<button class="w-8 h-8 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-700 flex items-center justify-center transition-colors" id="closeModalBtn" title="Close">
-<i class="fa-solid fa-xmark text-lg"></i>
-</button>
-<div class="hidden sm:block font-handwriting text-blue-600 text-sm font-bold rotate-[4deg] tracking-wide pt-1">
-              Let's Grow Together
-            </div>
-</div>
-</div>
-<!-- Stepper Navigation Bar -->
-<div class="px-8 pt-3 pb-2 shrink-0 border-b border-slate-50" data-purpose="stepper-progress">
-<div class="max-w-md mx-auto flex items-center justify-between relative">
-<!-- Step Connecting Line -->
-<div class="absolute top-4 left-12 right-12 h-[2px] bg-slate-200 -z-0"></div>
-<div class="absolute top-4 left-12 h-[2px] bg-blue-600 transition-all duration-300 -z-0 w-1/2" id="stepLineProgress"></div>
-<!-- Step 1 Indicator Button -->
-<button class="flex flex-col items-center group relative z-10 focus:outline-none" id="tabStep1" onclick="switchStep(1)" type="button">
-<div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-md transition-all" id="badgeStep1">
-<span id="badgeStep1Text"><i class="fa-solid fa-check text-xs"></i></span>
-</div>
-<span class="text-xs font-semibold text-blue-600 mt-1" id="labelStep1">1. Your Details</span>
-</button>
-<!-- Step 2 Indicator Button -->
-<button class="flex flex-col items-center group relative z-10 focus:outline-none" id="tabStep2" onclick="switchStep(2)" type="button">
-<div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs ring-4 ring-blue-100 shadow-md transition-all" id="badgeStep2">
-<span id="badgeStep2Text">2</span>
-</div>
-<span class="text-xs font-bold text-blue-600 mt-1" id="labelStep2">2. Business &amp; Requirement</span>
-</button>
-</div>
-</div>
-<!-- Scrollable Form Container -->
-<div class="flex-1 overflow-y-auto px-8 py-4 custom-scroll" style="max-height: calc(88vh - 210px);">
-<!-- =====================================
-               STEP 1: CONTACT DETAILS
-               ===================================== -->
-<!-- BEGIN: StepOneContainer -->
-<div class="space-y-5 hidden transition-all duration-300" id="stepOneContent">
-<div>
-<h3 class="text-base font-bold text-slate-900">Your Contact Details</h3>
-<p class="text-xs text-slate-500">These details will help us get in touch with you directly.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<!-- Full Name -->
-<div>
-<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="fullName">Full Name <span class="text-red-500">*</span></label>
-<input class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2.5 px-3" id="fullName" placeholder="Enter your full name" type="text" value="Rajesh Sharma"/>
-</div>
-<!-- Email Address -->
-<div>
-<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="emailAddress">Email Address <span class="text-red-500">*</span></label>
-<input class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2.5 px-3" id="emailAddress" placeholder="Enter your email address" type="email" value="rajesh.sharma@toystore.in"/>
-</div>
-</div>
-<!-- Mobile Phone with Country Code -->
-<div>
-<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="phoneNumber">Mobile Number <span class="text-red-500">*</span></label>
-<div class="flex rounded-lg shadow-xs">
-<select class="inline-flex items-center text-xs font-medium border border-r-0 border-gray-300 rounded-l-lg bg-gray-50 text-gray-700 px-3 py-2.5 focus:border-blue-500 focus:ring-blue-500">
-<option>+91 (India)</option>
-<option>+1 (USA)</option>
-<option>+44 (UK)</option>
-<option>+971 (UAE)</option>
-</select>
-<input class="w-full text-xs rounded-none rounded-r-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2.5 px-3" id="phoneNumber" placeholder="Enter your mobile number" type="tel" value="98765 43210"/>
-</div>
-<p class="text-[11px] text-slate-400 mt-1">We'll send sample dispatch tracking updates to this WhatsApp/Phone number.</p>
-</div>
-<!-- City and State -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div>
-<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="cityName">City <span class="text-red-500">*</span></label>
-<input class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2.5 px-3" id="cityName" placeholder="Enter your city" type="text" value="Bengaluru"/>
-</div>
-<div>
-<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="stateSelect">State <span class="text-red-500">*</span></label>
-<select class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2.5 px-3 bg-white" id="stateSelect">
-<option>Karnataka</option>
-<option>Maharashtra</option>
-<option>Delhi NCR</option>
-<option>Gujarat</option>
-<option>Tamil Nadu</option>
-<option>Other</option>
-</select>
-</div>
-</div>
-<div class="p-3 bg-blue-50/70 rounded-xl border border-blue-100 flex items-center space-x-3 text-blue-900 text-xs">
-<i class="fa-solid fa-shield-halved text-blue-600 text-base"></i>
-<span>Your contact information is confidential and will strictly be used for sample coordination.</span>
-</div>
-</div>
-<!-- END: StepOneContainer -->
-<!-- =====================================
-               STEP 2: BUSINESS & REQUIREMENT DETAILS
-               ===================================== -->
-<!-- BEGIN: StepTwoContainer -->
-<div class="space-y-4" id="stepTwoContent">
-<div>
-<h3 class="text-base font-bold text-slate-900">Business &amp; Requirement Details</h3>
-<p class="text-xs text-slate-500">Help us understand your business and requirements so we can assist you better.</p>
-</div>
-<!-- Row 1: Business Name & Website/Marketplace Link -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div>
-<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="businessName">Business / Store Name <span class="text-red-500">*</span></label>
-<input class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2.5 px-3" id="businessName" placeholder="Enter business name" type="text" value="Kids Wonder Toy Shoppe"/>
-</div>
-<div>
-<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="websiteLink">Website / Instagram / Marketplace Link (if any)</label>
-<input class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2.5 px-3" id="websiteLink" placeholder="https://" type="url" value="https://instagram.com/kidswondertoys"/>
-</div>
-</div>
-<!-- Row 2: Business Type & Interested Products -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div>
-<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="businessType">Business Type <span class="text-red-500">*</span></label>
-<select class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2.5 px-3 bg-white" id="businessType">
-<option disabled="" value="">Select business type</option>
-<option selected="">Toy Retailer / Toy Store</option>
-<option>Wholesaler / Stockist</option>
-<option>E-commerce Brand / Marketplace Seller</option>
-<option>Preschool / School / Educational Chain</option>
-<option>Corporate Gifting / Event Planner</option>
-</select>
-</div>
-<div>
-<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="productInterested">Products Interested In <span class="text-red-500">*</span></label>
-<input class="w-full text-xs rounded-lg border-blue-200 bg-blue-50/50 text-blue-900 font-semibold focus:border-blue-500 focus:ring-blue-500 py-2.5 px-3" id="productInterested" type="text" value="Teddy Bear (Soft Toy)"/>
-</div>
-</div>
-<!-- Row 3: GSTIN & Expected Monthly Quantity -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div>
-<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="gstin">GSTIN (if any)</label>
-<input class="w-full text-xs uppercase tracking-wider rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2.5 px-3" id="gstin" placeholder="Enter GSTIN" type="text"/>
-</div>
-<div>
-<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="expectedQuantity">Expected Monthly Purchase Quantity <span class="text-red-500">*</span></label>
-<select class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2.5 px-3 bg-white" id="expectedQuantity">
-<option disabled="" value="">Select quantity range</option>
-<option>50 - 200 units / month</option>
-<option selected="">200 - 500 units / month</option>
-<option>500 - 2,000 units / month</option>
-<option>2,000+ units / month (Master Bulk)</option>
-</select>
-</div>
-</div>
-<!-- Row 4: Business Address & Purchase Purpose -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div>
-<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="businessAddress">Business Address <span class="text-red-500">*</span></label>
-<textarea class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" id="businessAddress" placeholder="Enter your complete business address" rows="3">Shop No. 14, Commercial Plaza, Indiranagar, Bengaluru, KA - 560038</textarea>
-</div>
-<div>
-<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="purchasePurpose">Purchase Purpose <span class="text-red-500">*</span></label>
-<select class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2.5 px-3 bg-white" id="purchasePurpose">
-<option disabled="" value="">Select purpose</option>
-<option selected="">Reselling in Retail Store</option>
-<option>Online Marketplace Selling (Amazon, Flipkart, etc.)</option>
-<option>Corporate Gifting / Client Merchandise</option>
-<option>Institutional / Daycare Use</option>
-</select>
-</div>
-</div>
-<!-- Row 5: Areas You Sell In (Checkboxes) -->
-<div>
-<label class="block text-xs font-semibold text-slate-700 mb-2">Areas You Sell In <span class="text-red-500">*</span></label>
-<div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-<label class="flex items-center space-x-2 border rounded-lg p-2.5 cursor-pointer hover:bg-slate-50 transition border-gray-200">
-<input checked="" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" name="salesArea" type="checkbox"/>
-<span class="text-slate-700 text-xs">Local (City)</span>
-</label>
-<label class="flex items-center space-x-2 border rounded-lg p-2.5 cursor-pointer hover:bg-slate-50 transition border-gray-200">
-<input checked="" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" name="salesArea" type="checkbox"/>
-<span class="text-slate-700 text-xs">State</span>
-</label>
-<label class="flex items-center space-x-2 border rounded-lg p-2.5 cursor-pointer hover:bg-slate-50 transition border-gray-200">
-<input checked="" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" name="salesArea" type="checkbox"/>
-<span class="text-slate-700 text-xs">Pan India</span>
-</label>
-<label class="flex items-center space-x-2 border rounded-lg p-2.5 cursor-pointer hover:bg-slate-50 transition border-gray-200">
-<input class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" name="salesArea" type="checkbox"/>
-<span class="text-slate-700 text-xs">Export / International</span>
-</label>
-</div>
-</div>
-<!-- Row 6: Upload Business Card & Additional Message -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
-<!-- File Upload Dropzone -->
-<div>
-<label class="block text-xs font-semibold text-slate-700 mb-1.5">Upload Business Card (if any)</label>
-<div class="dashed-border-upload rounded-xl p-4 flex flex-col items-center justify-center text-center cursor-pointer bg-slate-50/50">
-<div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mb-1 text-sm">
-<i class="fa-solid fa-arrow-up-from-bracket"></i>
-</div>
-<span class="text-xs font-bold text-slate-700">Click to upload or drag and drop</span>
-<span class="text-[10px] text-slate-400 mt-0.5">PDF, JPG, PNG (Max 5 MB)</span>
-</div>
-</div>
-<!-- Additional Message -->
-<div>
-<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="additionalMessage">Additional Message (if any)</label>
-<textarea class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" id="additionalMessage" placeholder="Tell us about your specific requirement, target price range, or custom colors..." rows="3"></textarea>
-</div>
-</div>
-</div>
-<!-- END: StepTwoContainer -->
-<!-- =====================================
-               STEP 3: SUCCESS STATE CONFIRMATION
-               ===================================== -->
-<!-- BEGIN: StepSuccessContainer -->
-<div class="hidden py-8 px-4 text-center space-y-4" id="stepSuccessContent">
-<div class="w-16 h-16 bg-green-100 text-emerald-600 rounded-full mx-auto flex items-center justify-center text-3xl shadow-lg ring-8 ring-green-50">
-<i class="fa-solid fa-circle-check"></i>
-</div>
-<h3 class="text-2xl font-black text-slate-900">Sample Request Submitted!</h3>
-<p class="text-xs text-slate-600 max-w-md mx-auto leading-relaxed">
-              Thank you for partnering with <strong class="text-blue-600">PlayJoy</strong>. We have generated your sample tracking reference:
-            </p>
-<div class="inline-block bg-slate-100 text-slate-800 font-mono text-sm px-4 py-2 rounded-lg border border-slate-200 font-bold">
-              REQUEST ID: <span class="text-blue-600">PJ-SMP-88392</span>
-</div>
-<p class="text-xs text-slate-500 max-w-sm mx-auto">
-              Our B2B Key Account Specialist will contact you within <strong>1–2 business days</strong> with sample shipping details and wholesale pricing lists.
-            </p>
-<div class="pt-4">
-<button class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-6 py-2.5 rounded-lg shadow-md transition" onclick="location.reload()" type="button">
-                Return to Toy Catalog
-              </button>
-</div>
-</div>
-<!-- END: StepSuccessContainer -->
-</div>
-<!-- Footer / Action Buttons Bar -->
-<div class="px-8 py-3.5 bg-slate-50/80 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0" id="modalFooterBar">
-<!-- Back button or Contact disclaimer -->
-<div>
-<button class="hidden items-center space-x-1.5 px-4 py-2 border border-slate-300 hover:bg-white text-slate-700 font-bold text-xs rounded-lg shadow-xs transition" id="btnBack" onclick="switchStep(1)" type="button">
-<i class="fa-solid fa-arrow-left text-[11px]"></i>
-<span>Back</span>
-</button>
-<p class="text-[11px] text-slate-500 font-medium" id="b2bTurnaroundNote">
-<i class="fa-regular fa-clock text-blue-500 mr-1"></i>Our B2B team will contact you within 1–2 business days.
-            </p>
-</div>
-<!-- Primary Flow Buttons -->
-<div class="flex items-center space-x-3 w-full sm:w-auto justify-end">
-<!-- Step 1 Next Button -->
-<button class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs px-6 py-2.5 rounded-lg shadow-md hover:shadow-blue-200 transition-all" id="btnNextStep" onclick="switchStep(2)" type="button">
-<span>Next: Business &amp; Requirement</span>
-<i class="fa-solid fa-arrow-right text-[11px]"></i>
-</button>
-<!-- Step 2 Submit Button -->
-<button class="hidden w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold text-xs px-6 py-2.5 rounded-lg shadow-md hover:shadow-blue-200 transition-all" id="btnSubmitForm" onclick="submitSampleRequest()" type="button">
-<span>Submit Request</span>
-<i class="fa-solid fa-arrow-right text-[11px]"></i>
-</button>
-</div>
-</div>
-</section>
-<!-- END: RightContent -->
-</div>
-<!-- END: Main Modal Box -->
-</div>
-<!-- END: Modal Overlay Container -->
-<!-- BEGIN: Interactive Navigation Logic -->
-<script data-purpose="modal-interactions">
-    let currentStep = 2; // Default to step 2 to match requested full requirement details view
+<body class="font-sans bg-slate-900/60 antialiased overflow-hidden min-h-screen relative flex items-center justify-center p-3 sm:p-6">
 
-    function switchStep(step) {
-      currentStep = step;
-      const step1Content = document.getElementById('stepOneContent');
-      const step2Content = document.getElementById('stepTwoContent');
-      const stepSuccess = document.getElementById('stepSuccessContent');
-      const btnBack = document.getElementById('btnBack');
-      const btnNextStep = document.getElementById('btnNextStep');
-      const btnSubmitForm = document.getElementById('btnSubmitForm');
-      const stepLine = document.getElementById('stepLineProgress');
+  <!-- ==============================================================
+       BACKGROUND STOREFRONT SIMULATION (MATCHING SCREENSHOT 3 & 4)
+       ============================================================== -->
+  <div class="fixed inset-0 bg-gray-100 filter blur-xs -z-10 overflow-hidden pointer-events-none select-none">
+    <!-- Header simulation -->
+    <header class="bg-white border-b border-gray-200 px-8 py-3.5 flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <span class="text-3xl font-black text-pink-600">Play</span>
+        <span class="text-3xl font-black text-sky-500">Joy</span>
+      </div>
+      <div class="w-96 h-9 bg-slate-100 rounded-full border border-gray-200"></div>
+      <div class="flex items-center space-x-6 text-sm text-gray-500">
+        <span>Login</span>
+        <span>Wishlist</span>
+        <span>Cart</span>
+      </div>
+    </header>
+
+    <!-- Simulated Soft Teddy Bear Product Page Backdrop -->
+    <main class="max-w-7xl mx-auto p-8 grid grid-cols-12 gap-8 opacity-60">
+      <div class="col-span-6 flex gap-4">
+        <div class="w-full h-[500px] bg-white rounded-2xl border border-gray-200 flex items-center justify-center p-8">
+          <img src="assets/images/products/soft_teddy_bear.png" alt="Teddy Bear Backdrop" class="max-h-80 object-contain"/>
+        </div>
+      </div>
+      <div class="col-span-6 space-y-4 pt-4">
+        <div class="h-6 w-32 bg-slate-200 rounded"></div>
+        <div class="h-10 w-80 bg-slate-300 rounded"></div>
+        <div class="h-8 w-44 bg-pink-100 rounded"></div>
+        <div class="h-28 w-full bg-slate-100 rounded-xl"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ==============================================================
+       MAIN MODAL CONTAINER (MATCHING IMAGE 3 & 4 EXACTLY)
+       ============================================================== -->
+  <div class="relative w-full max-w-[1040px] max-h-[94vh] bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row border border-white/20 animate-in fade-in zoom-in-95 duration-200">
+    
+    <!-- ==========================================================
+         LEFT PANEL: DYNAMICALLY SWITCHES BETWEEN STEP 1 AND STEP 2
+         ========================================================== -->
+    
+    <!-- Left Panel: STEP 1 ARTWORK (Image 3) -->
+    <aside class="w-full md:w-[350px] bg-[#EAF2FD] p-6 flex flex-col justify-between shrink-0 border-r border-blue-100 overflow-hidden" id="modalLeftStep1">
+      <div class="space-y-5">
+        <!-- Illustration Box with Teddy & Toys -->
+        <div class="flex justify-center pt-2">
+          <img src="assets/images/modal/sample_box_step1_art.png" alt="PlayJoy Sample Box Illustration" class="w-40 object-contain drop-shadow-md"/>
+        </div>
+
+        <div class="text-left space-y-1">
+          <h3 class="text-xl font-black text-slate-900">Partner with Us</h3>
+          <p class="text-xs text-slate-500 font-medium">Quality Toys for a Brighter Tomorrow</p>
+        </div>
+
+        <!-- 4 Bullet Checkmarks -->
+        <div class="space-y-2.5 text-xs text-slate-700 font-medium">
+          <div class="flex items-center space-x-2.5">
+            <i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i>
+            <span>Trusted by Wholesalers &amp; Distributors</span>
+          </div>
+          <div class="flex items-center space-x-2.5">
+            <i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i>
+            <span>Wide Range of Products</span>
+          </div>
+          <div class="flex items-center space-x-2.5">
+            <i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i>
+            <span>Competitive Pricing</span>
+          </div>
+          <div class="flex items-center space-x-2.5">
+            <i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i>
+            <span>Pan India &amp; International Shipping</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Speech Bubble Callout -->
+      <div class="mt-6 pt-3">
+        <div class="bg-blue-100/70 border border-blue-200 text-blue-900 text-xs font-bold py-2.5 px-4 rounded-xl text-center shadow-xs">
+          "Let's create smiles together! ❤️"
+        </div>
+      </div>
+    </aside>
+
+    <!-- Left Panel: STEP 2 ARTWORK (Image 4) -->
+    <aside class="w-full md:w-[350px] bg-[#EAF2FD] p-6 flex flex-col justify-between shrink-0 border-r border-blue-100 overflow-hidden hidden" id="modalLeftStep2">
+      <div class="space-y-4">
+        <!-- PlayJoy Brand -->
+        <div>
+          <div class="flex items-center">
+            <span class="text-2xl font-black tracking-tight text-pink-600">Play</span>
+            <span class="text-2xl font-black tracking-tight text-sky-500">Joy</span>
+          </div>
+          <p class="text-[10px] text-slate-500 font-medium">Toys for a Brighter Tomorrow</p>
+        </div>
+
+        <div class="space-y-1">
+          <h3 class="text-xl font-black text-slate-900 leading-tight">Partner with a Trusted Toy Manufacturer</h3>
+          <p class="text-xs text-slate-600 font-medium">High-quality toys. Better margins. Stronger partnerships.</p>
+        </div>
+
+        <!-- 5 Feature Badges -->
+        <div class="space-y-2.5 pt-1 text-xs font-semibold text-slate-800">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-7 h-7 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-xs shrink-0"><i class="fa-solid fa-industry"></i></div>
+            <span>Direct from Manufacturer</span>
+          </div>
+          <div class="flex items-center space-x-2.5">
+            <div class="w-7 h-7 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-xs shrink-0"><i class="fa-solid fa-tag"></i></div>
+            <span>Competitive B2B Pricing</span>
+          </div>
+          <div class="flex items-center space-x-2.5">
+            <div class="w-7 h-7 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xs shrink-0"><i class="fa-solid fa-box"></i></div>
+            <span>Wide Product Range</span>
+          </div>
+          <div class="flex items-center space-x-2.5">
+            <div class="w-7 h-7 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs shrink-0"><i class="fa-solid fa-truck-fast"></i></div>
+            <span>Pan India &amp; International Supply</span>
+          </div>
+          <div class="flex items-center space-x-2.5">
+            <div class="w-7 h-7 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs shrink-0"><i class="fa-solid fa-headset"></i></div>
+            <span>Dedicated B2B Support</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Composite Photo of Toys & Quote -->
+      <div class="relative mt-4 pt-2">
+        <div class="flex items-center justify-between">
+          <img src="assets/images/modal/sample_partner_step2_art.png" alt="PlayJoy Toys" class="w-28 object-contain drop-shadow-md"/>
+          <div class="font-doodle text-blue-800 text-sm font-bold rotate-[-3deg] text-right">
+            Great Toys<br/>Build Greater<br/>Relationships ♡
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ==========================================================
+         RIGHT PANEL: MULTI-STEP FORMS & STEPPER PROGRESS
+         ========================================================== -->
+    <section class="flex-1 flex flex-col justify-between bg-white relative overflow-hidden">
       
+      <!-- Header: Title, Description, Close Button -->
+      <div class="px-6 pt-5 pb-3 border-b border-gray-100 flex items-start justify-between relative shrink-0">
+        <div class="flex items-start space-x-3 pr-8">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 text-xl shadow-inner mt-0.5" id="headerBoxIcon">
+            <i class="fa-solid fa-box-open"></i>
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <h1 class="text-xl font-black text-slate-900 tracking-tight">Get a Sample</h1>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">B2B</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-0.5" id="headerSubtitle">
+              Tell us a few details and our B2B team will get in touch with you shortly.
+            </p>
+          </div>
+        </div>
+
+        <!-- Close & Slogan -->
+        <div class="flex flex-col items-end space-y-0.5">
+          <a class="w-8 h-8 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-700 flex items-center justify-center transition-colors" href="index.html" title="Return to Store">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </a>
+          <div class="hidden sm:block font-doodle text-blue-600 text-xs font-bold rotate-[4deg]">
+            Let's Grow Together
+          </div>
+        </div>
+      </div>
+
+      <!-- Stepper Navigation Bar -->
+      <div class="px-6 py-2.5 shrink-0 border-b border-slate-50 bg-slate-50/50">
+        <div class="max-w-xs mx-auto flex items-center justify-between relative">
+          <div class="absolute top-3.5 left-10 right-10 h-[2px] bg-slate-200 -z-0"></div>
+          
+          <!-- Step 1 Button -->
+          <button class="flex flex-col items-center group relative z-10 focus:outline-none" onclick="goToStep(1)" type="button">
+            <div class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-md transition-all" id="badgeStep1">
+              <span id="badgeStep1Text">1</span>
+            </div>
+            <span class="text-[11px] font-semibold text-blue-600 mt-1" id="labelStep1">Your Details</span>
+          </button>
+
+          <!-- Step 2 Button -->
+          <button class="flex flex-col items-center group relative z-10 focus:outline-none" onclick="goToStep(2)" type="button">
+            <div class="w-7 h-7 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs transition-all" id="badgeStep2">
+              <span id="badgeStep2Text">2</span>
+            </div>
+            <span class="text-[11px] font-medium text-slate-500 mt-1" id="labelStep2">Business &amp; Requirement</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Scrollable Form Container -->
+      <div class="flex-1 overflow-y-auto px-6 py-4 custom-scroll max-h-[58vh]">
+        
+        <!-- STEP 1: CONTACT DETAILS (Image 3) -->
+        <form id="formStep1" class="space-y-4" onsubmit="event.preventDefault(); goToStep(2);">
+          <div>
+            <h3 class="text-sm font-bold text-slate-900">Your Contact Details</h3>
+            <p class="text-xs text-slate-500">These details will help us get in touch with you.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Full Name <span class="text-red-500">*</span></label>
+              <input class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" placeholder="Enter your full name" required="" type="text" value="Rajesh Sharma"/>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Email Address <span class="text-red-500">*</span></label>
+              <input class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" placeholder="Enter your email address" required="" type="email" value="rajesh@toystore.in"/>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Mobile Number <span class="text-red-500">*</span></label>
+            <div class="flex rounded-lg shadow-xs">
+              <span class="inline-flex items-center text-xs font-medium border border-r-0 border-gray-300 rounded-l-lg bg-gray-50 text-gray-700 px-3 py-2">+91</span>
+              <input class="w-full text-xs rounded-none rounded-r-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" placeholder="Enter your mobile number" required="" type="tel" value="9876543210"/>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">City <span class="text-red-500">*</span></label>
+              <input class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" placeholder="Enter your city" required="" type="text" value="Bengaluru"/>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">State <span class="text-red-500">*</span></label>
+              <select class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3 bg-white" required="">
+                <option selected="">Karnataka</option>
+                <option>Maharashtra</option>
+                <option>Delhi NCR</option>
+                <option>Gujarat</option>
+                <option>Tamil Nadu</option>
+              </select>
+            </div>
+          </div>
+        </form>
+
+        <!-- STEP 2: BUSINESS & REQUIREMENT DETAILS (Image 4) -->
+        <form id="formStep2" class="space-y-4 hidden" onsubmit="event.preventDefault(); submitFinalSample();">
+          <div>
+            <h3 class="text-sm font-bold text-slate-900">Business &amp; Requirement Details</h3>
+            <p class="text-xs text-slate-500">Help us understand your business and requirements so we can assist you better.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Business / Store Name <span class="text-red-500">*</span></label>
+              <input class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" placeholder="Enter business name" required="" type="text" value="Kids Wonder Toy Shoppe"/>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Website / Instagram / Marketplace Link (if any)</label>
+              <input class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" placeholder="https://" type="text" value="https://instagram.com/kidswonder"/>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Business Type <span class="text-red-500">*</span></label>
+              <select class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3 bg-white" required="">
+                <option selected="">Toy Retailer / Store</option>
+                <option>Wholesaler / Distributor</option>
+                <option>E-Commerce Seller</option>
+                <option>Preschool / Educational Chain</option>
+                <option>Corporate Gifting</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Products Interested In <span class="text-red-500">*</span></label>
+              <input class="w-full text-xs rounded-lg border-blue-200 bg-blue-50/40 text-blue-900 font-semibold focus:border-blue-500 focus:ring-blue-500 py-2 px-3" required="" type="text" value="Teddy Bear (Soft Toy)"/>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">GSTIN (if any)</label>
+              <input class="w-full text-xs uppercase rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" placeholder="Enter GSTIN" type="text" value="29ABCDE1234F1Z5"/>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Expected Monthly Purchase Quantity <span class="text-red-500">*</span></label>
+              <select class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3 bg-white" required="">
+                <option>50 - 200 units / month</option>
+                <option selected="">200 - 500 units / month</option>
+                <option>500 - 2,000 units / month</option>
+                <option>2,000+ units / month</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Business Address <span class="text-red-500">*</span></label>
+              <textarea class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" placeholder="Enter your complete business address" required="" rows="2">Shop 12, Commercial Plaza, Indiranagar, Bengaluru - 560038</textarea>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Purchase Purpose <span class="text-red-500">*</span></label>
+              <select class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3 bg-white" required="">
+                <option selected="">Reselling in Retail Store</option>
+                <option>Online Marketplace Selling</option>
+                <option>Corporate Gifting / Client Merchandise</option>
+                <option>Institutional / Daycare Use</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Areas You Sell In -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Areas You Sell In <span class="text-red-500">*</span></label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+              <label class="flex items-center space-x-2 border rounded-lg p-2 cursor-pointer hover:bg-slate-50 border-gray-200">
+                <input checked="" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" type="checkbox"/>
+                <span class="text-slate-700 text-xs">Local (City)</span>
+              </label>
+              <label class="flex items-center space-x-2 border rounded-lg p-2 cursor-pointer hover:bg-slate-50 border-gray-200">
+                <input checked="" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" type="checkbox"/>
+                <span class="text-slate-700 text-xs">State</span>
+              </label>
+              <label class="flex items-center space-x-2 border rounded-lg p-2 cursor-pointer hover:bg-slate-50 border-gray-200">
+                <input checked="" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" type="checkbox"/>
+                <span class="text-slate-700 text-xs">Pan India</span>
+              </label>
+              <label class="flex items-center space-x-2 border rounded-lg p-2 cursor-pointer hover:bg-slate-50 border-gray-200">
+                <input class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" type="checkbox"/>
+                <span class="text-slate-700 text-xs">Export / International</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Upload Business Card & Additional Message -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Upload Business Card (if any)</label>
+              <div class="border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-xl p-3 flex flex-col items-center justify-center text-center cursor-pointer bg-slate-50">
+                <i class="fa-solid fa-arrow-up-from-bracket text-blue-600 text-sm mb-1"></i>
+                <span class="text-xs font-bold text-slate-700">Click to upload or drag and drop</span>
+                <span class="text-[10px] text-slate-400">PDF, JPG, PNG (Max 5 MB)</span>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Additional Message (if any)</label>
+              <textarea class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" placeholder="Tell us about your specific requirement..." rows="2"></textarea>
+            </div>
+          </div>
+        </form>
+
+        <!-- SUCCESS STATE -->
+        <div class="hidden py-8 text-center space-y-3" id="modalSuccess">
+          <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full mx-auto flex items-center justify-center text-3xl shadow-lg ring-8 ring-emerald-50">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <h3 class="text-2xl font-black text-slate-900">Sample Request Submitted!</h3>
+          <p class="text-xs text-slate-600 max-w-sm mx-auto">
+            Thank you for partnering with <strong>PlayJoy</strong>. Reference ID: <span class="font-mono font-bold text-blue-600">PJ-SMP-94812</span>
+          </p>
+          <p class="text-[11px] text-slate-500 max-w-xs mx-auto">
+            Our B2B Key Account Manager will contact you within <strong>1–2 business days</strong> with sample dispatch details.
+          </p>
+          <div class="pt-3">
+            <a class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-6 py-2 rounded-lg" href="index.html">
+              Back to Store
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer / Action Buttons Bar -->
+      <div class="px-6 py-3 bg-slate-50 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0" id="modalFooter">
+        <div>
+          <button class="hidden items-center space-x-1.5 px-3 py-1.5 border border-slate-300 hover:bg-white text-slate-700 font-bold text-xs rounded-lg transition" id="btnModalBack" onclick="goToStep(1)" type="button">
+            <i class="fa-solid fa-arrow-left text-[10px]"></i>
+            <span>Back</span>
+          </button>
+          <p class="text-[11px] text-slate-500 font-medium" id="modalTurnaroundNote">
+            Our B2B team will contact you within 1–2 business days.
+          </p>
+        </div>
+
+        <div class="flex items-center space-x-3 w-full sm:w-auto justify-end">
+          <button class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-5 py-2.5 rounded-lg shadow-sm transition" id="btnModalNext" onclick="goToStep(2)" type="button">
+            <span>Next: Business &amp; Requirement</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </button>
+          <button class="hidden w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-6 py-2.5 rounded-lg shadow-sm transition" id="btnModalSubmit" onclick="submitFinalSample()" type="button">
+            <span>Submit Request</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </button>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="fixed bottom-6 right-6 bg-slate-900 text-white text-xs px-4 py-3 rounded-lg shadow-xl z-50 flex items-center space-x-2 hidden" id="toast">
+    <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+    <span id="toast-message">Item added to cart!</span>
+  </div>
+
+  <script>
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toast-message');
+      toastMessage.textContent = message;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 2500);
+    }
+
+    function goToStep(step) {
+      const left1 = document.getElementById('modalLeftStep1');
+      const left2 = document.getElementById('modalLeftStep2');
+      const form1 = document.getElementById('formStep1');
+      const form2 = document.getElementById('formStep2');
+      const success = document.getElementById('modalSuccess');
+      const btnBack = document.getElementById('btnModalBack');
+      const btnNext = document.getElementById('btnModalNext');
+      const btnSubmit = document.getElementById('btnModalSubmit');
       const badge1 = document.getElementById('badgeStep1');
-      const badge1Text = document.getElementById('badgeStep1Text');
-      const label1 = document.getElementById('labelStep1');
-
       const badge2 = document.getElementById('badgeStep2');
+      const badge1Text = document.getElementById('badgeStep1Text');
+      const badge2Text = document.getElementById('badgeStep2Text');
+      const label1 = document.getElementById('labelStep1');
       const label2 = document.getElementById('labelStep2');
+      const headerSubtitle = document.getElementById('headerSubtitle');
 
-      stepSuccess.classList.add('hidden');
+      success.classList.add('hidden');
 
       if (step === 1) {
-        step1Content.classList.remove('hidden');
-        step2Content.classList.add('hidden');
+        left1.classList.remove('hidden');
+        left2.classList.add('hidden');
+        form1.classList.remove('hidden');
+        form2.classList.add('hidden');
 
         btnBack.classList.add('hidden');
-        btnNextStep.classList.remove('hidden');
-        btnSubmitForm.classList.add('hidden');
+        btnNext.classList.remove('hidden');
+        btnSubmit.classList.add('hidden');
 
-        stepLine.classList.remove('w-full');
-        stepLine.classList.add('w-1/2');
+        headerSubtitle.textContent = "Tell us a few details and our B2B team will get in touch with you shortly.";
 
-        // Step 1 Active styling
-        badge1.className = "w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs ring-4 ring-blue-100 shadow-md transition-all";
+        badge1.className = "w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs ring-4 ring-blue-100 shadow-md";
         badge1Text.innerHTML = "1";
-        label1.className = "text-xs font-bold text-blue-600 mt-1";
+        label1.className = "text-[11px] font-bold text-blue-600 mt-1";
 
-        // Step 2 Inactive styling
-        badge2.className = "w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs shadow-xs transition-all";
-        label2.className = "text-xs font-medium text-slate-500 mt-1";
-      } else if (step === 2) {
-        step1Content.classList.add('hidden');
-        step2Content.classList.remove('hidden');
+        badge2.className = "w-7 h-7 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs";
+        badge2Text.innerHTML = "2";
+        label2.className = "text-[11px] font-medium text-slate-500 mt-1";
+      } else {
+        left1.classList.add('hidden');
+        left2.classList.remove('hidden');
+        form1.classList.add('hidden');
+        form2.classList.remove('hidden');
 
         btnBack.classList.remove('hidden');
-        btnBack.classList.add('inline-flex');
-        btnNextStep.classList.add('hidden');
-        btnSubmitForm.classList.remove('hidden');
-        btnSubmitForm.classList.add('inline-flex');
+        btnNext.classList.add('hidden');
+        btnSubmit.classList.remove('hidden');
 
-        stepLine.classList.remove('w-1/2');
-        stepLine.classList.add('w-full');
+        headerSubtitle.textContent = "Partner with us and experience our quality. Share your business details and our B2B team will get in touch with you shortly.";
 
-        // Step 1 Completed Checkmark styling
-        badge1.className = "w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-md transition-all";
-        badge1Text.innerHTML = '<i class="fa-solid fa-check text-xs"></i>';
-        label1.className = "text-xs font-semibold text-blue-600 mt-1";
+        badge1.className = "w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs shadow-sm";
+        badge1Text.innerHTML = '<i class="fa-solid fa-check text-[10px]"></i>';
+        label1.className = "text-[11px] font-semibold text-emerald-600 mt-1";
 
-        // Step 2 Active styling
-        badge2.className = "w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs ring-4 ring-blue-100 shadow-md transition-all";
-        label2.className = "text-xs font-bold text-blue-600 mt-1";
+        badge2.className = "w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs ring-4 ring-blue-100 shadow-md";
+        badge2Text.innerHTML = "2";
+        label2.className = "text-[11px] font-bold text-blue-600 mt-1";
       }
     }
 
-    function submitSampleRequest() {
-      // Hide form steps and show success confirmation
-      document.getElementById('stepOneContent').classList.add('hidden');
-      document.getElementById('stepTwoContent').classList.add('hidden');
-      document.getElementById('stepSuccessContent').classList.remove('hidden');
-      document.getElementById('modalFooterBar').classList.add('hidden');
+    function submitFinalSample() {
+      document.getElementById('formStep2').classList.add('hidden');
+      document.getElementById('modalSuccess').classList.remove('hidden');
+      document.getElementById('btnModalBack').classList.add('hidden');
+      document.getElementById('btnModalSubmit').classList.add('hidden');
+      showToast('Sample request submitted successfully!');
     }
 
-    // Modal Close Functionality
-    document.getElementById('closeModalBtn').addEventListener('click', function() {
-      const modal = document.getElementById('sampleModalBackdrop');
-      modal.style.opacity = '0';
-      setTimeout(() => {
-        location.href = 'index.html';
-      }, 150);
-    });
-
-    // Initialize to Step 2 to display the rich requirement options directly
-    window.addEventListener('DOMContentLoaded', () => {
-      switchStep(2);
-    });
+    // Default to Step 1
+    goToStep(1);
   </script>
-<!-- END: Interactive Navigation Logic -->
-</body></html>
+</body>
+</html>

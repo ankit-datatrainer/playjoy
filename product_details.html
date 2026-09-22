@@ -1,23 +1,29 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Happy Ride Car - PlayJoy Toy Store | India's Trusted Toy Manufacturer</title>
+  
+  <!-- Tailwind CSS CDN with forms and container queries plugins -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- FontAwesome & Phosphor Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <!-- Google Fonts: Inter & Caveat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Happy Ride Car - PlayJoy Toy Store</title>
-<!-- Tailwind CSS CDN with forms and container queries plugins -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- FontAwesome for standard UI icons -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Caveat:wght@700&amp;display=swap" rel="stylesheet"/>
-<script>
+  <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            playful: ['Caveat', 'cursive'],
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            doodle: ['Caveat', 'cursive'],
           },
           colors: {
             brand: {
@@ -35,15 +41,11 @@
       }
     }
   </script>
-<style data-purpose="custom-layout">
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      color: #1f2937;
-    }
-    .playful-font {
+
+  <style>
+    .font-doodle {
       font-family: 'Caveat', cursive;
     }
-    /* Hide scrollbar for clean horizontal product scrolling if needed */
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
@@ -51,700 +53,1205 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
   </style>
 </head>
-<body class="bg-gray-50/50">
-<!-- BEGIN: MainHeader -->
-<header class="bg-white border-b border-gray-200 sticky top-0 z-40">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<!-- Main bar -->
-<div class="flex items-center justify-between h-20 gap-4">
-<!-- Logo -->
-<a aria-label="PlayJoy Home" class="flex items-center gap-1 shrink-0" href="index.html">
-<span class="text-3xl font-extrabold tracking-tight">
-<span class="text-[#E82561]">Play</span><span class="text-[#206095]">Joy</span>
-</span>
-<div class="hidden sm:block text-[10px] leading-tight text-gray-500 font-medium pl-1 border-l border-gray-300 ml-1">
-            Small Toys.<br/>Big Smiles.
+<body class="bg-gray-50/50 text-slate-800 antialiased font-sans">
+
+  <!-- BEGIN: AnnouncementBar -->
+  <div class="bg-[#1E293B] text-white text-xs py-2 px-4 border-b border-slate-700">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+      <div class="flex items-center space-x-3 text-slate-300 font-medium flex-wrap justify-center">
+        <span>India's Trusted Toy Manufacturer</span>
+        <span class="text-slate-500">|</span>
+        <span>Pan India Delivery</span>
+        <span class="text-slate-500">|</span>
+        <span>B2B &amp; Bulk Orders</span>
+        <span class="text-slate-500">|</span>
+        <span class="text-amber-300">Safe, Non-Toxic, Durable</span>
+      </div>
+      <div class="flex items-center space-x-4 text-slate-300 text-xs">
+        <a class="hover:text-amber-400 transition-colors" href="javascript:void(0)" onclick="openSampleModal()">Become a Distributor</a>
+        <span class="text-slate-600">|</span>
+        <a class="hover:text-amber-400 transition-colors" href="account.html">Track Order</a>
+        <span class="text-slate-600">|</span>
+        <a class="hover:text-amber-400 transition-colors" href="index.html#support">Help</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BEGIN: MainHeader -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-4">
+        <!-- Logo -->
+        <a aria-label="PlayJoy Home" class="flex flex-col shrink-0" href="index.html">
+          <div class="flex items-center">
+            <span class="text-3xl font-black tracking-tight text-pink-600">Play</span>
+            <span class="text-3xl font-black tracking-tight text-sky-500">Joy</span>
           </div>
-</a>
-<!-- Search input -->
-<div class="flex-1 max-w-xl mx-4 hidden md:block">
-<div class="relative flex items-center">
-<input class="w-full pl-4 pr-12 py-2.5 text-sm rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue" placeholder="Search for toys, categories, or brands..." type="text"/>
-<button aria-label="Search" class="absolute right-1 top-1 bottom-1 px-4 bg-[#2b425b] hover:bg-[#1f3144] text-white rounded-md flex items-center justify-center transition">
-<i class="fa-solid fa-magnifying-glass text-sm"></i>
-</button>
-</div>
-</div>
-<!-- Top Right Actions -->
-<div class="flex items-center gap-5 shrink-0">
-<a class="flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-brand-pink transition" href="account.html">
-<i class="fa-regular fa-user text-base"></i>
-<span class="hidden lg:inline">Login / Register</span>
-</a>
-<a class="flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-brand-pink transition" href="shop.html">
-<i class="fa-regular fa-heart text-base"></i>
-<span class="hidden lg:inline">Wishlist</span>
-</a>
-<a class="flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-brand-pink transition relative" href="cart.html">
-<div class="relative">
-<i class="fa-solid fa-cart-shopping text-base"></i>
-<span class="absolute -top-2 -right-2 bg-brand-pink text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">0</span>
-</div>
-<span class="hidden lg:inline">Cart</span>
-</a>
-<!-- B2B Quick Actions -->
-<button class="hidden sm:inline-flex items-center px-4 py-2 border border-brand-blue text-brand-blue hover:bg-blue-50 text-xs font-semibold rounded-md transition shadow-sm" onclick="openSampleModal()">
+          <span class="text-[9px] font-semibold tracking-wider text-slate-500 uppercase -mt-1">Small Toys, Big Smiles</span>
+        </a>
+
+        <!-- Search input -->
+        <div class="flex-1 max-w-xl mx-4 hidden md:block">
+          <div class="relative flex items-center">
+            <input class="w-full pl-4 pr-12 py-2 text-sm rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500" placeholder="Search for toys, categories, or brands..." type="text"/>
+            <button aria-label="Search" class="absolute right-0 top-0 bottom-0 px-4 bg-[#2b425b] hover:bg-[#1f3144] text-white rounded-r-lg flex items-center justify-center transition">
+              <i class="fa-solid fa-magnifying-glass text-sm"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Top Right Actions -->
+        <div class="flex items-center gap-5 shrink-0">
+          <a class="flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-brand-pink transition" href="account.html">
+            <i class="fa-regular fa-user text-base"></i>
+            <span class="hidden lg:inline">Login / Register</span>
+          </a>
+          <a class="flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-brand-pink transition" href="shop.html">
+            <i class="fa-regular fa-heart text-base"></i>
+            <span class="hidden lg:inline">Wishlist</span>
+          </a>
+          <a class="flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-brand-pink transition relative" href="cart.html">
+            <div class="relative">
+              <i class="fa-solid fa-cart-shopping text-base"></i>
+              <span class="absolute -top-2 -right-2 bg-brand-pink text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center" id="cart-counter">0</span>
+            </div>
+            <span class="hidden lg:inline">Cart</span>
+          </a>
+          <!-- B2B Quick Actions -->
+          <button class="hidden sm:inline-flex items-center px-4 py-2 border border-brand-blue text-brand-blue hover:bg-blue-50 text-xs font-semibold rounded-md transition shadow-sm" onclick="openSampleModal()">
             Get a Sample (B2B)
           </button>
-<a class="inline-flex items-center px-4 py-2 bg-brand-pink hover:bg-brand-pinkHover text-white text-xs font-semibold rounded-md shadow-sm transition" href="get_a_sample.html">
+          <button class="inline-flex items-center px-4 py-2 bg-brand-pink hover:bg-brand-pinkHover text-white text-xs font-semibold rounded-md shadow-sm transition" onclick="openSampleModal(2)">
             B2B Wholesale
-          </a>
-</div>
-</div>
-<!-- Navigation links -->
-<nav class="flex items-center space-x-6 py-2.5 text-xs sm:text-sm font-medium border-t border-gray-100 overflow-x-auto no-scrollbar text-gray-700">
-<a class="flex items-center cursor-pointer hover:text-brand-pink font-semibold" href="shop.html">
-<span>All Categories</span>
-<i class="fa-solid fa-chevron-down text-[10px] ml-1.5"></i>
-</a>
-<a class="flex items-center cursor-pointer hover:text-brand-pink" href="shop.html">
-<span>By Age</span>
-<i class="fa-solid fa-chevron-down text-[10px] ml-1.5"></i>
-</a>
-<a class="hover:text-brand-pink whitespace-nowrap" href="shop.html">Brands</a>
-<a class="hover:text-brand-pink whitespace-nowrap" href="shop.html?sort=new">New Arrivals</a>
-<a class="hover:text-brand-pink whitespace-nowrap" href="shop.html?sort=rating">Best Sellers</a>
-<a class="hover:text-brand-pink whitespace-nowrap" href="get_a_sample.html">Bulk Enquiry</a>
-<a class="hover:text-brand-pink whitespace-nowrap text-brand-blue font-semibold" href="get_a_sample.html">Become a Distributor</a>
-</nav>
-</div>
-</header>
-<!-- END: MainHeader -->
-<!-- BEGIN: BreadcrumbNavigation -->
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 text-xs text-gray-500 flex items-center gap-2">
-<a class="hover:text-brand-blue" href="index.html">Home</a>
-<span>›</span>
-<a class="hover:text-brand-blue" href="shop.html?category=Ride%20Ons">Ride On Toys</a>
-<span>›</span>
-<a class="hover:text-brand-blue" href="shop.html?category=Ride%20Ons">Push &amp; Ride</a>
-<span>›</span>
-<span class="text-gray-800 font-medium truncate">Happy Ride Car</span>
-</section>
-<!-- END: BreadcrumbNavigation -->
-<!-- BEGIN: ProductMainSection -->
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-<!-- LEFT COLUMN: Product Gallery -->
-<div class="lg:col-span-6 flex flex-col gap-4">
-<!-- Main Image Container -->
-<div class="relative bg-white rounded-2xl border border-gray-200 overflow-hidden group shadow-sm flex items-center justify-center p-2 min-h-[460px] sm:min-h-[500px]">
-<!-- Badges -->
-<div class="absolute top-4 left-4 z-10">
-<span class="bg-brand-pink text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation links -->
+      <nav class="flex items-center space-x-6 py-2.5 text-xs sm:text-sm font-medium border-t border-gray-100 overflow-x-auto no-scrollbar text-gray-700">
+        <a class="flex items-center cursor-pointer hover:text-brand-pink font-semibold" href="shop.html">
+          <span>All Categories</span>
+          <i class="fa-solid fa-chevron-down text-[10px] ml-1.5"></i>
+        </a>
+        <a class="flex items-center cursor-pointer hover:text-brand-pink" href="shop.html">
+          <span>By Age</span>
+          <i class="fa-solid fa-chevron-down text-[10px] ml-1.5"></i>
+        </a>
+        <a class="hover:text-brand-pink whitespace-nowrap" href="shop.html">Brands</a>
+        <a class="hover:text-brand-pink whitespace-nowrap" href="shop.html?sort=new">New Arrivals</a>
+        <a class="hover:text-brand-pink whitespace-nowrap" href="shop.html?sort=rating">Best Sellers</a>
+        <a class="hover:text-brand-pink whitespace-nowrap" href="javascript:void(0)" onclick="openSampleModal()">Bulk Enquiry</a>
+        <a class="hover:text-brand-pink whitespace-nowrap text-brand-blue font-semibold" href="javascript:void(0)" onclick="openSampleModal()">Become a Distributor</a>
+      </nav>
+    </div>
+  </header>
+  <!-- END: MainHeader -->
+
+  <!-- BEGIN: BreadcrumbNavigation -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 text-xs text-gray-500 flex items-center gap-2">
+    <a class="hover:text-brand-blue" href="index.html">Home</a>
+    <span>›</span>
+    <a class="hover:text-brand-blue" href="shop.html">Ride On Toys</a>
+    <span>›</span>
+    <a class="hover:text-brand-blue" href="shop.html">Push &amp; Ride</a>
+    <span>›</span>
+    <span class="text-gray-800 font-medium truncate">Happy Ride Car</span>
+  </section>
+  <!-- END: BreadcrumbNavigation -->
+
+  <!-- BEGIN: ProductMainSection -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- LEFT COLUMN: Product Gallery -->
+      <div class="lg:col-span-6 flex flex-col gap-4">
+        
+        <!-- Main Image Container -->
+        <div class="relative bg-white rounded-2xl border border-gray-200 overflow-hidden group shadow-sm flex items-center justify-center p-4 min-h-[460px] sm:min-h-[500px]">
+          <!-- Badges -->
+          <div class="absolute top-4 left-4 z-10">
+            <span class="bg-brand-pink text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">
               Bestseller
             </span>
-</div>
-<!-- Playful Slogan Overlay -->
-<div class="absolute top-5 right-6 z-10 text-right pointer-events-none select-none">
-<p class="playful-font text-3xl font-bold text-gray-700 leading-none">Little</p>
-<p class="playful-font text-3xl font-bold text-gray-700 leading-none">Rides</p>
-<p class="playful-font text-3xl font-bold text-gray-800 leading-tight">Big</p>
-<p class="playful-font text-3xl font-bold text-gray-800 leading-tight -mt-1">Adventures</p>
-<div class="text-2xl text-gray-600 mt-1 inline-block">☺</div>
-</div>
-<!-- Slider Left Arrow -->
-<button aria-label="Previous image" class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white/90 border border-gray-200 flex items-center justify-center shadow-md hover:bg-white text-gray-700 transition" onclick="prevImage()">
-<i class="fa-solid fa-chevron-left text-xs"></i>
-</button>
-<!-- Main Active Image -->
-<img alt="Happy Ride Car Push Ride On for Kids" class="w-full h-[440px] sm:h-[480px] object-contain transition-all duration-300" id="main-product-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByMkc_8bhNBPl-narzAZBruFxol2x1d3z9OytkpOwOcUXr5YqWV3rFJVkQ8Y_7dlg8X4CT906pX3hNbC2t4gW4HW7h03cX0XXpXlR0NhXIk7SOlMkcTCivfVk0gd4Bxz8uMumFZgvhouLLB6NxEBCH9DQ5oI-TMo8Jcv-wnkfAzFb64KuhqwKoiW9go0qCbDDCgDbGl56I-8iYmcdi9WaHkZ9P9TDPzeECjk6peMaOA-i_QrNKFs-PqOGhuqDkWihwBq4"/>
-<!-- Slider Right Arrow -->
-<button aria-label="Next image" class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white/90 border border-gray-200 flex items-center justify-center shadow-md hover:bg-white text-gray-700 transition" onclick="nextImage()">
-<i class="fa-solid fa-chevron-right text-xs"></i>
-</button>
-</div>
-<!-- Thumbnail Row -->
-<div class="grid grid-cols-6 gap-2 sm:gap-3">
-<!-- Thumbnail 1 (Active) -->
-<button class="thumb-btn border-2 border-brand-pink rounded-xl p-1 bg-white overflow-hidden aspect-square flex items-center justify-center" onclick="selectThumbnail(this, 'https://lh3.googleusercontent.com/aida-public/AB6AXuA84HzA3syhHfigYx6Ub_bfXrfMatuH5P4PkN3gaPl8i_STkqOkBgOKumEzjzaiCZb4DxzALRS-g6HH5ZMauqy9MvyLq8kg_1DFtHCE4fRFWcTifUnOAm6Qr8uALOTOiX5SxG71ad2IEtbkz_bmNwvrmPcrJsIdNMPclajwi-KyqnRG0IlRBQCWrIAB6eyIeH0wzcSgvr663tOHDe6n73jupl1E1OZUEd6NQJFNKaF2Az0htacHeM1g4eACgFbvxB-LyBg')" type="button">
-<img alt="Thumbnail 1" class="w-full h-full object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlpL5ATDft-n-MDg2HD_eRT-tNqM__V8JrwZuPTtkFSXX-89sWefvZ2xcdHgtGHqE8NIq5bCwKR7WUuIehe_kpZywPfAPF6kMZBItZBQ23tZ9X0a992X0OqSVr65bcbn8H9IrnHSpBSGCnhOW0Hr_P3cZEr1krVaoK8yG7MXHnkZfK4f4W83rxpcmyuRtXUYeX5_Hgwis9S_82XB5F0Ahob6GH7J5DECAJYefSy5jFcrRxzl9KiNdkEzET6uuuhcS2NCU"/>
-</button>
-<!-- Thumbnail 2 -->
-<button class="thumb-btn border border-gray-200 rounded-xl p-1 bg-white hover:border-gray-300 overflow-hidden aspect-square flex items-center justify-center" onclick="selectThumbnail(this, 'https://lh3.googleusercontent.com/aida-public/AB6AXuCyZMDe07EGn-0bH98jipaBy8g06VAVyBv8ixYQC-yOBV_Gq2ffn1G48wgNe5WGVfzt0HgcQ4fAqsUhcmFd5jd-hnbl72jYMy0cThxn8aoQwJyPfwKpO2-ET03ODm23_X7Md2qj5vn5yH_kz8QYjx-mQT7A2SHnimjbbvXGmTeDO73SsF0DhmbbwaEwqEpYg51br3-1jyjOUSragjG7ZQlddY3XU_8PzNGVn4hoTaxX0U1kDwcJ1AsDgmskBEq9k_r2z8o')" type="button">
-<img alt="Thumbnail 2" class="w-full h-full object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnq3bil7j3YIsy4wzj6wIuazNzIoahC5c5m2wja9m-9IZggjYoh7XsNZf48WyTyQP8fJl10pGTG5bjwohbARQzkbXuV0qTFKdoq1ncDoSGc_a8uB5m8BXOfwsVKKRPLkWNzKXhqI8ggia80boF7Zx2T8oGwVyvFyomsnMrYW2VUpa4Fcw3ydsYAQNbWV_3GdOpb71MkfcEDg1xCGGb7vhyaCWnzkPK8aZSvdfJC082GfrK71MRnoDfqYkjqBwNT-Sd5Oc"/>
-</button>
-<!-- Thumbnail 3 -->
-<button class="thumb-btn border border-gray-200 rounded-xl p-1 bg-white hover:border-gray-300 overflow-hidden aspect-square flex items-center justify-center" onclick="selectThumbnail(this, 'https://lh3.googleusercontent.com/aida-public/AB6AXuDP60UeIK6smncDYw4DbpdaKfroq6_tGFgocQ3fi5BSUyJ2NZCNUMVaALfHPg5cLmbccYhkk5WtD3bxYXs0LJjJykWpxMsTMCuYdxd97fPUIh9s1Vj_KVtX0VoFVkfGlv28pGoAQ637tAZqT1ATrSccOOkyhOblPQbytpgrwfvsYEGPiY5A_-NiJOCMDZgnQdoxJ-lwrbn0-_kHpjNIhbuzZcE47Ael76_zsB2VmosSbrebsL-RsNU_pJdSUuFRKz8siZE')" type="button">
-<img alt="Thumbnail 3" class="w-full h-full object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdOjsxflixvNRLlu4oyCIZciA4K1b3zxtrI7D3WqXs8-HcPDa8wpCBcHU3j-gePXrdzjJAXlxGiYnBdb12NO4lOJCPW87sjAipfXlchZL4_UANms4X6yfGf692eho9xYny6TwCzJZ81uCkSQJ_nxY9_1pjJrY_JVfMgqTgsKQoXAB8vKAK-P_jatu-4aC9LRpXieEdAKsVdvcESyK_sXsjf9nh4Xxj2RiyIneCoBXwOztkuF9FKtPxMqqAPiwGIEQJlS4"/>
-</button>
-<!-- Thumbnail 4 -->
-<button class="thumb-btn border border-gray-200 rounded-xl p-1 bg-white hover:border-gray-300 overflow-hidden aspect-square flex items-center justify-center" onclick="selectThumbnail(this, 'https://lh3.googleusercontent.com/aida-public/AB6AXuBC-c3jViurmm9G0oQeOjzRQGhWCagcNWC4TlnIsQpG6_h_OUVqZc5aZ6OenHgEB3IyegGu07R1id5BpZ7uqvjCgMU6aIYbl0bBMApAKnghJH6ukzA4wyrjxYGM25ZS90JdI4Z_57ZtN8rNzZPddGoyb6Ec1DPhkDuWn1fEEaNU2z5UyPQ0gpySMv5JCC_WQc5zqna2Gyc50y608wVELkcRfPwha2YIkRJlbJ5Eaz-8SA4qKhaSem8wutoJ5NgUYjPPQSY')" type="button">
-<img alt="Thumbnail 4" class="w-full h-full object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU-ZS75Jl1pJUyxEmdHXo6EiCPSp-xS2Tj4HXNJXhPQ9MnNZU2oeukigfbuudeqh8y47cLOFGTM6VRgpD7ba4gmENINd5L0PaVysutdNdeyFNTctJEy4htl8engJNp7bnr6T4ylTlG-o0kFVNLYj5xmSVdRG6duaNOqzg5vgEraznKSu-5frY2ORS9ANKHWiOWwegN3-bUie60o9CRtA4x1aFCu9dIrh5_kcfgZcit2vVPAdpxugpgAFaVnggcqPgxnNI"/>
-</button>
-<!-- Thumbnail 5 -->
-<button class="thumb-btn border border-gray-200 rounded-xl p-1 bg-white hover:border-gray-300 overflow-hidden aspect-square flex items-center justify-center" onclick="selectThumbnail(this, 'https://lh3.googleusercontent.com/aida-public/AB6AXuDNOa92rxeG5LvoW5TpMCBayOBHEsGWplRwrjN07uU9cs6-mthiRwYGS0zkJSGUQF8RMA0nTMJWb7_LlCL-4yS8pCJgX0nnZCeJNqIkP7vVMC6iQyBlIW95e_ILsGcBoIfMY04qFjnmpboYO2pXJNv2laeSAGfozBh8Ctz1KnDlIh1orbrIdcZi5cW_I40NA_cG71EVkZOGi5q6Zsq041yfkA1xqpqQL7Srdz_qpP3hskMl_ajZ9YOESaf-P2_p0kKozRA')" type="button">
-<img alt="Thumbnail 5" class="w-full h-full object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTBmCdDW7SMjI7DBOV6QhXxsuxsYrG3SKXVw1FDI9G-JAYVBhIe564FMf5Gv4RP7Hstv4cS-QeydiiHmETpzwEHPbN4v_PTkwCwSiCqh1CmaR5gdOCl5m4FwbdKjjfMEVItjGtLbkBS72g3MyaK1FYpe_C1f3KU6jFEA6WlH3WUcnK5zqSUgMreuiPnpLPdIu9fg7t-SKKI_6ti2wwx0q9CsWWvWbU4xtRUoOTSkMwclZy7Q-U1kKftZzAO1Dgrc2pjxI"/>
-</button>
-<!-- Video Button -->
-<button class="thumb-btn border border-gray-200 rounded-xl bg-slate-700 text-white hover:bg-slate-800 aspect-square flex flex-col items-center justify-center gap-1 transition" onclick="selectVideoThumbnail(this)" type="button">
-<i class="fa-solid fa-circle-play text-xl text-white"></i>
-<span class="text-[11px] font-medium">Video</span>
-</button>
-</div>
-</div>
-<!-- RIGHT COLUMN: Product Information & Purchase Panel -->
-<div class="lg:col-span-6 flex flex-col">
-<!-- Stock & Availability Badges -->
-<div class="flex items-center gap-2 mb-2 flex-wrap">
-<span class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-xs font-semibold px-2.5 py-1 rounded-md border border-emerald-200">
-<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> In Stock
+          </div>
+
+          <!-- Playful Slogan Overlay -->
+          <div class="absolute top-5 right-6 z-10 text-right pointer-events-none select-none">
+            <p class="font-doodle text-3xl font-bold text-gray-700 leading-none">Little</p>
+            <p class="font-doodle text-3xl font-bold text-gray-700 leading-none">Rides</p>
+            <p class="font-doodle text-3xl font-bold text-gray-800 leading-tight">Big</p>
+            <p class="font-doodle text-3xl font-bold text-gray-800 leading-tight -mt-1">Adventures</p>
+            <div class="text-2xl text-gray-600 mt-1 inline-block">☺</div>
+          </div>
+
+          <!-- Slider Left Arrow -->
+          <button aria-label="Previous image" class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white/90 border border-gray-200 flex items-center justify-center shadow-md hover:bg-white text-gray-700 transition" onclick="prevImage()">
+            <i class="fa-solid fa-chevron-left text-xs"></i>
+          </button>
+
+          <!-- Main Active Image -->
+          <img alt="Happy Ride Car Push Ride On for Kids" class="w-full h-[420px] sm:h-[460px] object-contain transition-all duration-300" id="main-product-image" src="assets/images/products/happy_ride_car_main.png"/>
+
+          <!-- Slider Right Arrow -->
+          <button aria-label="Next image" class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white/90 border border-gray-200 flex items-center justify-center shadow-md hover:bg-white text-gray-700 transition" onclick="nextImage()">
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+          </button>
+        </div>
+
+        <!-- Thumbnail Row (6 Items matching Image 2) -->
+        <div class="grid grid-cols-6 gap-2 sm:gap-3">
+          <!-- Thumbnail 1 (Active) -->
+          <button class="thumb-btn border-2 border-brand-pink rounded-xl p-1 bg-white overflow-hidden aspect-square flex items-center justify-center transition-all" onclick="selectThumbnail(this, 'assets/images/products/happy_ride_car_main.png', 0)" type="button">
+            <img alt="Thumbnail 1" class="w-full h-full object-cover rounded-lg" src="assets/images/products/happy_ride_car_thumb_1.png"/>
+          </button>
+
+          <!-- Thumbnail 2 -->
+          <button class="thumb-btn border border-gray-200 rounded-xl p-1 bg-white hover:border-gray-300 overflow-hidden aspect-square flex items-center justify-center transition-all" onclick="selectThumbnail(this, 'assets/images/products/happy_ride_car_thumb_2.png', 1)" type="button">
+            <img alt="Thumbnail 2" class="w-full h-full object-cover rounded-lg" src="assets/images/products/happy_ride_car_thumb_2.png"/>
+          </button>
+
+          <!-- Thumbnail 3 -->
+          <button class="thumb-btn border border-gray-200 rounded-xl p-1 bg-white hover:border-gray-300 overflow-hidden aspect-square flex items-center justify-center transition-all" onclick="selectThumbnail(this, 'assets/images/products/happy_ride_car_thumb_3.png', 2)" type="button">
+            <img alt="Thumbnail 3" class="w-full h-full object-cover rounded-lg" src="assets/images/products/happy_ride_car_thumb_3.png"/>
+          </button>
+
+          <!-- Thumbnail 4 -->
+          <button class="thumb-btn border border-gray-200 rounded-xl p-1 bg-white hover:border-gray-300 overflow-hidden aspect-square flex items-center justify-center transition-all" onclick="selectThumbnail(this, 'assets/images/products/happy_ride_car_thumb_4.png', 3)" type="button">
+            <img alt="Thumbnail 4" class="w-full h-full object-cover rounded-lg" src="assets/images/products/happy_ride_car_thumb_4.png"/>
+          </button>
+
+          <!-- Thumbnail 5 -->
+          <button class="thumb-btn border border-gray-200 rounded-xl p-1 bg-white hover:border-gray-300 overflow-hidden aspect-square flex items-center justify-center transition-all" onclick="selectThumbnail(this, 'assets/images/products/happy_ride_car_thumb_5.png', 4)" type="button">
+            <img alt="Thumbnail 5" class="w-full h-full object-cover rounded-lg" src="assets/images/products/happy_ride_car_thumb_5.png"/>
+          </button>
+
+          <!-- Video Button -->
+          <button class="thumb-btn border border-gray-200 rounded-xl bg-slate-700 text-white hover:bg-slate-800 aspect-square flex flex-col items-center justify-center gap-1 transition" onclick="selectVideoThumbnail(this)" type="button">
+            <i class="fa-solid fa-circle-play text-xl text-white"></i>
+            <span class="text-[11px] font-medium">Video</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Product Information & Purchase Panel -->
+      <div class="lg:col-span-6 flex flex-col">
+        <!-- Stock & Availability Badges -->
+        <div class="flex items-center gap-2 mb-2 flex-wrap">
+          <span class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-xs font-semibold px-2.5 py-1 rounded-md border border-emerald-200">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> In Stock
           </span>
-<span class="inline-flex items-center bg-amber-50 text-amber-800 text-xs font-semibold px-2.5 py-1 rounded-md border border-amber-200">
+          <span class="inline-flex items-center bg-amber-50 text-amber-800 text-xs font-semibold px-2.5 py-1 rounded-md border border-amber-200">
             B2B &amp; B2C Available
           </span>
-</div>
-<!-- Product Title & Subtitle -->
-<h1 class="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">Happy Ride Car</h1>
-<p class="text-sm font-medium text-gray-600 mt-1">Push Ride On Car for Kids (1–4 Years)</p>
-<!-- Star Rating & SKU -->
-<div class="flex items-center gap-3 mt-2 text-xs sm:text-sm">
-<div class="flex items-center text-amber-400">
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star-half-stroke"></i>
-<span class="ml-1.5 font-bold text-gray-800">4.8</span>
-<span class="text-gray-500 ml-1">(120 reviews)</span>
-</div>
-<span class="text-gray-300">|</span>
-<span class="text-gray-500 font-medium">SKU: <span class="font-semibold text-gray-700">PJ-RC-001</span></span>
-</div>
-<!-- Pricing Block -->
-<div class="mt-4 pb-4 border-b border-gray-200">
-<div class="flex items-baseline gap-3">
-<span class="text-3xl sm:text-4xl font-extrabold text-gray-950">₹1,299</span>
-<span class="text-base sm:text-lg text-gray-400 line-through">₹1,699</span>
-<span class="bg-pink-100 text-brand-pink text-xs font-extrabold px-2.5 py-0.5 rounded-md">24% OFF</span>
-</div>
-<span class="text-xs text-gray-500 mt-1 inline-block">Inclusive of all taxes</span>
-</div>
-<!-- Short Description -->
-<p class="text-xs sm:text-sm text-gray-600 mt-4 leading-relaxed">
+        </div>
+
+        <!-- Product Title & Subtitle -->
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">Happy Ride Car</h1>
+        <p class="text-sm font-medium text-gray-600 mt-1">Push Ride On Car for Kids (1–4 Years)</p>
+
+        <!-- Star Rating & SKU -->
+        <div class="flex items-center gap-3 mt-2 text-xs sm:text-sm">
+          <div class="flex items-center text-amber-400">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+            <span class="ml-1.5 font-bold text-gray-800">4.8</span>
+            <span class="text-gray-500 ml-1">(120 reviews)</span>
+          </div>
+          <span class="text-gray-300">|</span>
+          <span class="text-gray-500 font-medium">SKU: <span class="font-semibold text-gray-700">PJ-RC-001</span></span>
+        </div>
+
+        <!-- Pricing Block -->
+        <div class="mt-4 pb-4 border-b border-gray-200">
+          <div class="flex items-baseline gap-3">
+            <span class="text-3xl sm:text-4xl font-extrabold text-gray-950">₹1,299</span>
+            <span class="text-base sm:text-lg text-gray-400 line-through">₹1,699</span>
+            <span class="bg-pink-100 text-brand-pink text-xs font-extrabold px-2.5 py-0.5 rounded-md">24% OFF</span>
+          </div>
+          <span class="text-xs text-gray-500 mt-1 inline-block">Inclusive of all taxes</span>
+        </div>
+
+        <!-- Short Description -->
+        <p class="text-xs sm:text-sm text-gray-600 mt-4 leading-relaxed">
           A fun and sturdy ride-on car for your little one! Designed for safety, stability and endless fun, this push car helps develop balance and motor skills. Perfect for indoor and outdoor play.
         </p>
-<!-- Key Feature Icons Grid -->
-<div class="grid grid-cols-4 gap-2 mt-5 py-4 px-2 bg-gray-50/80 rounded-xl border border-gray-100 text-center">
-<div class="flex flex-col items-center">
-<div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg mb-1.5">
-<i class="fa-solid fa-shield-halved"></i>
-</div>
-<span class="text-[11px] font-medium text-gray-700 leading-tight">Safe &amp; Durable<br/>Material</span>
-</div>
-<div class="flex flex-col items-center">
-<div class="w-10 h-10 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center text-lg mb-1.5">
-<i class="fa-solid fa-brain"></i>
-</div>
-<span class="text-[11px] font-medium text-gray-700 leading-tight">Helps in Motor<br/>Skill Development</span>
-</div>
-<div class="flex flex-col items-center">
-<div class="w-10 h-10 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-lg mb-1.5">
-<i class="fa-regular fa-face-smile"></i>
-</div>
-<span class="text-[11px] font-medium text-gray-700 leading-tight">Fun &amp; Engaging<br/>Design</span>
-</div>
-<div class="flex flex-col items-center">
-<div class="w-10 h-10 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center text-lg mb-1.5">
-<i class="fa-solid fa-leaf"></i>
-</div>
-<span class="text-[11px] font-medium text-gray-700 leading-tight">Non-Toxic<br/>Child Safe</span>
-</div>
-</div>
-<!-- B2B Wholesale Highlight Banner -->
-<div class="mt-5 p-4 rounded-xl bg-[#eef6ff] border border-blue-200 flex items-center justify-between gap-4">
-<div class="flex items-center gap-3.5">
-<div class="w-11 h-11 rounded-lg bg-blue-100 text-[#206095] flex items-center justify-center text-xl shrink-0">
-<i class="fa-solid fa-boxes-stacked"></i>
-</div>
-<div>
-<h4 class="text-sm font-bold text-gray-900">Bulk Orders &amp; Distributor Enquiries</h4>
-<p class="text-xs text-gray-600 mt-0.5">Special pricing for wholesalers and distributors. Partner with us for better margins.</p>
-</div>
-</div>
-<a class="shrink-0 text-xs font-bold text-[#206095] hover:underline flex items-center gap-1" href="#">
+
+        <!-- Key Feature Icons Grid -->
+        <div class="grid grid-cols-4 gap-2 mt-5 py-4 px-2 bg-gray-50/80 rounded-xl border border-gray-100 text-center">
+          <div class="flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg mb-1.5">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <span class="text-[11px] font-medium text-gray-700 leading-tight">Safe &amp; Durable<br/>Material</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center text-lg mb-1.5">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+            <span class="text-[11px] font-medium text-gray-700 leading-tight">Helps in Motor<br/>Skill Development</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-lg mb-1.5">
+              <i class="fa-regular fa-face-smile"></i>
+            </div>
+            <span class="text-[11px] font-medium text-gray-700 leading-tight">Fun &amp; Engaging<br/>Design</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center text-lg mb-1.5">
+              <i class="fa-solid fa-leaf"></i>
+            </div>
+            <span class="text-[11px] font-medium text-gray-700 leading-tight">Non-Toxic<br/>Child Safe</span>
+          </div>
+        </div>
+
+        <!-- B2B Wholesale Highlight Banner -->
+        <div class="mt-5 p-4 rounded-xl bg-[#eef6ff] border border-blue-200 flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-lg bg-blue-100 text-[#206095] flex items-center justify-center text-xl shrink-0">
+              <i class="fa-solid fa-boxes-stacked"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-gray-900">Bulk Orders &amp; Distributor Enquiries</h4>
+              <p class="text-xs text-gray-600 mt-0.5">Special pricing for wholesalers and distributors. Partner with us for better margins.</p>
+            </div>
+          </div>
+          <button class="shrink-0 text-xs font-bold text-[#206095] hover:underline flex items-center gap-1" onclick="openSampleModal()">
             Know More →
-          </a>
-</div>
-<!-- Quantity & Order Actions -->
-<div class="mt-6 flex flex-col gap-3">
-<div class="flex items-center gap-3">
-<span class="text-xs font-semibold text-gray-700">Quantity:</span>
-<!-- Quantity Counter -->
-<div class="flex items-center border border-gray-300 rounded-lg overflow-hidden bg-white shadow-sm">
-<button class="px-3 py-1.5 hover:bg-gray-100 text-gray-600 font-bold transition" onclick="decrementQty()">−</button>
-<input class="w-12 text-center text-sm font-bold border-none focus:ring-0 p-0" id="product-qty" readonly="" type="text" value="1"/>
-<button class="px-3 py-1.5 hover:bg-gray-100 text-gray-600 font-bold transition" onclick="incrementQty()">+</button>
-</div>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-1">
-<!-- Add To Cart -->
-<button class="w-full py-3 px-4 border-2 border-brand-blue text-brand-blue hover:bg-blue-50/60 font-bold rounded-xl flex items-center justify-center gap-2 text-sm transition shadow-sm" onclick="addCurrentProduct(false)">
-<i class="fa-solid fa-cart-shopping"></i> Add to Cart
+          </button>
+        </div>
+
+        <!-- Quantity & Order Actions -->
+        <div class="mt-6 flex flex-col gap-3">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-semibold text-gray-700">Quantity:</span>
+            <!-- Quantity Counter -->
+            <div class="flex items-center border border-gray-300 rounded-lg overflow-hidden bg-white shadow-sm">
+              <button class="px-3 py-1.5 hover:bg-gray-100 text-gray-600 font-bold transition" onclick="decrementQty()">−</button>
+              <input class="w-12 text-center text-sm font-bold border-none focus:ring-0 p-0" id="product-qty" readonly="" type="text" value="1"/>
+              <button class="px-3 py-1.5 hover:bg-gray-100 text-gray-600 font-bold transition" onclick="incrementQty()">+</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-1">
+            <!-- Add To Cart -->
+            <button class="w-full py-3 px-4 border-2 border-brand-blue text-brand-blue hover:bg-blue-50/60 font-bold rounded-xl flex items-center justify-center gap-2 text-sm transition shadow-sm" onclick="addCurrentProduct(false)">
+              <i class="fa-solid fa-cart-shopping"></i> Add to Cart
             </button>
-<!-- Buy Now -->
-<button class="w-full py-3 px-4 bg-brand-pink hover:bg-brand-pinkHover text-white font-bold rounded-xl flex items-center justify-center gap-2 text-sm transition shadow-sm" onclick="addCurrentProduct(true)">
-<i class="fa-solid fa-bolt"></i> Buy Now
+            <!-- Buy Now -->
+            <button class="w-full py-3 px-4 bg-brand-pink hover:bg-brand-pinkHover text-white font-bold rounded-xl flex items-center justify-center gap-2 text-sm transition shadow-sm" onclick="addCurrentProduct(true)">
+              <i class="fa-solid fa-bolt"></i> Buy Now
             </button>
-</div>
-<!-- Get B2B Sample Button -->
-<button class="w-full py-2.5 px-4 border border-brand-accentGreen bg-brand-accentLightGreen hover:bg-emerald-100/70 text-emerald-800 rounded-xl flex items-center justify-center gap-2 transition shadow-sm" onclick="openSampleModal()">
-<div class="w-5 h-5 rounded bg-white border border-emerald-400 flex items-center justify-center text-xs text-brand-accentGreen">
-<i class="fa-solid fa-cube"></i>
-</div>
-<div class="text-left">
-<span class="text-xs font-bold text-emerald-900 block leading-tight">Get a Sample Piece</span>
-<span class="text-[10px] text-emerald-700 block leading-tight">For Wholesalers &amp; Distributors</span>
-</div>
-</button>
-</div>
-<!-- Trust Badges -->
-<div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center mt-6 pt-5 border-t border-gray-200">
-<div class="flex items-center justify-center gap-1.5 text-gray-600">
-<i class="fa-solid fa-truck-fast text-xs text-gray-500"></i>
-<span class="text-[11px] font-medium">Pan India Shipping</span>
-</div>
-<div class="flex items-center justify-center gap-1.5 text-gray-600">
-<i class="fa-solid fa-rotate-left text-xs text-gray-500"></i>
-<span class="text-[11px] font-medium">Easy Returns</span>
-</div>
-<div class="flex items-center justify-center gap-1.5 text-gray-600">
-<i class="fa-solid fa-shield-check text-xs text-gray-500"></i>
-<span class="text-[11px] font-medium">Secure Payment</span>
-</div>
-<div class="flex items-center justify-center gap-1.5 text-gray-600">
-<i class="fa-solid fa-headset text-xs text-gray-500"></i>
-<span class="text-[11px] font-medium">Dedicated B2B Support</span>
-</div>
-</div>
-</div>
-</div>
-</main>
-<!-- END: ProductMainSection -->
-<!-- BEGIN: InformationTabsSection -->
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 border-t border-gray-200">
-<!-- Tabs Header -->
-<div class="flex border-b border-gray-200 overflow-x-auto no-scrollbar gap-2 sm:gap-6">
-<button class="tab-button pb-3 px-2 text-sm font-bold text-brand-blue border-b-2 border-brand-blue whitespace-nowrap" id="tab-btn-details" onclick="switchTab('details')">
-        Product Details
-      </button>
-<button class="tab-button pb-3 px-2 text-sm font-medium text-gray-500 hover:text-gray-800 border-b-2 border-transparent whitespace-nowrap" id="tab-btn-specs" onclick="switchTab('specs')">
-        Specifications
-      </button>
-<button class="tab-button pb-3 px-2 text-sm font-medium text-gray-500 hover:text-gray-800 border-b-2 border-transparent whitespace-nowrap" id="tab-btn-age" onclick="switchTab('age')">
-        Age Guide
-      </button>
-<button class="tab-button pb-3 px-2 text-sm font-medium text-gray-500 hover:text-gray-800 border-b-2 border-transparent whitespace-nowrap" id="tab-btn-shipping" onclick="switchTab('shipping')">
-        Shipping &amp; Returns
-      </button>
-<button class="tab-button pb-3 px-2 text-sm font-medium text-gray-500 hover:text-gray-800 border-b-2 border-transparent whitespace-nowrap" id="tab-btn-reviews" onclick="switchTab('reviews')">
-        Reviews (120)
-      </button>
-</div>
-<!-- Tab Contents -->
-<div class="py-6">
-<!-- Tab 1: Product Details (Default Active) -->
-<div class="tab-content block" id="tab-content-details">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-<div class="md:col-span-6">
-<h3 class="text-base font-bold text-gray-900 mb-2">Product Details</h3>
-<p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+          </div>
+
+          <!-- Get B2B Sample Button -->
+          <button class="w-full py-2.5 px-4 border border-brand-accentGreen bg-brand-accentLightGreen hover:bg-emerald-100/70 text-emerald-800 rounded-xl flex items-center justify-center gap-2 transition shadow-sm" onclick="openSampleModal()">
+            <div class="w-5 h-5 rounded bg-white border border-emerald-400 flex items-center justify-center text-xs text-brand-accentGreen">
+              <i class="fa-solid fa-cube"></i>
+            </div>
+            <div class="text-left">
+              <span class="text-xs font-bold text-emerald-900 block leading-tight">Get a Sample Piece</span>
+              <span class="text-[10px] text-emerald-700 block leading-tight">For Wholesalers &amp; Distributors</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center mt-6 pt-5 border-t border-gray-200">
+          <div class="flex items-center justify-center gap-1.5 text-gray-600">
+            <i class="fa-solid fa-truck-fast text-xs text-gray-500"></i>
+            <span class="text-[11px] font-medium">Pan India Shipping</span>
+          </div>
+          <div class="flex items-center justify-center gap-1.5 text-gray-600">
+            <i class="fa-solid fa-rotate-left text-xs text-gray-500"></i>
+            <span class="text-[11px] font-medium">Easy Returns</span>
+          </div>
+          <div class="flex items-center justify-center gap-1.5 text-gray-600">
+            <i class="fa-solid fa-shield-halved text-xs text-gray-500"></i>
+            <span class="text-[11px] font-medium">Secure Payment</span>
+          </div>
+          <div class="flex items-center justify-center gap-1.5 text-gray-600">
+            <i class="fa-solid fa-headset text-xs text-gray-500"></i>
+            <span class="text-[11px] font-medium">Dedicated B2B Support</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+  <!-- END: ProductMainSection -->
+
+  <!-- BEGIN: InformationTabsSection -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+    <!-- Tab Headers -->
+    <div class="border-b border-gray-200">
+      <nav class="flex space-x-8 -mb-px overflow-x-auto no-scrollbar">
+        <button class="tab-button border-b-2 border-brand-blue text-brand-blue font-bold py-3 text-sm whitespace-nowrap" onclick="switchTab(this, 'tab-content-details')">
+          Product Details
+        </button>
+        <button class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-semibold py-3 text-sm whitespace-nowrap" onclick="switchTab(this, 'tab-content-specs')">
+          Specifications
+        </button>
+        <button class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-semibold py-3 text-sm whitespace-nowrap" onclick="switchTab(this, 'tab-content-age')">
+          Age Guide
+        </button>
+        <button class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-semibold py-3 text-sm whitespace-nowrap" onclick="switchTab(this, 'tab-content-shipping')">
+          Shipping &amp; Returns
+        </button>
+        <button class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-semibold py-3 text-sm whitespace-nowrap" onclick="switchTab(this, 'tab-content-reviews')">
+          Reviews (120)
+        </button>
+      </nav>
+    </div>
+
+    <!-- Tab Contents -->
+    <div class="py-6">
+      <!-- Tab 1: Product Details (Default) -->
+      <div class="tab-content" id="tab-content-details">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+          <div class="md:col-span-7 space-y-4">
+            <h3 class="text-base font-bold text-gray-900">Product Details</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
               The Happy Ride Car is the perfect companion for your child's playtime. Made from high-quality, non-toxic plastic, it is strong, safe and built to last. With a comfortable seat, sturdy wheels and an easy-grip steering wheel, it ensures a smooth and fun ride every time.
             </p>
-<ul class="mt-4 space-y-2 text-xs sm:text-sm text-gray-700">
-<li class="flex items-center gap-2">
-<i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i> Sturdy and durable design
+            <ul class="space-y-2 text-xs sm:text-sm text-gray-600">
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500"></i> Sturdy and durable design
               </li>
-<li class="flex items-center gap-2">
-<i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i> Smooth rolling wheels
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500"></i> Smooth rolling wheels
               </li>
-<li class="flex items-center gap-2">
-<i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i> Comfortable seat with back support
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500"></i> Comfortable seat with back support
               </li>
-<li class="flex items-center gap-2">
-<i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i> Safe, non-toxic, child-friendly material
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500"></i> Safe, non-toxic, child-friendly material
               </li>
-<li class="flex items-center gap-2">
-<i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i> Ideal for indoor and outdoor use
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500"></i> Ideal for indoor and outdoor use
               </li>
-</ul>
-</div>
-<!-- Specifications Table preview inside details -->
-<div class="md:col-span-6">
-<h3 class="text-base font-bold text-gray-900 mb-2">Key Specifications</h3>
-<div class="border border-gray-200 rounded-xl overflow-hidden text-xs sm:text-sm">
-<div class="grid grid-cols-2 p-3 bg-gray-50 border-b border-gray-200">
-<span class="font-medium text-gray-500">Material</span>
-<span class="text-gray-800 font-semibold">High-Quality Virgin Plastic</span>
-</div>
-<div class="grid grid-cols-2 p-3 bg-white border-b border-gray-200">
-<span class="font-medium text-gray-500">Product Dimensions</span>
-<span class="text-gray-800 font-semibold">60 x 28 x 40 cm</span>
-</div>
-<div class="grid grid-cols-2 p-3 bg-gray-50 border-b border-gray-200">
-<span class="font-medium text-gray-500">Recommended Age</span>
-<span class="text-gray-800 font-semibold">1 - 4 Years</span>
-</div>
-<div class="grid grid-cols-2 p-3 bg-white border-b border-gray-200">
-<span class="font-medium text-gray-500">Weight Capacity</span>
-<span class="text-gray-800 font-semibold">Up to 25 kg</span>
-</div>
-<div class="grid grid-cols-2 p-3 bg-gray-50 border-b border-gray-200">
-<span class="font-medium text-gray-500">Color Options</span>
-<span class="text-gray-800 font-semibold">Red, Blue, Yellow, Pink</span>
-</div>
-<div class="grid grid-cols-2 p-3 bg-white">
-<span class="font-medium text-gray-500">Package Contents</span>
-<span class="text-gray-800 font-semibold">1 Ride On Car (Pre-assembled)</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Tab 2: Full Specifications -->
-<div class="tab-content hidden" id="tab-content-specs">
-<h3 class="text-base font-bold text-gray-900 mb-3">Comprehensive Specifications</h3>
-<p class="text-sm text-gray-600 mb-4">Detailed technical specifications for retail and institutional buyers:</p>
-<div class="max-w-2xl border border-gray-200 rounded-lg overflow-hidden text-sm">
-<div class="grid grid-cols-2 p-3 bg-gray-50 border-b"><span>Item Weight</span><span class="font-semibold">2.4 kg</span></div>
-<div class="grid grid-cols-2 p-3 bg-white border-b"><span>Assembly Required</span><span class="font-semibold">No, ready-to-use</span></div>
-<div class="grid grid-cols-2 p-3 bg-gray-50 border-b"><span>Batteries Required</span><span class="font-semibold">No</span></div>
-<div class="grid grid-cols-2 p-3 bg-white border-b"><span>Certification</span><span class="font-semibold">ISI Certified, EN71 Safety Standards</span></div>
-<div class="grid grid-cols-2 p-3 bg-gray-50"><span>Country of Origin</span><span class="font-semibold">India</span></div>
-</div>
-</div>
-<!-- Tab 3: Age Guide -->
-<div class="tab-content hidden" id="tab-content-age">
-<h3 class="text-base font-bold text-gray-900 mb-2">Age &amp; Safety Guidance</h3>
-<p class="text-sm text-gray-600 leading-relaxed max-w-3xl">
+            </ul>
+          </div>
+
+          <!-- Key Specifications Table -->
+          <div class="md:col-span-5">
+            <div class="border border-gray-200 rounded-xl overflow-hidden bg-white shadow-xs">
+              <div class="p-3 bg-gray-50 border-b border-gray-200">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-gray-700">Key Specifications</h4>
+              </div>
+              <div class="text-xs divide-y divide-gray-100">
+                <div class="grid grid-cols-2 p-3 bg-white">
+                  <span class="font-medium text-gray-500">Material</span>
+                  <span class="text-gray-800 font-semibold">High-Quality Virgin Plastic</span>
+                </div>
+                <div class="grid grid-cols-2 p-3 bg-gray-50">
+                  <span class="font-medium text-gray-500">Product Dimensions</span>
+                  <span class="text-gray-800 font-semibold">60 x 28 x 40 cm</span>
+                </div>
+                <div class="grid grid-cols-2 p-3 bg-white">
+                  <span class="font-medium text-gray-500">Recommended Age</span>
+                  <span class="text-gray-800 font-semibold">1 – 4 Years</span>
+                </div>
+                <div class="grid grid-cols-2 p-3 bg-gray-50">
+                  <span class="font-medium text-gray-500">Weight Capacity</span>
+                  <span class="text-gray-800 font-semibold">Up to 25 kg</span>
+                </div>
+                <div class="grid grid-cols-2 p-3 bg-white">
+                  <span class="font-medium text-gray-500">Color Options</span>
+                  <span class="text-gray-800 font-semibold">Red, Blue, Yellow, Pink</span>
+                </div>
+                <div class="grid grid-cols-2 p-3 bg-gray-50">
+                  <span class="font-medium text-gray-500">Package Contents</span>
+                  <span class="text-gray-800 font-semibold">1 Ride On Car (Pre-assembled)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Specifications -->
+      <div class="tab-content hidden" id="tab-content-specs">
+        <h3 class="text-base font-bold text-gray-900 mb-3">Comprehensive Specifications</h3>
+        <div class="max-w-2xl border border-gray-200 rounded-lg overflow-hidden text-sm">
+          <div class="grid grid-cols-2 p-3 bg-gray-50 border-b"><span>Item Weight</span><span class="font-semibold">2.4 kg</span></div>
+          <div class="grid grid-cols-2 p-3 bg-white border-b"><span>Assembly Required</span><span class="font-semibold">No, ready-to-use</span></div>
+          <div class="grid grid-cols-2 p-3 bg-gray-50 border-b"><span>Batteries Required</span><span class="font-semibold">No</span></div>
+          <div class="grid grid-cols-2 p-3 bg-white border-b"><span>Certification</span><span class="font-semibold">BIS Certified, EN71 Safety Standards</span></div>
+          <div class="grid grid-cols-2 p-3 bg-gray-50"><span>Country of Origin</span><span class="font-semibold">India</span></div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Age Guide -->
+      <div class="tab-content hidden" id="tab-content-age">
+        <h3 class="text-base font-bold text-gray-900 mb-2">Age &amp; Safety Guidance</h3>
+        <p class="text-sm text-gray-600 leading-relaxed max-w-3xl">
           Designed specifically for toddlers aged 1 to 4 years. The low-profile chassis keeps their center of gravity close to the ground, preventing tipping while teaching basic steering instincts and leg muscle coordination.
         </p>
-</div>
-<!-- Tab 4: Shipping & Returns -->
-<div class="tab-content hidden" id="tab-content-shipping">
-<h3 class="text-base font-bold text-gray-900 mb-2">Shipping and Return Policies</h3>
-<p class="text-sm text-gray-600 leading-relaxed max-w-3xl">
+      </div>
+
+      <!-- Tab 4: Shipping & Returns -->
+      <div class="tab-content hidden" id="tab-content-shipping">
+        <h3 class="text-base font-bold text-gray-900 mb-2">Shipping and Return Policies</h3>
+        <p class="text-sm text-gray-600 leading-relaxed max-w-3xl">
           We offer fast pan-India delivery within 3–5 business days. B2B freight orders are dispatched via trusted road logistics with transit tracking. 7-day replacement warranty for manufacturing defects.
         </p>
-</div>
-<!-- Tab 5: Reviews -->
-<div class="tab-content hidden" id="tab-content-reviews">
-<div class="flex items-center gap-4 mb-4">
-<span class="text-4xl font-extrabold text-gray-900">4.8</span>
-<div>
-<div class="flex text-amber-400 text-sm">
-<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
-</div>
-<span class="text-xs text-gray-500">Based on 120 customer reviews</span>
-</div>
-</div>
-<div class="border-t border-gray-200 pt-3 space-y-3">
-<div class="text-sm">
-<span class="font-bold text-gray-800">Ramesh K.</span> <span class="text-xs text-gray-400 ml-2">Verified Buyer</span>
-<p class="text-gray-600 text-xs mt-1">Excellent build quality! Bought 10 pieces for our preschool and the kids love them.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- END: InformationTabsSection -->
-<!-- BEGIN: RelatedProductsSection -->
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-<div class="flex items-center justify-between mb-5">
-<h2 class="text-xl font-bold text-gray-900">You May Also Like</h2>
-<a class="text-xs sm:text-sm font-semibold text-brand-blue hover:underline flex items-center gap-1" href="#">
+      </div>
+
+      <!-- Tab 5: Reviews -->
+      <div class="tab-content hidden" id="tab-content-reviews">
+        <div class="flex items-center gap-4 mb-4">
+          <span class="text-4xl font-extrabold text-gray-900">4.8</span>
+          <div>
+            <div class="flex text-amber-400 text-sm">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <span class="text-xs text-gray-500">Based on 120 customer reviews</span>
+          </div>
+        </div>
+        <div class="border-t border-gray-200 pt-3 space-y-3">
+          <div class="text-sm">
+            <span class="font-bold text-gray-800">Ramesh K.</span> <span class="text-xs text-gray-400 ml-2">Verified Buyer</span>
+            <p class="text-gray-600 text-xs mt-1">Excellent build quality! Bought 10 pieces for our preschool and the kids love them.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END: InformationTabsSection -->
+
+  <!-- BEGIN: RelatedProductsSection ("You May Also Like" - 6 Real Products) -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 border-t border-gray-200">
+    <div class="flex items-center justify-between mb-5">
+      <h2 class="text-xl font-bold text-gray-900">You May Also Like</h2>
+      <a class="text-xs sm:text-sm font-semibold text-brand-blue hover:underline flex items-center gap-1" href="shop.html">
         View All →
       </a>
-</div>
-<!-- Product Grid -->
-<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-<!-- Related Item 1 -->
-<div class="bg-white rounded-xl border border-gray-200 p-2.5 flex flex-col hover:shadow-md transition group relative">
-<button aria-label="Add to wishlist" class="absolute top-3 right-3 text-gray-400 hover:text-brand-pink z-10">
-<i class="fa-regular fa-heart text-sm"></i>
-</button>
-<div class="h-32 w-full flex items-center justify-center overflow-hidden rounded-lg bg-gray-50 p-2">
-<img alt="Construction Truck Set" class="max-h-full object-contain group-hover:scale-105 transition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM3dhgKHPqr_OXzvt6IzpzR3l1SPDvcZ2IfKii-Y13UrnoTHVZVJyklmcRnjlRBgCNG0jRECniy739ujGVm7wvgsaIX97qFPZI_SH5ZpapiAZ5RyrqWDJEsumTsvip0a5Jy_EtWe4BqstBTJR6Qug6QQgttKT55-kUl9-daJCHPcsBTOk75BlhYZdgsDzQHus3z1f51rm2xIj2c21PHyaQB7_PROUCJi67EXYod0HWJNLrph5rga3IdfCv9c254eA0Wzs"/>
-</div>
-<div class="mt-2.5 flex flex-col flex-1 justify-between">
-<h3 class="text-xs font-semibold text-gray-800 line-clamp-1">Construction Truck Set</h3>
-<div class="mt-1 flex items-baseline gap-1.5 flex-wrap">
-<span class="text-sm font-bold text-gray-900">₹899</span>
-<span class="text-[11px] text-gray-400 line-through">₹1,199</span>
-<span class="text-[10px] font-bold text-brand-pink bg-pink-50 px-1 rounded">25% OFF</span>
-</div>
-</div>
-</div>
-<!-- Related Item 2 -->
-<div class="bg-white rounded-xl border border-gray-200 p-2.5 flex flex-col hover:shadow-md transition group relative">
-<button aria-label="Add to wishlist" class="absolute top-3 right-3 text-gray-400 hover:text-brand-pink z-10">
-<i class="fa-regular fa-heart text-sm"></i>
-</button>
-<div class="h-32 w-full flex items-center justify-center overflow-hidden rounded-lg bg-gray-50 p-2">
-<img alt="Rainbow Stacking Rings" class="max-h-full object-contain group-hover:scale-105 transition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2OhvNZPNZrqhJdo2IVW3utDFoRzCUt0wbDZAAlRAkvZ-gnDo8o9dunljm8a81ULX-l10NT0QHwF-sWol5wCU8l_jr2HkK-0INrBuKU2dRUxgGwFdkvcjilaqTzA1NTKYViwOyXMD-w08L-QgPICZvxDsw9k9TPcPlX7scjENNduzt8wZs1PcCJRu6B376Fj9ZixJSFu5YumIxRtAWfGwkUSX8YlfukadvaD4gpVURoL7wee2PL0DaXgiBCf9caMS2tFw"/>
-</div>
-<div class="mt-2.5 flex flex-col flex-1 justify-between">
-<h3 class="text-xs font-semibold text-gray-800 line-clamp-1">Rainbow Stacking Rings</h3>
-<div class="mt-1 flex items-baseline gap-1.5 flex-wrap">
-<span class="text-sm font-bold text-gray-900">₹499</span>
-<span class="text-[11px] text-gray-400 line-through">₹699</span>
-<span class="text-[10px] font-bold text-brand-pink bg-pink-50 px-1 rounded">29% OFF</span>
-</div>
-</div>
-</div>
-<!-- Related Item 3 -->
-<div class="bg-white rounded-xl border border-gray-200 p-2.5 flex flex-col hover:shadow-md transition group relative">
-<button aria-label="Add to wishlist" class="absolute top-3 right-3 text-gray-400 hover:text-brand-pink z-10">
-<i class="fa-regular fa-heart text-sm"></i>
-</button>
-<div class="h-32 w-full flex items-center justify-center overflow-hidden rounded-lg bg-gray-50 p-2">
-<img alt="Soft Teddy Bear" class="max-h-full object-contain group-hover:scale-105 transition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqCx1m_BTsGiVNZ3tNMZFux1xRNLrpnLSmNVUPR6zQfeDKNANK2Ndyd8OjK6k6aQSApLb3sVaYYGV6AmbiGKRxeuvQ1A8KK0Wqdj7WI0tGzRILrOq_abVJ_bt0F4IhGjVM6iY_QsyAaWx0k2j3UzaUWXbKH1bdIj5z2L8IViM-Ktsf-U4VqinuMbiYWiNx_NyB0viaJEzAF6o64PMA7gJEejzrYwEZM2nkMt7Oxz16mVfcV-3qs2zIRcSwHc0HnEV_hHY"/>
-</div>
-<div class="mt-2.5 flex flex-col flex-1 justify-between">
-<h3 class="text-xs font-semibold text-gray-800 line-clamp-1">Soft Teddy Bear</h3>
-<div class="mt-1 flex items-baseline gap-1.5 flex-wrap">
-<span class="text-sm font-bold text-gray-900">₹699</span>
-<span class="text-[11px] text-gray-400 line-through">₹999</span>
-<span class="text-[10px] font-bold text-brand-pink bg-pink-50 px-1 rounded">30% OFF</span>
-</div>
-</div>
-</div>
-<!-- Related Item 4 -->
-<div class="bg-white rounded-xl border border-gray-200 p-2.5 flex flex-col hover:shadow-md transition group relative">
-<button aria-label="Add to wishlist" class="absolute top-3 right-3 text-gray-400 hover:text-brand-pink z-10">
-<i class="fa-regular fa-heart text-sm"></i>
-</button>
-<div class="h-32 w-full flex items-center justify-center overflow-hidden rounded-lg bg-gray-50 p-2">
-<img alt="Mini Sports Bike" class="max-h-full object-contain group-hover:scale-105 transition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYbdMGn1giVkC9YwZ9FSITvtPrBfFUG7ko9dCLX-UH4Qlvz9Mo2IzpckmwaF_UxJEI6PygsYu43DdndEpUMhvvfO1pw_l-ngpGJd6mDRgmJMgmoBAjjYuO5I1UgEfQ_OYTjxaM-6YOZTYyJWOSY7Ybectma0vUcejRtil3zx0xcO8f9Nx4vKAoTziS8g23a3T4wRs0vzliNVkhyUbrc6vjiuKTjxvY0Ojl6jsLWJ5cKoJMVPp0CNorS7P-3oV3UJbbj1k"/>
-</div>
-<div class="mt-2.5 flex flex-col flex-1 justify-between">
-<h3 class="text-xs font-semibold text-gray-800 line-clamp-1">Mini Sports Bike</h3>
-<div class="mt-1 flex items-baseline gap-1.5 flex-wrap">
-<span class="text-sm font-bold text-gray-900">₹1,499</span>
-<span class="text-[11px] text-gray-400 line-through">₹1,999</span>
-<span class="text-[10px] font-bold text-brand-pink bg-pink-50 px-1 rounded">25% OFF</span>
-</div>
-</div>
-</div>
-<!-- Related Item 5 -->
-<div class="bg-white rounded-xl border border-gray-200 p-2.5 flex flex-col hover:shadow-md transition group relative">
-<button aria-label="Add to wishlist" class="absolute top-3 right-3 text-gray-400 hover:text-brand-pink z-10">
-<i class="fa-regular fa-heart text-sm"></i>
-</button>
-<div class="h-32 w-full flex items-center justify-center overflow-hidden rounded-lg bg-gray-50 p-2">
-<img alt="Kitchen Play Set" class="max-h-full object-contain group-hover:scale-105 transition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACXYhn12Upr8wJTB8m72j_nUc-Y5Sw-GuYhlR9Dv0Q-pc_JYuyKhfHLl6t1LXITYLDR7NfjiOSs2r1Lou3caV77DYDUl4pt6T8ksB3zpDn5hjxKmgW4zhCN-2L-dXWLOFE8PkwWkKfHvEydOKnEp_98kKWOlQHCVqDrgi1rAS8kcR71pHHl8YFo0oZer8oNzVgiNl-CgpsFoQYQ0Dovt2Q8DegPwyNfBQ0FuVFRHztXxhRqQMHbHp9YpRaWnzB9-bXRWI"/>
-</div>
-<div class="mt-2.5 flex flex-col flex-1 justify-between">
-<h3 class="text-xs font-semibold text-gray-800 line-clamp-1">Kitchen Play Set</h3>
-<div class="mt-1 flex items-baseline gap-1.5 flex-wrap">
-<span class="text-sm font-bold text-gray-900">₹1,799</span>
-<span class="text-[11px] text-gray-400 line-through">₹2,499</span>
-<span class="text-[10px] font-bold text-brand-pink bg-pink-50 px-1 rounded">28% OFF</span>
-</div>
-</div>
-</div>
-<!-- Related Item 6 -->
-<div class="bg-white rounded-xl border border-gray-200 p-2.5 flex flex-col hover:shadow-md transition group relative">
-<button aria-label="Add to wishlist" class="absolute top-3 right-3 text-gray-400 hover:text-brand-pink z-10">
-<i class="fa-regular fa-heart text-sm"></i>
-</button>
-<div class="h-32 w-full flex items-center justify-center overflow-hidden rounded-lg bg-gray-50 p-2">
-<img alt="Dinosaur Toy Set" class="max-h-full object-contain group-hover:scale-105 transition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1n506PEY0mIje1NswMgr15NYHYBRgCTbyi0gDA0CjgygVeRlApgU8cLEOW9JBhu3Cm5YqldDKE_gG8zjU_nv4aum-zWXcba3JL-xcC85jhElxvcCHn8RVEBk45lVBJv6k4BjY1W8Ecxa_h2rOzEFXK5UBH9ooLBEqUm63yCQ40JmJT6sUs3ObPAhRCidqVQbaMLQgoZKL1ZoDPfD4qY3Fg_k5YQIftAi40kZ52Ze1E-pIu95dBSvaOehRkeCAvTMJSVk"/>
-</div>
-<div class="mt-2.5 flex flex-col flex-1 justify-between">
-<h3 class="text-xs font-semibold text-gray-800 line-clamp-1">Dinosaur Toy Set</h3>
-<div class="mt-1 flex items-baseline gap-1.5 flex-wrap">
-<span class="text-sm font-bold text-gray-900">₹999</span>
-<span class="text-[11px] text-gray-400 line-through">₹1,399</span>
-<span class="text-[10px] font-bold text-brand-pink bg-pink-50 px-1 rounded">29% OFF</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- END: RelatedProductsSection -->
-<!-- BEGIN: B2BSampleModal -->
-<div class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4" id="sample-modal">
-<div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl relative animate-fade-in">
-<button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-lg" onclick="closeSampleModal()">
-<i class="fa-solid fa-xmark"></i>
-</button>
-<div class="flex items-center gap-3 mb-4">
-<div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-lg">
-<i class="fa-solid fa-box-open"></i>
-</div>
-<div>
-<h3 class="text-base font-bold text-gray-900">Request a B2B Sample</h3>
-<p class="text-xs text-gray-500">For retail stores, schools &amp; distributors</p>
-</div>
-</div>
-<form class="space-y-3.5 text-xs" onsubmit="handleSampleSubmit(event)">
-<div>
-<label class="block font-semibold text-gray-700 mb-1">Business / Store Name</label>
-<input class="w-full text-xs rounded-lg border-gray-300 focus:ring-brand-blue focus:border-brand-blue" placeholder="e.g. Joyful Toys Ltd." required="" type="text"/>
-</div>
-<div>
-<label class="block font-semibold text-gray-700 mb-1">Contact Person &amp; Phone</label>
-<input class="w-full text-xs rounded-lg border-gray-300 focus:ring-brand-blue focus:border-brand-blue" placeholder="+91 98765 43210" required="" type="tel"/>
-</div>
-<div>
-<label class="block font-semibold text-gray-700 mb-1">Shipping Pin Code &amp; City</label>
-<input class="w-full text-xs rounded-lg border-gray-300 focus:ring-brand-blue focus:border-brand-blue" placeholder="Pin code, City" required="" type="text"/>
-</div>
-<div>
-<label class="block font-semibold text-gray-700 mb-1">Product Interested</label>
-<input class="w-full text-xs bg-gray-100 rounded-lg border-gray-300 text-gray-600" readonly="" type="text" value="Happy Ride Car (SKU: PJ-RC-001)"/>
-</div>
-<div class="pt-2">
-<button class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition text-xs" type="submit">
-            Submit Sample Request
-          </button>
-</div>
-</form>
-</div>
-</div>
-<!-- END: B2BSampleModal -->
-<!-- BEGIN: InteractiveScripts -->
-<!-- Quantity counter management -->
-<script data-purpose="quantity-counter">
-    function incrementQty() {
-      const input = document.getElementById('product-qty');
-      let val = parseInt(input.value) || 1;
-      if (val < 99) input.value = val + 1;
-    }
+    </div>
 
-    function decrementQty() {
-      const input = document.getElementById('product-qty');
-      let val = parseInt(input.value) || 1;
-      if (val > 1) input.value = val - 1;
-    }
-  </script>
-<!-- Gallery and Thumbnail switcher -->
-<script data-purpose="gallery-switcher">
-    const mainImg = document.getElementById('main-product-image');
-    const imageList = [
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDPvqVEZui9uOOnLMCrHKM3Vlb4luJBEEe42P4_nZubiXDclTpXw74lzxKrjSKJR_CYUIj9G4FlEduDGhvgPHq2GWtceG0lWh_fNVlq8ykQHYYYFuWJIn7d5aZuNbtJBbpuYpL24i1LliClt_9iWp9Oc1w7kbDIn0STUYUwLXecJDGa-ghSP2bXqBi1gSXII8MdPW-28BeuRtDqLovy85xaWI8ee-aHbh7F4aZLoOZ7gW7n0ovmIspKqFV8OhgqVOlJckE',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuAB75qfP6K1R4pG2fm1GXQATdNiM3fEqvqtuzObu7EoiszkRIjVxczZQqrZm2j1ogtZEnFo87J7dq5bx29TUmJy6gNo_RgmKu51lLcJDiBamKg3M6V2Xg_av-7We6W9SeHUAQ62KUdJJS4v6O-vRvbq0_VfYXr-DYU41WuYy6dMp6SVJah9ztUrrg0GsHjS1W66o6hBgaiqAfRHsI1U_09FiMpzQuXoYQ8ti-_7dlrdzxOw54JoF-rVHt6fxEJL7I-Xuvc',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDhH9BQIv2d0WH54sSpTw6mrNC48tTSd8j6_3waPmNQ5F8pjprDym0xmDFDn77jCDLe3bku-VS5FT2Yb7a0umt9tXqlAJu7R37EjfdSKNgza-pW-AVHKQYlm-j6ZXsJaXCy30ln0WDp3NNl3HGA9rV_1tlrEFyTvjohecFsByaTwrPyTplMRMf0iwzAoCHU3zd1SIVVMdeevI6Onkk9Asrq74bgqhlEQryI5D0776MghoYLLha-QRlAUFquaqy6LP7rqfg',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuD9x2opuBf2_cKkN0yEjuMKklw9LdgYFpwMpaEqeLdoTQciSr4ccQF2SdjxJ8Xj8lZssW4kCDhsxuDJorqLqu3YQFyE1nyaQZ5PzyL6pp50YxJf6t1AtRj2lKRGMLnSzpC-hQV8ViCKPhTdFCx9sthxDgejkF0c2m1oeO8-gkrrw87YwgnZWsZ-Uji68eWDj4qHXVFz38DyQQpuxr37Aoye2LMQ-GXAdeHK05fwZWBwBs_Yyizt44YNnsrnu9geGSoV5Is',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuAZld1LsonnnM1f7IMyp-hQxMzW_pn2Eus_ngrlxxlZ6R6aeTa7gl_WmaKtuNh1eF-SyfyU1WcnjJpjHeX2moqct_00sqve1G8ocSD3eBY_lRSyLy3omiOOQhHeJAy59qf5LZ4RxXfD-RHgsIZU92zjUo_1tUIOxJoJgVZpPkYLqIK6EEPfflR4xynNLOa74e6GhPuJlYInvTBjHgreB2bGGQ8C2LEDsi7FAuzlIXN-o-iJPzRR8BC-KaPKbTOLVLX451I'
+    <!-- Product Grid: 6 cards matching Image 2 -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+      
+      <!-- 1. Construction Truck Set -->
+      <div class="bg-white rounded-xl border border-gray-200 p-2.5 flex flex-col justify-between hover:shadow-md transition group relative">
+        <button aria-label="Add to wishlist" class="absolute top-3 right-3 text-gray-400 hover:text-brand-pink z-10" onclick="toggleWishlist(this)">
+          <i class="fa-regular fa-heart text-sm"></i>
+        </button>
+        <div class="h-32 w-full flex items-center justify-center overflow-hidden rounded-lg bg-gray-50 p-2">
+          <img alt="Construction Truck Set" class="max-h-full object-contain group-hover:scale-105 transition" src="assets/images/products/construction_truck_set.png"/>
+        </div>
+        <div class="mt-2.5 flex flex-col flex-1 justify-between">
+          <h3 class="text-xs font-semibold text-gray-800 line-clamp-1">Construction Truck Set</h3>
+          <div class="mt-1 flex items-baseline gap-1.5 flex-wrap">
+            <span class="text-sm font-bold text-gray-900">₹899</span>
+            <span class="text-[11px] text-gray-400 line-through">₹1,199</span>
+            <span class="text-[10px] font-bold text-brand-pink bg-pink-50 px-1 rounded">25% OFF</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Rainbow Stacking Rings -->
+      <div class="bg-white rounded-xl border border-gray-200 p-2.5 flex flex-col justify-between hover:shadow-md transition group relative">
+        <button aria-label="Add to wishlist" class="absolute top-3 right-3 text-gray-400 hover:text-brand-pink z-10" onclick="toggleWishlist(this)">
+          <i class="fa-regular fa-heart text-sm"></i>
+        </button>
+        <div class="h-32 w-full flex items-center justify-center overflow-hidden rounded-lg bg-gray-50 p-2">
+          <img alt="Rainbow Stacking Rings" class="max-h-full object-contain group-hover:scale-105 transition" src="assets/images/products/rainbow_stacking_rings_rel.png"/>
+        </div>
+        <div class="mt-2.5 flex flex-col flex-1 justify-between">
+          <h3 class="text-xs font-semibold text-gray-800 line-clamp-1">Rainbow Stacking Rings</h3>
+          <div class="mt-1 flex items-baseline gap-1.5 flex-wrap">
+            <span class="text-sm font-bold text-gray-900">₹499</span>
+            <span class="text-[11px] text-gray-400 line-through">₹699</span>
+            <span class="text-[10px] font-bold text-brand-pink bg-pink-50 px-1 rounded">29% OFF</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Soft Teddy Bear -->
+      <div class="bg-white rounded-xl border border-gray-200 p-2.5 flex flex-col justify-between hover:shadow-md transition group relative">
+        <button aria-label="Add to wishlist" class="absolute top-3 right-3 text-gray-400 hover:text-brand-pink z-10" onclick="toggleWishlist(this)">
+          <i class="fa-regular fa-heart text-sm"></i>
+        </button>
+        <div class="h-32 w-full flex items-center justify-center overflow-hidden rounded-lg bg-gray-50 p-2">
+          <img alt="Soft Teddy Bear" class="max-h-full object-contain group-hover:scale-105 transition" src="assets/images/products/soft_teddy_bear_rel.png"/>
+        </div>
+        <div class="mt-2.5 flex flex-col flex-1 justify-between">
+          <h3 class="text-xs font-semibold text-gray-800 line-clamp-1">Soft Teddy Bear</h3>
+          <div class="mt-1 flex items-baseline gap-1.5 flex-wrap">
+            <span class="text-sm font-bold text-gray-900">₹699</span>
+            <span class="text-[11px] text-gray-400 line-through">₹999</span>
+            <span class="text-[10px] font-bold text-brand-pink bg-pink-50 px-1 rounded">30% OFF</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Mini Sports Bike -->
+      <div class="bg-white rounded-xl border border-gray-200 p-2.5 flex flex-col justify-between hover:shadow-md transition group relative">
+        <button aria-label="Add to wishlist" class="absolute top-3 right-3 text-gray-400 hover:text-brand-pink z-10" onclick="toggleWishlist(this)">
+          <i class="fa-regular fa-heart text-sm"></i>
+        </button>
+        <div class="h-32 w-full flex items-center justify-center overflow-hidden rounded-lg bg-gray-50 p-2">
+          <img alt="Mini Sports Bike" class="max-h-full object-contain group-hover:scale-105 transition" src="assets/images/products/mini_sports_bike.png"/>
+        </div>
+        <div class="mt-2.5 flex flex-col flex-1 justify-between">
+          <h3 class="text-xs font-semibold text-gray-800 line-clamp-1">Mini Sports Bike</h3>
+          <div class="mt-1 flex items-baseline gap-1.5 flex-wrap">
+            <span class="text-sm font-bold text-gray-900">₹1,499</span>
+            <span class="text-[11px] text-gray-400 line-through">₹1,999</span>
+            <span class="text-[10px] font-bold text-brand-pink bg-pink-50 px-1 rounded">25% OFF</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Kitchen Play Set -->
+      <div class="bg-white rounded-xl border border-gray-200 p-2.5 flex flex-col justify-between hover:shadow-md transition group relative">
+        <button aria-label="Add to wishlist" class="absolute top-3 right-3 text-gray-400 hover:text-brand-pink z-10" onclick="toggleWishlist(this)">
+          <i class="fa-regular fa-heart text-sm"></i>
+        </button>
+        <div class="h-32 w-full flex items-center justify-center overflow-hidden rounded-lg bg-gray-50 p-2">
+          <img alt="Kitchen Play Set" class="max-h-full object-contain group-hover:scale-105 transition" src="assets/images/products/kitchen_play_set.png"/>
+        </div>
+        <div class="mt-2.5 flex flex-col flex-1 justify-between">
+          <h3 class="text-xs font-semibold text-gray-800 line-clamp-1">Kitchen Play Set</h3>
+          <div class="mt-1 flex items-baseline gap-1.5 flex-wrap">
+            <span class="text-sm font-bold text-gray-900">₹1,799</span>
+            <span class="text-[11px] text-gray-400 line-through">₹2,499</span>
+            <span class="text-[10px] font-bold text-brand-pink bg-pink-50 px-1 rounded">28% OFF</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Dinosaur Toy Set -->
+      <div class="bg-white rounded-xl border border-gray-200 p-2.5 flex flex-col justify-between hover:shadow-md transition group relative">
+        <button aria-label="Add to wishlist" class="absolute top-3 right-3 text-gray-400 hover:text-brand-pink z-10" onclick="toggleWishlist(this)">
+          <i class="fa-regular fa-heart text-sm"></i>
+        </button>
+        <div class="h-32 w-full flex items-center justify-center overflow-hidden rounded-lg bg-gray-50 p-2">
+          <img alt="Dinosaur Toy Set" class="max-h-full object-contain group-hover:scale-105 transition" src="assets/images/products/dinosaur_toy_set_rel.png"/>
+        </div>
+        <div class="mt-2.5 flex flex-col flex-1 justify-between">
+          <h3 class="text-xs font-semibold text-gray-800 line-clamp-1">Dinosaur Toy Set</h3>
+          <div class="mt-1 flex items-baseline gap-1.5 flex-wrap">
+            <span class="text-sm font-bold text-gray-900">₹999</span>
+            <span class="text-[11px] text-gray-400 line-through">₹1,399</span>
+            <span class="text-[10px] font-bold text-brand-pink bg-pink-50 px-1 rounded">29% OFF</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END: RelatedProductsSection -->
+
+  <!-- BEGIN: Footer -->
+  <footer class="bg-white border-t border-slate-200 pt-12 pb-6 text-sm text-slate-600">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-12">
+      <div class="space-y-4">
+        <a class="flex flex-col" href="index.html">
+          <div class="flex items-center">
+            <span class="text-2xl font-black tracking-tight text-pink-600">Play</span>
+            <span class="text-2xl font-black tracking-tight text-sky-500">Joy</span>
+          </div>
+          <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase">Small Toys, Big Smiles</span>
+        </a>
+        <p class="text-xs text-slate-500 leading-relaxed">
+          A Proud Indian Toy Manufacturer
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Shop</h4>
+        <ul class="space-y-1.5 text-xs text-slate-500">
+          <li><a class="hover:text-pink-600" href="shop.html">All Products</a></li>
+          <li><a class="hover:text-pink-600" href="shop.html?sort=new">New Arrivals</a></li>
+          <li><a class="hover:text-pink-600" href="shop.html?sort=rating">Best Sellers</a></li>
+        </ul>
+      </div>
+
+      <div class="space-y-2">
+        <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">B2B</h4>
+        <ul class="space-y-1.5 text-xs text-slate-500">
+          <li><a class="hover:text-pink-600" href="javascript:void(0)" onclick="openSampleModal()">Get a Sample</a></li>
+          <li><a class="hover:text-pink-600" href="javascript:void(0)" onclick="openSampleModal()">Bulk Enquiry</a></li>
+          <li><a class="hover:text-pink-600" href="javascript:void(0)" onclick="openSampleModal()">Become a Distributor</a></li>
+        </ul>
+      </div>
+
+      <div class="space-y-2">
+        <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Support</h4>
+        <ul class="space-y-1.5 text-xs text-slate-500">
+          <li><a class="hover:text-pink-600" href="account.html">Track Order</a></li>
+          <li><a class="hover:text-pink-600" href="#">Shipping Policy</a></li>
+          <li><a class="hover:text-pink-600" href="#">FAQs</a></li>
+        </ul>
+      </div>
+
+      <div class="space-y-3">
+        <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Connect With Us</h4>
+        <div class="flex items-center space-x-2 text-white">
+          <a class="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-500 to-pink-500 flex items-center justify-center hover:opacity-90" href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center hover:opacity-90" href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a class="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center hover:opacity-90" href="#"><i class="fa-brands fa-youtube"></i></a>
+          <a class="w-8 h-8 rounded-full bg-sky-700 flex items-center justify-center hover:opacity-90" href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 pt-6 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400 gap-2">
+      <p>© 2026 PlayJoy Toys. All Rights Reserved.</p>
+    </div>
+  </footer>
+  <!-- END: Footer -->
+
+  <!-- ==============================================================
+       EXACT 2-STEP B2B "GET A SAMPLE" MODAL (MATCHING IMAGES 3 & 4)
+       ============================================================== -->
+  <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center z-50 hidden p-3 md:p-6" id="sampleModalBackdrop">
+    <div class="relative w-full max-w-[1020px] max-h-[92vh] bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row border border-white/20 animate-in fade-in zoom-in-95 duration-200">
+      
+      <!-- Left Panel: STEP 1 ARTWORK (Image 3) -->
+      <aside class="w-full md:w-[350px] bg-[#EAF2FD] p-6 flex flex-col justify-between shrink-0 border-r border-blue-100 overflow-hidden" id="modalLeftStep1">
+        <div class="space-y-5">
+          <div class="flex justify-center pt-2">
+            <img src="assets/images/modal/sample_box_step1_art.png" alt="Open Gift Box" class="w-40 object-contain drop-shadow-md"/>
+          </div>
+          <div class="text-left space-y-1">
+            <h3 class="text-xl font-black text-slate-900">Partner with Us</h3>
+            <p class="text-xs text-slate-500 font-medium">Quality Toys for a Brighter Tomorrow</p>
+          </div>
+          <div class="space-y-2.5 text-xs text-slate-700 font-medium">
+            <div class="flex items-center space-x-2.5">
+              <i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i>
+              <span>Trusted by Wholesalers &amp; Distributors</span>
+            </div>
+            <div class="flex items-center space-x-2.5">
+              <i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i>
+              <span>Wide Range of Products</span>
+            </div>
+            <div class="flex items-center space-x-2.5">
+              <i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i>
+              <span>Competitive Pricing</span>
+            </div>
+            <div class="flex items-center space-x-2.5">
+              <i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i>
+              <span>Pan India &amp; International Shipping</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 pt-3">
+          <div class="bg-blue-100/70 border border-blue-200 text-blue-900 text-xs font-bold py-2.5 px-4 rounded-xl text-center shadow-xs">
+            "Let's create smiles together! ❤️"
+          </div>
+        </div>
+      </aside>
+
+      <!-- Left Panel: STEP 2 ARTWORK (Image 4) -->
+      <aside class="w-full md:w-[350px] bg-[#EAF2FD] p-6 flex flex-col justify-between shrink-0 border-r border-blue-100 overflow-hidden hidden" id="modalLeftStep2">
+        <div class="space-y-4">
+          <div>
+            <div class="flex items-center">
+              <span class="text-2xl font-black tracking-tight text-pink-600">Play</span>
+              <span class="text-2xl font-black tracking-tight text-sky-500">Joy</span>
+            </div>
+            <p class="text-[10px] text-slate-500 font-medium">Toys for a Brighter Tomorrow</p>
+          </div>
+
+          <div class="space-y-1">
+            <h3 class="text-xl font-black text-slate-900 leading-tight">Partner with a Trusted Toy Manufacturer</h3>
+            <p class="text-xs text-slate-600 font-medium">High-quality toys. Better margins. Stronger partnerships.</p>
+          </div>
+
+          <div class="space-y-2.5 pt-1 text-xs font-semibold text-slate-800">
+            <div class="flex items-center space-x-2.5">
+              <div class="w-7 h-7 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-xs shrink-0"><i class="fa-solid fa-industry"></i></div>
+              <span>Direct from Manufacturer</span>
+            </div>
+            <div class="flex items-center space-x-2.5">
+              <div class="w-7 h-7 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-xs shrink-0"><i class="fa-solid fa-tag"></i></div>
+              <span>Competitive B2B Pricing</span>
+            </div>
+            <div class="flex items-center space-x-2.5">
+              <div class="w-7 h-7 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xs shrink-0"><i class="fa-solid fa-box"></i></div>
+              <span>Wide Product Range</span>
+            </div>
+            <div class="flex items-center space-x-2.5">
+              <div class="w-7 h-7 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs shrink-0"><i class="fa-solid fa-truck-fast"></i></div>
+              <span>Pan India &amp; International Supply</span>
+            </div>
+            <div class="flex items-center space-x-2.5">
+              <div class="w-7 h-7 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs shrink-0"><i class="fa-solid fa-headset"></i></div>
+              <span>Dedicated B2B Support</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative mt-4 pt-2">
+          <div class="flex items-center justify-between">
+            <img src="assets/images/modal/sample_partner_step2_art.png" alt="PlayJoy Toys" class="w-28 object-contain drop-shadow-md"/>
+            <div class="font-doodle text-blue-800 text-sm font-bold rotate-[-3deg] text-right">
+              Great Toys<br/>Build Greater<br/>Relationships ♡
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right Panel: Stepper & Form -->
+      <section class="flex-1 flex flex-col justify-between bg-white relative overflow-hidden">
+        <div class="px-6 pt-5 pb-3 border-b border-gray-100 flex items-start justify-between relative shrink-0">
+          <div class="flex items-start space-x-3 pr-8">
+            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 text-xl shadow-inner mt-0.5">
+              <i class="fa-solid fa-box-open"></i>
+            </div>
+            <div>
+              <div class="flex items-center space-x-2">
+                <h2 class="text-xl font-black text-slate-900 tracking-tight">Get a Sample</h2>
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">B2B</span>
+              </div>
+              <p class="text-xs text-slate-500 mt-0.5" id="headerSubtitle">
+                Tell us a few details and our B2B team will get in touch with you shortly.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col items-end space-y-0.5">
+            <button class="w-8 h-8 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-700 flex items-center justify-center transition-colors" onclick="closeSampleModal()" title="Close">
+              <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="hidden sm:block font-doodle text-blue-600 text-xs font-bold rotate-[4deg]">
+              Let's Grow Together
+            </div>
+          </div>
+        </div>
+
+        <div class="px-6 py-2.5 shrink-0 border-b border-slate-50 bg-slate-50/50">
+          <div class="max-w-xs mx-auto flex items-center justify-between relative">
+            <div class="absolute top-3.5 left-10 right-10 h-[2px] bg-slate-200 -z-0"></div>
+            <button class="flex flex-col items-center group relative z-10 focus:outline-none" onclick="goToStep(1)" type="button">
+              <div class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-md" id="badgeStep1">
+                <span id="badgeStep1Text">1</span>
+              </div>
+              <span class="text-[11px] font-semibold text-blue-600 mt-1" id="labelStep1">Your Details</span>
+            </button>
+            <button class="flex flex-col items-center group relative z-10 focus:outline-none" onclick="goToStep(2)" type="button">
+              <div class="w-7 h-7 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs" id="badgeStep2">
+                <span id="badgeStep2Text">2</span>
+              </div>
+              <span class="text-[11px] font-medium text-slate-500 mt-1" id="labelStep2">Business &amp; Requirement</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex-1 overflow-y-auto px-6 py-4 custom-scroll max-h-[58vh]">
+          <!-- STEP 1 FORM -->
+          <form id="formStep1" class="space-y-4" onsubmit="event.preventDefault(); goToStep(2);">
+            <div>
+              <h3 class="text-sm font-bold text-slate-900">Your Contact Details</h3>
+              <p class="text-xs text-slate-500">These details will help us get in touch with you.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Full Name <span class="text-red-500">*</span></label>
+                <input class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" placeholder="Enter your full name" required="" type="text" value="Rajesh Sharma"/>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Email Address <span class="text-red-500">*</span></label>
+                <input class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" placeholder="Enter your email address" required="" type="email" value="rajesh@toystore.in"/>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Mobile Number <span class="text-red-500">*</span></label>
+              <div class="flex rounded-lg shadow-xs">
+                <span class="inline-flex items-center text-xs font-medium border border-r-0 border-gray-300 rounded-l-lg bg-gray-50 text-gray-700 px-3 py-2">+91</span>
+                <input class="w-full text-xs rounded-none rounded-r-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" placeholder="Enter your mobile number" required="" type="tel" value="9876543210"/>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">City <span class="text-red-500">*</span></label>
+                <input class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" placeholder="Enter your city" required="" type="text" value="Bengaluru"/>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">State <span class="text-red-500">*</span></label>
+                <select class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3 bg-white" required="">
+                  <option selected="">Karnataka</option>
+                  <option>Maharashtra</option>
+                  <option>Delhi NCR</option>
+                  <option>Gujarat</option>
+                  <option>Tamil Nadu</option>
+                </select>
+              </div>
+            </div>
+          </form>
+
+          <!-- STEP 2 FORM -->
+          <form id="formStep2" class="space-y-4 hidden" onsubmit="event.preventDefault(); submitFinalSample();">
+            <div>
+              <h3 class="text-sm font-bold text-slate-900">Business &amp; Requirement Details</h3>
+              <p class="text-xs text-slate-500">Help us understand your business and requirements so we can assist you better.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Business / Store Name <span class="text-red-500">*</span></label>
+                <input class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" placeholder="Enter business name" required="" type="text" value="Kids Wonder Toy Shoppe"/>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Website / Instagram Link (if any)</label>
+                <input class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" placeholder="https://" type="text" value="https://instagram.com/kidswonder"/>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Business Type <span class="text-red-500">*</span></label>
+                <select class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3 bg-white" required="">
+                  <option selected="">Toy Retailer / Store</option>
+                  <option>Wholesaler / Distributor</option>
+                  <option>E-Commerce Seller</option>
+                  <option>Preschool / Educational</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Products Interested In <span class="text-red-500">*</span></label>
+                <input class="w-full text-xs rounded-lg border-blue-200 bg-blue-50/40 text-blue-900 font-semibold focus:border-blue-500 focus:ring-blue-500 py-2 px-3" required="" type="text" value="Happy Ride Car (Push Ride On)"/>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">GSTIN (if any)</label>
+                <input class="w-full text-xs uppercase rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" placeholder="Enter GSTIN" type="text" value="29ABCDE1234F1Z5"/>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Expected Monthly Purchase Quantity <span class="text-red-500">*</span></label>
+                <select class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3 bg-white" required="">
+                  <option>50 - 200 units / month</option>
+                  <option selected="">200 - 500 units / month</option>
+                  <option>500 - 2,000 units / month</option>
+                  <option>2,000+ units / month</option>
+                </select>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Business Address <span class="text-red-500">*</span></label>
+                <textarea class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" placeholder="Enter complete address" required="" rows="2">Shop 12, MG Road, Bengaluru - 560001</textarea>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Purchase Purpose <span class="text-red-500">*</span></label>
+                <select class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3 bg-white" required="">
+                  <option selected="">Reselling in Retail Store</option>
+                  <option>Wholesale Distribution</option>
+                  <option>E-commerce Reselling</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Areas You Sell In <span class="text-red-500">*</span></label>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                <label class="flex items-center space-x-2 border rounded-lg p-2 cursor-pointer hover:bg-slate-50 border-gray-200">
+                  <input checked="" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" type="checkbox"/>
+                  <span class="text-slate-700 text-xs">Local (City)</span>
+                </label>
+                <label class="flex items-center space-x-2 border rounded-lg p-2 cursor-pointer hover:bg-slate-50 border-gray-200">
+                  <input checked="" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" type="checkbox"/>
+                  <span class="text-slate-700 text-xs">State</span>
+                </label>
+                <label class="flex items-center space-x-2 border rounded-lg p-2 cursor-pointer hover:bg-slate-50 border-gray-200">
+                  <input checked="" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" type="checkbox"/>
+                  <span class="text-slate-700 text-xs">Pan India</span>
+                </label>
+                <label class="flex items-center space-x-2 border rounded-lg p-2 cursor-pointer hover:bg-slate-50 border-gray-200">
+                  <input class="rounded border-gray-300 text-blue-600 focus:ring-blue-500" type="checkbox"/>
+                  <span class="text-slate-700 text-xs">Export / Int'l</span>
+                </label>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Upload Business Card (if any)</label>
+                <div class="border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-xl p-3 flex flex-col items-center justify-center text-center cursor-pointer bg-slate-50">
+                  <i class="fa-solid fa-arrow-up-from-bracket text-blue-600 text-sm mb-1"></i>
+                  <span class="text-xs font-bold text-slate-700">Click to upload or drag &amp; drop</span>
+                  <span class="text-[10px] text-slate-400">PDF, JPG, PNG (Max 5 MB)</span>
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Additional Message (if any)</label>
+                <textarea class="w-full text-xs rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 py-2 px-3" placeholder="Tell us about specific requirements..." rows="2"></textarea>
+              </div>
+            </div>
+          </form>
+
+          <!-- SUCCESS STATE -->
+          <div class="hidden py-8 text-center space-y-3" id="modalSuccess">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full mx-auto flex items-center justify-center text-3xl shadow-lg ring-8 ring-emerald-50">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="text-2xl font-black text-slate-900">Sample Request Submitted!</h3>
+            <p class="text-xs text-slate-600 max-w-sm mx-auto">
+              Thank you for partnering with <strong>PlayJoy</strong>. Reference ID: <span class="font-mono font-bold text-blue-600">PJ-SMP-94812</span>
+            </p>
+            <p class="text-[11px] text-slate-500 max-w-xs mx-auto">
+              Our B2B Key Account Manager will contact you within <strong>1–2 business days</strong> with sample dispatch details.
+            </p>
+            <div class="pt-3">
+              <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-6 py-2 rounded-lg" onclick="closeSampleModal()">
+                Back to Product
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer / Action Buttons Bar -->
+        <div class="px-6 py-3 bg-slate-50 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0" id="modalFooter">
+          <div>
+            <button class="hidden items-center space-x-1.5 px-3 py-1.5 border border-slate-300 hover:bg-white text-slate-700 font-bold text-xs rounded-lg transition" id="btnModalBack" onclick="goToStep(1)" type="button">
+              <i class="fa-solid fa-arrow-left text-[10px]"></i>
+              <span>Back</span>
+            </button>
+            <p class="text-[11px] text-slate-500 font-medium" id="modalTurnaroundNote">
+              Our B2B team will contact you within 1–2 business days.
+            </p>
+          </div>
+          <div class="flex items-center space-x-3 w-full sm:w-auto justify-end">
+            <button class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-5 py-2.5 rounded-lg shadow-sm transition" id="btnModalNext" onclick="goToStep(2)" type="button">
+              <span>Next: Business &amp; Requirement</span>
+              <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </button>
+            <button class="hidden w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-6 py-2.5 rounded-lg shadow-sm transition" id="btnModalSubmit" onclick="submitFinalSample()" type="button">
+              <span>Submit Request</span>
+              <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="fixed bottom-6 right-6 bg-slate-900 text-white text-xs px-4 py-3 rounded-lg shadow-xl z-50 flex items-center space-x-2 hidden" id="toast">
+    <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+    <span id="toast-message">Item added to cart!</span>
+  </div>
+
+  <!-- Interactive Scripts -->
+  <script>
+    const images = [
+      'assets/images/products/happy_ride_car_main.png',
+      'assets/images/products/happy_ride_car_thumb_2.png',
+      'assets/images/products/happy_ride_car_thumb_3.png',
+      'assets/images/products/happy_ride_car_thumb_4.png',
+      'assets/images/products/happy_ride_car_thumb_5.png'
     ];
-    let currentIndex = 0;
+    let currentImageIndex = 0;
+    let qty = 1;
 
-    function selectThumbnail(buttonElement, src) {
+    function selectThumbnail(button, imageSrc, index) {
+      document.getElementById('main-product-image').src = imageSrc;
+      currentImageIndex = index;
       document.querySelectorAll('.thumb-btn').forEach(btn => {
         btn.classList.remove('border-brand-pink', 'border-2');
         btn.classList.add('border-gray-200', 'border');
       });
-
-      buttonElement.classList.add('border-brand-pink', 'border-2');
-      buttonElement.classList.remove('border-gray-200');
-
-      mainImg.src = src;
-      mainImg.style.opacity = '0.5';
-      setTimeout(() => {
-        mainImg.style.opacity = '1';
-      }, 100);
+      button.classList.remove('border-gray-200', 'border');
+      button.classList.add('border-brand-pink', 'border-2');
     }
 
-    function selectVideoThumbnail(buttonElement) {
+    function selectVideoThumbnail(button) {
       document.querySelectorAll('.thumb-btn').forEach(btn => {
         btn.classList.remove('border-brand-pink', 'border-2');
         btn.classList.add('border-gray-200', 'border');
       });
-      buttonElement.classList.add('border-brand-pink', 'border-2');
-      alert('Product demo video preview clicked!');
+      button.classList.add('border-brand-pink', 'border-2');
+      showToast('Playing 360° demonstration video...');
     }
 
     function prevImage() {
-      currentIndex = (currentIndex === 0) ? imageList.length - 1 : currentIndex - 1;
-      mainImg.src = imageList[currentIndex];
+      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+      updateMainImage();
     }
 
     function nextImage() {
-      currentIndex = (currentIndex === imageList.length - 1) ? 0 : currentIndex + 1;
-      mainImg.src = imageList[currentIndex];
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      updateMainImage();
     }
-  </script>
-<!-- Tab switcher logic -->
-<script data-purpose="tab-switcher">
-    function switchTab(tabName) {
-      // Hide all contents
-      document.querySelectorAll('.tab-content').forEach(el => {
-        el.classList.add('hidden');
-        el.classList.remove('block');
-      });
 
-      // Reset tab button states
+    function updateMainImage() {
+      document.getElementById('main-product-image').src = images[currentImageIndex];
+      const thumbBtns = document.querySelectorAll('.thumb-btn');
+      thumbBtns.forEach((btn, idx) => {
+        if (idx === currentImageIndex) {
+          btn.classList.remove('border-gray-200', 'border');
+          btn.classList.add('border-brand-pink', 'border-2');
+        } else {
+          btn.classList.remove('border-brand-pink', 'border-2');
+          btn.classList.add('border-gray-200', 'border');
+        }
+      });
+    }
+
+    function incrementQty() {
+      qty++;
+      document.getElementById('product-qty').value = qty;
+    }
+
+    function decrementQty() {
+      if (qty > 1) {
+        qty--;
+        document.getElementById('product-qty').value = qty;
+      }
+    }
+
+    function switchTab(button, contentId) {
       document.querySelectorAll('.tab-button').forEach(btn => {
-        btn.classList.remove('text-brand-blue', 'border-brand-blue', 'font-bold');
-        btn.classList.add('text-gray-500', 'border-transparent', 'font-medium');
+        btn.classList.remove('border-brand-blue', 'text-brand-blue');
+        btn.classList.add('border-transparent', 'text-gray-500');
       });
+      button.classList.remove('border-transparent', 'text-gray-500');
+      button.classList.add('border-brand-blue', 'text-brand-blue');
 
-      // Show selected content
-      const contentEl = document.getElementById('tab-content-' + tabName);
-      if (contentEl) {
-        contentEl.classList.remove('hidden');
-        contentEl.classList.add('block');
-      }
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.add('hidden');
+      });
+      document.getElementById(contentId).classList.remove('hidden');
+    }
 
-      // Activate selected button
-      const activeBtn = document.getElementById('tab-btn-' + tabName);
-      if (activeBtn) {
-        activeBtn.classList.remove('text-gray-500', 'border-transparent', 'font-medium');
-        activeBtn.classList.add('text-brand-blue', 'border-brand-blue', 'font-bold');
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toast-message');
+      toastMessage.textContent = message;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 2500);
+    }
+
+    let cart = JSON.parse(localStorage.getItem('playjoy-cart') || '{}');
+    function updateCartCount() {
+      const total = Object.values(cart).reduce((a, b) => a + b, 0);
+      document.getElementById('cart-counter').textContent = total;
+    }
+
+    function addCurrentProduct(buyNow = false) {
+      const productId = 'ride-car';
+      cart[productId] = (cart[productId] || 0) + qty;
+      localStorage.setItem('playjoy-cart', JSON.stringify(cart));
+      updateCartCount();
+      if (buyNow) {
+        window.location.href = 'checkout.html';
+      } else {
+        showToast(`Added ${qty} Happy Ride Car(s) to your cart!`);
       }
     }
-  </script>
-<!-- B2B Sample Modal handler -->
-<script data-purpose="sample-modal-handler">
-    const sampleModal = document.getElementById('sample-modal');
 
-    function openSampleModal() {
-      sampleModal.classList.remove('hidden');
-      sampleModal.classList.add('flex');
+    function toggleWishlist(btn) {
+      const icon = btn.querySelector('i');
+      if (icon.classList.contains('fa-solid')) {
+        icon.classList.remove('fa-solid', 'text-brand-pink');
+        icon.classList.add('fa-regular');
+        showToast('Removed from wishlist');
+      } else {
+        icon.classList.remove('fa-regular');
+        icon.classList.add('fa-solid', 'text-brand-pink');
+        showToast('Added to wishlist!');
+      }
+    }
+
+    // Modal logic
+    function openSampleModal(step = 1) {
+      document.getElementById('sampleModalBackdrop').classList.remove('hidden');
+      goToStep(step);
     }
 
     function closeSampleModal() {
-      sampleModal.classList.add('hidden');
-      sampleModal.classList.remove('flex');
+      document.getElementById('sampleModalBackdrop').classList.add('hidden');
     }
 
-    function handleSampleSubmit(e) {
-      e.preventDefault();
-      alert('Thank you! Your B2B sample request has been submitted. Our team will contact you shortly.');
-      closeSampleModal();
-    }
+    function goToStep(step) {
+      const left1 = document.getElementById('modalLeftStep1');
+      const left2 = document.getElementById('modalLeftStep2');
+      const form1 = document.getElementById('formStep1');
+      const form2 = document.getElementById('formStep2');
+      const success = document.getElementById('modalSuccess');
+      const btnBack = document.getElementById('btnModalBack');
+      const btnNext = document.getElementById('btnModalNext');
+      const btnSubmit = document.getElementById('btnModalSubmit');
+      const badge1 = document.getElementById('badgeStep1');
+      const badge2 = document.getElementById('badgeStep2');
+      const badge1Text = document.getElementById('badgeStep1Text');
+      const badge2Text = document.getElementById('badgeStep2Text');
+      const label1 = document.getElementById('labelStep1');
+      const label2 = document.getElementById('labelStep2');
+      const headerSubtitle = document.getElementById('headerSubtitle');
 
-    // Close modal on click outside
-    window.addEventListener('click', (e) => {
-      if (e.target === sampleModal) {
-        closeSampleModal();
+      success.classList.add('hidden');
+
+      if (step === 1) {
+        left1.classList.remove('hidden');
+        left2.classList.add('hidden');
+        form1.classList.remove('hidden');
+        form2.classList.add('hidden');
+
+        btnBack.classList.add('hidden');
+        btnNext.classList.remove('hidden');
+        btnSubmit.classList.add('hidden');
+
+        headerSubtitle.textContent = "Tell us a few details and our B2B team will get in touch with you shortly.";
+
+        badge1.className = "w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs ring-4 ring-blue-100 shadow-md";
+        badge1Text.innerHTML = "1";
+        label1.className = "text-[11px] font-bold text-blue-600 mt-1";
+
+        badge2.className = "w-7 h-7 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-xs";
+        badge2Text.innerHTML = "2";
+        label2.className = "text-[11px] font-medium text-slate-500 mt-1";
+      } else {
+        left1.classList.add('hidden');
+        left2.classList.remove('hidden');
+        form1.classList.add('hidden');
+        form2.classList.remove('hidden');
+
+        btnBack.classList.remove('hidden');
+        btnNext.classList.add('hidden');
+        btnSubmit.classList.remove('hidden');
+
+        headerSubtitle.textContent = "Partner with us and experience our quality. Share your business details.";
+
+        badge1.className = "w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs shadow-sm";
+        badge1Text.innerHTML = '<i class="fa-solid fa-check text-[10px]"></i>';
+        label1.className = "text-[11px] font-semibold text-emerald-600 mt-1";
+
+        badge2.className = "w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs ring-4 ring-blue-100 shadow-md";
+        badge2Text.innerHTML = "2";
+        label2.className = "text-[11px] font-bold text-blue-600 mt-1";
       }
+    }
+
+    function submitFinalSample() {
+      document.getElementById('formStep2').classList.add('hidden');
+      document.getElementById('modalSuccess').classList.remove('hidden');
+      document.getElementById('btnModalBack').classList.add('hidden');
+      document.getElementById('btnModalSubmit').classList.add('hidden');
+      showToast('Sample request submitted successfully!');
+    }
+
+    document.getElementById('sampleModalBackdrop').addEventListener('click', function(e) {
+      if (e.target === this) closeSampleModal();
     });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeSampleModal();
+    });
+
+    updateCartCount();
   </script>
-<!-- END: InteractiveScripts -->
-<script>
-function addCurrentProduct(goToCart){
-  const cart=JSON.parse(localStorage.getItem('playjoy-cart')||'{}');
-  const qty=parseInt(document.getElementById('product-qty').value,10)||1;
-  cart['ride-car']=(cart['ride-car']||0)+qty;
-  localStorage.setItem('playjoy-cart',JSON.stringify(cart));
-  if(goToCart){ location.href='cart.html'; return; }
-  const button=event.currentTarget, old=button.innerHTML;
-  button.innerHTML='<i class="fa-solid fa-check"></i> Added to Cart';
-  setTimeout(()=>button.innerHTML=old,1600);
-}
-</script>
-</body></html>
+</body>
+</html>
