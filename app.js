@@ -33,29 +33,134 @@ function addProduct(id, qty=1, open=true){
 }
 function changeCart(id,delta){const c=getCart();c[id]=Math.max(0,(c[id]||0)+delta);if(!c[id])delete c[id];saveCart(c)}
 function removeCart(id){const c=getCart();delete c[id];saveCart(c)}
-function updateBadges(){document.querySelectorAll('[data-cart-count]').forEach(el=>el.textContent=cartCount())}
-
-function productCard(p){
-  const off=Math.round((1-p.price/p.old)*100);
-  return `<article class="product-card reveal tilt" style="--toy:${p.color}" data-category="${p.category}">
-    <div class="card-shine"></div><span class="tag">${p.tag}</span>
-    <button class="heart" aria-label="Save ${p.name}" onclick="toggleWish(this)">${icons.heart}</button>
-    <a href="product_details.html?id=${p.id}" class="product-image"><span class="blob"></span><img src="${p.image}" alt="${p.name}" loading="lazy"></a>
-    <div class="product-copy"><div class="eyebrow">${p.category} · ${p.age}</div><h3><a href="product_details.html?id=${p.id}">${p.name}</a></h3>
-    <div class="rating"><span>★★★★★</span> ${p.rating} <small>(${p.reviews})</small></div>
-    <div class="price-row"><b>${money(p.price)}</b><s>${money(p.old)}</s><em>${off}% off</em></div>
-    <button class="btn btn-primary add-btn" data-add="${p.id}" onclick="addProduct('${p.id}')">${icons.cart}<span>Add to cart</span></button></div>
-  </article>`;
+function updateBadges(){
+  const count = cartCount();
+  document.querySelectorAll('[data-cart-count], #cart-counter').forEach(el => el.textContent = count);
 }
 
 function siteHeader(active=''){
-  return `<div class="announcement"><div class="container"><span><i></i> Made with joy in India</span><span class="announcement-center">Free delivery over ${money(999)} · Safe, non-toxic, durable</span><a href="get_a_sample.html" onclick="if(window.openSampleModal){event.preventDefault();openSampleModal()}">B2B partnership ${icons.arrow}</a></div></div>
-  <header class="header"><div class="container head-main">
-    <button class="mobile-toggle" aria-label="Open menu" onclick="document.querySelector('.nav').classList.toggle('open')"><span></span><span></span></button>
-    <a class="logo" href="index.html" aria-label="PlayJoy home"><b class="l1">P</b><b class="l2">l</b><b class="l3">a</b><b class="l4">y</b><b class="l5">J</b><b class="l6">o</b><b class="l7">y</b><small>Small toys. Big smiles.</small></a>
-    <div class="search"><input id="globalSearch" placeholder="Search happy things…" aria-label="Search products"><button onclick="goSearch()">${icons.search}</button></div>
-    <div class="head-actions"><a href="account.html" aria-label="Account">${icons.user}<span>Account</span></a><a href="shop.html" aria-label="Wishlist">${icons.heart}<span>Wishlist</span></a><button class="cart-trigger" onclick="openCart()" aria-label="Open cart">${icons.cart}<span>Cart</span><b data-cart-count>0</b></button></div>
-  </div><nav class="container nav"><a class="${active==='shop'?'active':''}" href="shop.html">Shop all</a><a href="shop.html?category=Educational">Learn & create</a><a href="shop.html?category=Ride%20Ons">Ride ons</a><a href="shop.html?category=Soft%20Toys">Soft friends</a><a href="shop.html?sort=rating">Best sellers</a><a class="${active==='about'?'active':''}" href="about.html">Our story</a><a class="nav-pill ${active==='b2b'?'active':''}" href="get_a_sample.html" onclick="if(window.openSampleModal){event.preventDefault();openSampleModal()}">Get a sample (B2B)</a><a class="nav-wholesale" href="get_a_sample.html" onclick="if(window.openSampleModal){event.preventDefault();openSampleModal()}">B2B Wholesale</a></nav></header>`;
+  return `
+  <!-- TOP ANNOUNCEMENT TICKER BAR -->
+  <div class="announcement-bar" data-purpose="top-announcement-bar">
+    <div class="announcement-container">
+      <div class="announcement-left">
+        <span>India's Trusted Toy Manufacturer</span>
+        <span class="announcement-sep">|</span>
+        <span>Pan India Delivery</span>
+        <span class="announcement-sep">|</span>
+        <span>B2B &amp; B2C Both</span>
+        <span class="announcement-sep">|</span>
+        <span class="announcement-highlight">Safe, Non-Toxic, Durable</span>
+      </div>
+      <div class="announcement-right">
+        <a class="announcement-link" href="get_a_sample.html" onclick="if(window.openSampleModal){event.preventDefault();openSampleModal()}">Become a Distributor</a>
+        <span class="announcement-sep">|</span>
+        <a class="announcement-link" href="contact.html#faq">Track Order</a>
+        <span class="announcement-sep">|</span>
+        <a class="announcement-link" href="contact.html">Help</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER (ROW 1 + ROW 2) -->
+  <header class="main-header" id="siteMainHeader">
+    <div class="header-main-row">
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.category-nav').classList.toggle('mobile-open')">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Brand Logo -->
+      <a class="brand-logo-wrap" href="index.html" aria-label="PlayJoy Home">
+        <div class="brand-logo-text">
+          <span class="logo-p">P</span><span class="logo-l">l</span><span class="logo-a">a</span><span class="logo-y">y</span><span class="logo-j">J</span><span class="logo-o">o</span><span class="logo-y2">y</span>
+        </div>
+        <span class="brand-tagline">Small Toys, Big Smiles</span>
+      </a>
+
+      <!-- Center Search Bar -->
+      <div class="header-search-wrap">
+        <form class="header-search-form" onsubmit="event.preventDefault();goSearch();">
+          <input class="header-search-input" id="globalSearch" type="text" placeholder="Search for toys, games, ride-ons and more..." aria-label="Search toys">
+          <button class="header-search-btn" type="submit" aria-label="Submit search">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Header Actions -->
+      <div class="header-actions-wrap">
+        <!-- Account / Login -->
+        <a class="header-action-item" href="account.html">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span class="action-label">Login / Register</span>
+        </a>
+
+        <!-- Wishlist -->
+        <a class="header-action-item" href="shop.html?wishlist=1">
+          <div class="header-icon-badge-wrap">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <span class="action-label">Wishlist</span>
+        </a>
+
+        <!-- Cart -->
+        <button class="header-action-item cart-action-btn" onclick="openCart()" aria-label="Open cart">
+          <div class="header-icon-badge-wrap">
+            <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <span class="header-count-badge cart-badge" data-cart-count id="cart-counter">0</span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Category Secondary Navbar (Row 2) -->
+    <nav class="category-nav" aria-label="Category Navigation">
+      <div class="category-nav-container">
+        <!-- All Categories Dropdown -->
+        <div class="cat-nav-item has-dropdown">
+          <a class="cat-nav-link" href="shop.html">
+            <span>All Categories</span>
+            <svg class="cat-caret" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <div class="cat-dropdown-menu">
+            <a href="shop.html?category=Ride%20Ons">🚗 Ride On Toys</a>
+            <a href="shop.html?category=Educational">🧩 Educational &amp; STEM</a>
+            <a href="shop.html?category=Soft%20Toys">🧸 Soft &amp; Plush Friends</a>
+            <a href="shop.html?category=Remote%20Control">⚡ Remote Control Toys</a>
+            <a href="shop.html?category=Action%20Figures">🦸 Action Figures</a>
+            <a href="shop.html?category=Vehicle%20Toys">🚛 Construction &amp; Vehicles</a>
+            <a href="shop.html?category=Pretend%20Play">🍳 Pretend Play Sets</a>
+          </div>
+        </div>
+
+        <!-- By Age Dropdown -->
+        <div class="cat-nav-item has-dropdown">
+          <a class="cat-nav-link" href="shop.html">
+            <span>By Age</span>
+            <svg class="cat-caret" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <div class="cat-dropdown-menu">
+            <a href="shop.html?age=0-12m">👶 0 – 12 Months</a>
+            <a href="shop.html?age=1-3y">🧒 1 – 3 Years</a>
+            <a href="shop.html?age=3-5y">👦 3 – 5 Years</a>
+            <a href="shop.html?age=6plus">🎒 6+ Years</a>
+          </div>
+        </div>
+
+        <a class="cat-nav-link" href="shop.html?filter=brands">Brands</a>
+        <a class="cat-nav-link" href="shop.html?filter=new">New Arrivals</a>
+        <a class="cat-nav-link cat-nav-highlight ${active==='bestsellers'?'active':''}" href="shop.html?sort=rating">Best Sellers</a>
+        <a class="cat-nav-link" href="shop.html?category=Ride%20Ons">Ride Ons</a>
+        <a class="cat-nav-link" href="shop.html?category=Outdoor">Outdoor Toys</a>
+        <a class="cat-nav-link" href="shop.html?category=Educational">Educational Toys</a>
+
+        <a class="cat-nav-link cat-nav-b2b" href="get_a_sample.html" onclick="if(window.openSampleModal){event.preventDefault();openSampleModal()}">
+          <span>Bulk Enquiry</span>
+        </a>
+      </div>
+    </nav>
+  </header>`;
 }
 
 function siteFooter(){
@@ -641,6 +746,36 @@ function initMotion(){
   if(matchMedia('(pointer:fine) and (prefers-reduced-motion:no-preference)').matches){
     document.querySelectorAll('.tilt').forEach(card=>{card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.setProperty('--rx',`${-y*9}deg`);card.style.setProperty('--ry',`${x*11}deg`);card.style.setProperty('--mx',`${x*100+50}%`);card.style.setProperty('--my',`${y*100+50}%`)});card.addEventListener('pointerleave',()=>{card.style.setProperty('--rx','0deg');card.style.setProperty('--ry','0deg')})});
     document.querySelectorAll('.magnetic').forEach(btn=>{btn.addEventListener('pointermove',e=>{const r=btn.getBoundingClientRect();btn.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.12}px,${(e.clientY-r.top-r.height/2)*.12}px)`});btn.addEventListener('pointerleave',()=>btn.style.transform='')});
+
+    // Hero section award-level interactive parallax
+    const heroSection = document.querySelector('.hero-section-v2');
+    if (heroSection) {
+      const doodle1 = document.getElementById('doodleBadge1');
+      const doodle2 = document.getElementById('doodleBadge2');
+      const photoCard = document.getElementById('heroPhotoCard');
+      
+      heroSection.addEventListener('pointermove', e => {
+        const rect = heroSection.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        
+        if (doodle1) doodle1.style.transform = `translate(${x * -22}px, ${y * -22}px) rotate(${-6 + x * 6}deg)`;
+        if (doodle2) doodle2.style.transform = `translate(${x * 25}px, ${y * 25}px) rotate(${8 + y * 6}deg)`;
+        if (photoCard) {
+          photoCard.style.setProperty('--rx', `${-y * 10}deg`);
+          photoCard.style.setProperty('--ry', `${x * 12}deg`);
+        }
+      });
+
+      heroSection.addEventListener('pointerleave', () => {
+        if (doodle1) doodle1.style.transform = '';
+        if (doodle2) doodle2.style.transform = '';
+        if (photoCard) {
+          photoCard.style.setProperty('--rx', '0deg');
+          photoCard.style.setProperty('--ry', '0deg');
+        }
+      });
+    }
   }
 }
 function initShell(){
