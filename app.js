@@ -44,8 +44,14 @@ const icons = {
 const money = n => '₹' + Number(n).toLocaleString('en-IN');
 const getCart = () => { try { return JSON.parse(localStorage.getItem('playjoy-cart') || '{}'); } catch(e){ return {}; } };
 const saveCart = cart => { localStorage.setItem('playjoy-cart', JSON.stringify(cart)); updateBadges(); renderCartDrawer(); };
+/* ---------- B2B wholesale pricing (20% below retail) ---------- */
+const B2B_DISCOUNT = 0.20;
+const getB2B = () => { try { return JSON.parse(localStorage.getItem('playjoy-b2b') || 'null'); } catch(e){ return null; } };
+const isB2B = () => !!getB2B();
+const b2bPrice = p => Math.round(p.price * (1 - B2B_DISCOUNT));
+const priceOf = p => p ? (isB2B() ? b2bPrice(p) : p.price) : 0;
 const cartCount = () => Object.values(getCart()).reduce((a,b)=>a+b,0);
-const cartTotal = () => Object.entries(getCart()).reduce((sum,[id,q]) => sum + (PRODUCTS.find(p=>p.id===id)?.price || 0)*q,0);
+const cartTotal = () => Object.entries(getCart()).reduce((sum,[id,q]) => sum + priceOf(PRODUCTS.find(p=>p.id===id))*q,0);
 
 /* Wishlist (persisted) */
 const getWishlist = () => { try { return JSON.parse(localStorage.getItem('playjoy-wishlist') || '[]'); } catch(e){ return []; } };
@@ -154,6 +160,7 @@ function siteHeader(active=''){
           </div>
           <span class="action-label">Wishlist</span>
         </a>
+        ${isB2B()?`<a class="b2b-mode-pill" href="shop.html?b2b=1" title="Wholesale pricing active"><i></i>B2B <b>−20%</b></a>`:''}
         <button class="header-action-item cart-action-btn" onclick="openCart()" aria-label="Open cart">
           <div class="header-icon-badge-wrap">
             <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
@@ -224,7 +231,7 @@ function initDropdowns(){
     });
   });
   document.addEventListener('click', e=>{ if(!e.target.closest('.has-dropdown')) document.querySelectorAll('.has-dropdown.open').forEach(d=>d.classList.remove('open')); });
-  document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ document.querySelectorAll('.has-dropdown.open').forEach(d=>d.classList.remove('open')); closeMobileNav(); closeCart(); if(window.closeSampleModal) closeSampleModal(); } });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ document.querySelectorAll('.has-dropdown.open').forEach(d=>d.classList.remove('open')); closeMobileNav(); closeCart(); if(window.closeSampleModal) closeSampleModal(); if(window.closeB2BShop) closeB2BShop(); } });
   window.addEventListener('resize', ()=>{ if(innerWidth>860) closeMobileNav(); });
 }
 
@@ -248,7 +255,7 @@ function siteFooter(){
         <a href="shop.html">All Products</a><a href="shop.html?filter=new">New Arrivals</a><a href="shop.html?sort=rating">Best Sellers</a><a href="shop.html?age=1-3y">By Age</a><a href="shop.html">By Category</a>
       </div>
       <div class="footer-links reveal" style="--d:.1s"><h4>B2B</h4>
-        <a href="get_a_sample.html" ${sampleClick}>Get a Sample</a><a href="get_a_sample.html" ${sampleClick}>Bulk Enquiry</a><a href="get_a_sample.html" ${sampleClick}>Become a Distributor</a><a href="account.html">B2B Login</a>
+        <a href="shop.html?b2b=1" onclick="event.preventDefault();openB2BShop()">Shop B2B (20% off)</a><a href="get_a_sample.html" ${sampleClick}>Get a Sample</a><a href="get_a_sample.html" ${sampleClick}>Bulk Enquiry</a><a href="get_a_sample.html" ${sampleClick}>Become a Distributor</a><a href="account.html">B2B Login</a>
       </div>
       <div class="footer-links reveal" style="--d:.15s"><h4>Support</h4>
         <a href="contact.html#faq">Track Order</a><a href="contact.html#faq">Shipping Policy</a><a href="contact.html#faq">Return &amp; Refund</a><a href="contact.html#faq">FAQs</a><a href="contact.html">Contact Us</a>
@@ -280,7 +287,7 @@ function siteFooter(){
    PRODUCT CARD (3D layered)
    ============================================================ */
 function productCard(p, i=0){
-  const off=Math.round((1-p.price/p.old)*100);
+  const off=Math.round((1-priceOf(p)/p.old)*100);
   const sub = p.id==='ride-car' ? 'Push Ride On (1–4 Years)' : (p.age==='All Ages' ? 'For All Ages' : p.age);
   const wished = isWished(p.id);
   return `<article class="product-card reveal tilt ${p.photo?'photo':''}" style="--toy:${p.color};--d:${(i%6)*.06}s" data-category="${p.category}" data-id="${p.id}">
@@ -292,7 +299,7 @@ function productCard(p, i=0){
       <h3><a href="product_details.html?id=${p.id}">${p.name}</a></h3>
       <div class="product-sub-line">${sub}</div>
       <div class="rating"><span>${'★'.repeat(Math.round(p.rating))}${'☆'.repeat(5-Math.round(p.rating))}</span> (${p.reviews})</div>
-      <div class="price-row"><b>${money(p.price)}</b><s>${money(p.old)}</s><em>${off}% OFF</em></div>
+      ${isB2B()?`<div class="b2b-card-label">B2B Price</div><div class="price-row"><b>${money(priceOf(p))}</b><s>${money(p.price)}</s><em class="b2b-em">B2B −20%</em></div>`:`<div class="price-row"><b>${money(priceOf(p))}</b><s>${money(p.old)}</s><em>${off}% OFF</em></div>`}
       <button class="btn btn-primary add-btn" data-add="${p.id}" onclick="addProduct('${p.id}')">${icons.cart}<span>Add to Cart</span></button>
     </div>
   </article>`;
@@ -302,7 +309,7 @@ function productCard(p, i=0){
    CART DRAWER, TOAST, SPARKS
    ============================================================ */
 function cartDrawer(){return `<div class="drawer-backdrop" onclick="closeCart()"></div><aside class="cart-drawer" aria-label="Shopping cart"><div class="drawer-head"><div><small>YOUR CART</small><h2>Cart <span data-cart-count>0</span></h2></div><button onclick="closeCart()" aria-label="Close cart">${icons.close}</button></div><div class="drawer-items" id="drawerItems"></div><div class="drawer-foot"><div class="drawer-total"><span>Subtotal</span><b id="drawerTotal">${money(0)}</b></div><small>Taxes included. Shipping calculated at checkout.</small><a class="btn btn-primary btn-block" href="checkout.html">Checkout securely ${icons.arrow}</a><a class="drawer-view" href="cart.html">View full cart</a></div></aside>`}
-function renderCartDrawer(){const root=document.querySelector('#drawerItems');if(!root)return;const entries=Object.entries(getCart());root.innerHTML=entries.length?entries.map(([id,q],i)=>{const p=PRODUCTS.find(x=>x.id===id);if(!p)return'';return `<div class="drawer-item" style="animation-delay:${i*.06}s"><a href="product_details.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a><div><small>${p.category}</small><h3>${p.name}</h3><b>${money(p.price)}</b><div class="mini-qty"><button onclick="changeCart('${id}',-1)" aria-label="Decrease">−</button><span>${q}</span><button onclick="changeCart('${id}',1)" aria-label="Increase">+</button></div></div><button class="remove-x" onclick="removeCart('${id}')" aria-label="Remove">${icons.close}</button></div>`}).join(''):`<div class="drawer-empty"><div class="empty-ball"></div><h3>Your cart is empty</h3><p>There is always room for a little more wonder.</p><a class="btn btn-dark" href="shop.html" onclick="closeCart()">Explore toys</a></div>`;document.querySelector('#drawerTotal').textContent=money(cartTotal())}
+function renderCartDrawer(){const root=document.querySelector('#drawerItems');if(!root)return;const entries=Object.entries(getCart());root.innerHTML=entries.length?entries.map(([id,q],i)=>{const p=PRODUCTS.find(x=>x.id===id);if(!p)return'';return `<div class="drawer-item" style="animation-delay:${i*.06}s"><a href="product_details.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a><div><small>${p.category}</small><h3>${p.name}</h3><b>${money(priceOf(p))}</b><div class="mini-qty"><button onclick="changeCart('${id}',-1)" aria-label="Decrease">−</button><span>${q}</span><button onclick="changeCart('${id}',1)" aria-label="Increase">+</button></div></div><button class="remove-x" onclick="removeCart('${id}')" aria-label="Remove">${icons.close}</button></div>`}).join(''):`<div class="drawer-empty"><div class="empty-ball"></div><h3>Your cart is empty</h3><p>There is always room for a little more wonder.</p><a class="btn btn-dark" href="shop.html" onclick="closeCart()">Explore toys</a></div>`;document.querySelector('#drawerTotal').textContent=money(cartTotal())}
 function openCart(){document.body.classList.add('cart-open');renderCartDrawer();if(window.lenis)window.lenis.stop()}
 function closeCart(){document.body.classList.remove('cart-open');if(window.lenis&&!document.body.classList.contains('nav-open'))window.lenis.start()}
 function toggleWish(btn,id){
@@ -1082,3 +1089,201 @@ function initFloatingButtons(){
   document.body.appendChild(topBtn);
 }
 document.addEventListener('DOMContentLoaded',initShell);
+
+/* ============================================================
+   SHOP B2B — wholesale access modal (name → email → bulk qty → unlock)
+   ============================================================ */
+const B2B_TIERS = [
+  {min:50,  label:'Starter',     range:'50 – 200 units'},
+  {min:200, label:'Retailer',    range:'200 – 500 units'},
+  {min:500, label:'Wholesaler',  range:'500 – 2,000 units'},
+  {min:2000,label:'Distributor', range:'2,000+ units'}
+];
+const tierFor = q => [...B2B_TIERS].reverse().find(t => q >= t.min) || B2B_TIERS[0];
+let b2bStep = 1;
+
+function b2bShopModalHTML(){
+  const perks = [
+    ['Flat 20% below retail on every toy','M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8z'],
+    ['Direct from the manufacturer','M2 20h20M6 20V10l6 4V4l6 4v12'],
+    ['Pan India bulk dispatch','M1 3h15v13H1zM16 8h4l3 3v5h-7z'],
+    ['Dedicated B2B account manager','M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z']
+  ].map(([t,d],i)=>`<li style="--i:${i}"><i><svg viewBox="0 0 24 24"><path d="${d}"/></svg></i>${t}</li>`).join('');
+  const chips = B2B_TIERS.map((t,i)=>`<button type="button" class="qty-chip" data-qty="${[100,350,1000,2500][i]}"><b>${t.label}</b><small>${t.range}</small></button>`).join('');
+  return `
+  <div class="b2bx-backdrop" id="b2bShopModal" role="dialog" aria-modal="true" aria-labelledby="b2bxTitle" onclick="if(event.target===this)closeB2BShop()">
+    <div class="b2bx-card">
+      <aside class="b2bx-side">
+        <div class="b2bx-orb o1"></div><div class="b2bx-orb o2"></div>
+        <span class="b2bx-kicker">PlayJoy Wholesale</span>
+        <h3>Shop B2B.<br>Save <em>20%</em> on every toy.</h3>
+        <p>Unlock factory-direct wholesale pricing for your store, school or distribution business.</p>
+        <ul class="b2bx-perks">${perks}</ul>
+        <div class="b2bx-coin" aria-hidden="true"><b>20%</b><small>OFF</small></div>
+        <div class="b2bx-toys" aria-hidden="true">
+          <img src="assets/images/products/soft_teddy_bear.png" alt="">
+          <img src="assets/images/products/happy_ride_car.png" alt="">
+          <img src="assets/images/products/rainbow_stacking_rings.png" alt="">
+        </div>
+      </aside>
+
+      <section class="b2bx-main">
+        <button type="button" class="b2bx-close" onclick="closeB2BShop()" aria-label="Close">${icons.close}</button>
+        <div class="b2bx-head">
+          <h2 id="b2bxTitle">Wholesale Access</h2>
+          <p id="b2bxSub">Three quick steps to unlock B2B prices.</p>
+        </div>
+        <div class="b2bx-progress" id="b2bxProgress">
+          <div class="b2bx-track"><span id="b2bxFill"></span></div>
+          <ol><li data-s="1"><i>1</i>Name</li><li data-s="2"><i>2</i>Email</li><li data-s="3"><i>3</i>Bulk Order</li></ol>
+        </div>
+
+        <form id="b2bxForm" novalidate onsubmit="event.preventDefault();b2bNext()">
+          <div class="b2bx-steps">
+            <div class="b2bx-step" data-step="1">
+              <label class="b2bx-q" for="b2bxName">Hi there! What is your name?</label>
+              <div class="b2bx-field"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <input id="b2bxName" type="text" placeholder="Enter your full name" autocomplete="name" required></div>
+              <span class="b2bx-err" id="b2bxNameErr">Please enter your name.</span>
+              <div class="b2bx-preview">${PRODUCTS.slice(0,3).map((p,i)=>`<div style="--i:${i}"><img src="${p.image}" alt=""><span>${p.name}</span><s>${money(p.price)}</s><b>${money(b2bPrice(p))}</b></div>`).join('')}</div>
+            </div>
+            <div class="b2bx-step" data-step="2">
+              <label class="b2bx-q" for="b2bxEmail">Nice to meet you, <span id="b2bxHello">friend</span>! Your business email?</label>
+              <div class="b2bx-field"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+                <input id="b2bxEmail" type="email" placeholder="you@yourstore.com" autocomplete="email" required></div>
+              <span class="b2bx-err" id="b2bxEmailErr">Please enter a valid email address.</span>
+              <small class="b2bx-hint">We will send your wholesale price list and order updates here.</small>
+            </div>
+            <div class="b2bx-step" data-step="3">
+              <label class="b2bx-q">How many units do you need per order?</label>
+              <div class="qty-chips">${chips}</div>
+              <div class="qty-slider-wrap">
+                <div class="qty-readout"><b id="b2bxQtyOut">100</b><span>units</span><em id="b2bxTier">Starter</em></div>
+                <input id="b2bxQty" type="range" min="50" max="5000" step="50" value="100" aria-label="Bulk quantity">
+                <div class="qty-scale"><span>50</span><span>MOQ 50 units</span><span>5,000+</span></div>
+              </div>
+              <div class="qty-exact"><label for="b2bxQtyNum">Or type an exact quantity</label>
+                <div class="qty-stepper"><button type="button" onclick="b2bBumpQty(-50)" aria-label="Decrease">−</button><input id="b2bxQtyNum" type="number" min="50" step="10" value="100" inputmode="numeric"><button type="button" onclick="b2bBumpQty(50)" aria-label="Increase">+</button></div>
+              </div>
+              <span class="b2bx-err" id="b2bxQtyErr">Minimum order quantity is 50 units.</span>
+              <div class="b2bx-savings"><span>Estimated savings per order</span><b id="b2bxSave">₹0</b></div>
+            </div>
+            <div class="b2bx-step b2bx-done" data-step="4">
+              <div class="b2bx-badge"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+              <h3 id="b2bxDoneTitle">B2B pricing unlocked!</h3>
+              <p id="b2bxDoneText">Every toy is now 20% below retail.</p>
+              <div class="b2bx-summary" id="b2bxSummary"></div>
+              <a class="btn btn-primary b2bx-shop" href="shop.html?b2b=1">Shop Now <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <button type="button" class="b2bx-reset" onclick="b2bReset()">Not you? Start over</button>
+            </div>
+          </div>
+
+          <div class="b2bx-actions" id="b2bxActions">
+            <button type="button" class="b2bx-back" id="b2bxBack" onclick="b2bGo(b2bStep-1)"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button>
+            <button type="submit" class="btn btn-primary b2bx-next" id="b2bxNext"><span>Continue</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+          <p class="b2bx-legal"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Your details stay private and are only used for wholesale pricing.</p>
+        </form>
+      </section>
+    </div>
+  </div>`;
+}
+
+function ensureB2BModal(){
+  let m = document.getElementById('b2bShopModal');
+  if(m) return m;
+  document.body.insertAdjacentHTML('beforeend', b2bShopModalHTML());
+  m = document.getElementById('b2bShopModal');
+  const range = m.querySelector('#b2bxQty'), num = m.querySelector('#b2bxQtyNum');
+  range.addEventListener('input', () => setB2BQty(+range.value));
+  num.addEventListener('input', () => setB2BQty(+num.value, true));
+  m.querySelectorAll('.qty-chip').forEach(c => c.addEventListener('click', () => setB2BQty(+c.dataset.qty)));
+  m.querySelectorAll('input').forEach(i => i.addEventListener('input', () => i.closest('.b2bx-step')?.classList.remove('has-err')));
+  setB2BQty(100);
+  return m;
+}
+function setB2BQty(q, fromNum){
+  const m = document.getElementById('b2bShopModal'); if(!m) return;
+  q = Math.max(0, Math.round(q || 0));
+  const range = m.querySelector('#b2bxQty'), num = m.querySelector('#b2bxQtyNum');
+  range.value = Math.min(5000, Math.max(50, q));
+  range.style.setProperty('--p', ((range.value - 50) / 4950 * 100) + '%');
+  if(!fromNum) num.value = q;
+  m.querySelector('#b2bxQtyOut').textContent = q.toLocaleString('en-IN') + (q >= 5000 ? '+' : '');
+  const t = tierFor(q); m.querySelector('#b2bxTier').textContent = t.label;
+  m.querySelectorAll('.qty-chip').forEach(c => c.classList.toggle('active', tierFor(+c.dataset.qty) === t));
+  const avg = PRODUCTS.reduce((s,p)=>s+p.price,0) / PRODUCTS.length;
+  m.querySelector('#b2bxSave').textContent = money(Math.round(q * avg * B2B_DISCOUNT));
+  if(q >= 50) m.querySelector('#b2bxQtyErr').closest('.b2bx-step').classList.remove('has-err');
+}
+function b2bBumpQty(d){ const n = document.getElementById('b2bxQtyNum'); setB2BQty(Math.max(50, (+n.value || 0) + d)); }
+
+function b2bGo(step){
+  const m = document.getElementById('b2bShopModal'); if(!m || step < 1) return;
+  const prev = b2bStep; b2bStep = step;
+  m.querySelectorAll('.b2bx-step').forEach(s => {
+    const n = +s.dataset.step;
+    s.classList.toggle('active', n === step);
+    s.classList.toggle('left', n < step);
+    s.classList.toggle('from-left', n > step && prev > step);
+  });
+  m.querySelector('#b2bxFill').style.width = (Math.min(step,3) - 1) / 2 * 100 + '%';
+  m.querySelectorAll('.b2bx-progress li').forEach(li => { const s=+li.dataset.s; li.classList.toggle('active', s===step); li.classList.toggle('done', s<step); });
+  m.querySelector('#b2bxBack').style.visibility = step > 1 && step < 4 ? 'visible' : 'hidden';
+  m.querySelector('#b2bxNext span').textContent = step === 3 ? 'Unlock B2B Prices' : 'Continue';
+  m.classList.toggle('is-done', step === 4);
+  const name = (m.querySelector('#b2bxName').value.trim().split(' ')[0]) || 'friend';
+  m.querySelector('#b2bxHello').textContent = name;
+  setTimeout(() => { const f = m.querySelector(`.b2bx-step[data-step="${step}"] input`); if(f && FINE_POINTER) f.focus({preventScroll:true}); }, 380);
+}
+function b2bNext(){
+  const m = document.getElementById('b2bShopModal');
+  const fail = id => { const s = m.querySelector('#'+id).closest('.b2bx-step'); s.classList.remove('has-err'); void s.offsetWidth; s.classList.add('has-err'); };
+  if(b2bStep === 1){ if(m.querySelector('#b2bxName').value.trim().length < 2) return fail('b2bxNameErr'); return b2bGo(2); }
+  if(b2bStep === 2){ const e = m.querySelector('#b2bxEmail'); if(!e.value.trim() || !e.checkValidity() || !/\S+@\S+\.\S+/.test(e.value)) return fail('b2bxEmailErr'); return b2bGo(3); }
+  if(b2bStep === 3){
+    const q = +m.querySelector('#b2bxQtyNum').value;
+    if(!q || q < 50) return fail('b2bxQtyErr');
+    const profile = { name: m.querySelector('#b2bxName').value.trim(), email: m.querySelector('#b2bxEmail').value.trim(), quantity: q, tier: tierFor(q).label, discount: B2B_DISCOUNT, since: new Date().toISOString() };
+    localStorage.setItem('playjoy-b2b', JSON.stringify(profile));
+    const leads = JSON.parse(localStorage.getItem('playjoy-b2b-leads') || '[]'); leads.push(profile); localStorage.setItem('playjoy-b2b-leads', JSON.stringify(leads));
+    fillB2BDone(profile, false);
+    b2bGo(4);
+    triggerConfetti();
+    refreshB2BUI();
+  }
+}
+function escHTML(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function fillB2BDone(p, returning){
+  const m = document.getElementById('b2bShopModal');
+  const first = p.name.split(' ')[0];
+  m.querySelector('#b2bxDoneTitle').textContent = returning ? `Welcome back, ${first}!` : 'B2B pricing unlocked!';
+  m.querySelector('#b2bxDoneText').textContent = returning ? 'Your wholesale pricing is active. Every toy is 20% below retail.' : `Thanks, ${first}. Every toy is now 20% below retail.`;
+  m.querySelector('#b2bxSummary').innerHTML = `<div><small>Account</small><b>${escHTML(p.email)}</b></div><div><small>Bulk quantity</small><b>${Number(p.quantity).toLocaleString('en-IN')} units</b></div><div><small>Tier</small><b>${escHTML(p.tier)}</b></div><div><small>Discount</small><b class="pink">20% OFF</b></div>`;
+}
+function b2bReset(){
+  localStorage.removeItem('playjoy-b2b'); refreshB2BUI();
+  const m = document.getElementById('b2bShopModal'); m.querySelector('#b2bxForm').reset(); setB2BQty(100); b2bGo(1);
+}
+window.openB2BShop = function(){
+  const m = ensureB2BModal();
+  const p = getB2B();
+  if(p){ fillB2BDone(p, true); b2bStep = 3; b2bGo(4); }
+  else { b2bStep = 1; b2bGo(1); }
+  requestAnimationFrame(() => m.classList.add('open'));
+  document.body.style.overflow = 'hidden'; if(window.lenis) window.lenis.stop();
+};
+window.closeB2BShop = function(){
+  const m = document.getElementById('b2bShopModal'); if(!m || !m.classList.contains('open')) return;
+  m.classList.remove('open'); document.body.style.overflow = '';
+  if(window.lenis && !document.body.classList.contains('cart-open')) window.lenis.start();
+};
+/* Leave B2B mode (used by the shop banner) */
+function exitB2B(){ localStorage.removeItem('playjoy-b2b'); refreshB2BUI(); toast('Switched back to retail prices'); }
+/* Re-render every price on the page after B2B mode changes */
+function refreshB2BUI(){
+  document.querySelectorAll('[data-site-header]').forEach(x => x.innerHTML = siteHeader(x.dataset.siteHeader));
+  initDropdowns(); updateBadges(); renderCartDrawer();
+  const home = document.querySelector('#homeProducts'); if(home){ home.innerHTML = PRODUCTS.slice(0,6).map(productCard).join(''); initMotion(); }
+  document.dispatchEvent(new CustomEvent('b2bchange'));
+}
