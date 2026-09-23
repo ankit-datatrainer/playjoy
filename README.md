@@ -4,13 +4,13 @@ PlayJoy is now a complete static storefront built with HTML, CSS and vanilla Jav
 
 ## Premium 3D Experience
 
-- Unified responsive header, navigation, cart drawer and cinematic footer
-- Nunito Sans rounded brand typography across the storefront
-- Mouse-aware 3D product-card tilt, magnetic buttons and scroll reveals
-- AI-generated cinematic homepage artwork and dedicated B2B sample artwork
-- Four distinct AI-generated gallery views for every catalog product
-- Persistent left-side cart drawer, full cart and validated checkout
-- Animated two-step sample request with locally stored submission and success celebration
+- Reference-matched homepage: ticker bar, two-row header with mega dropdowns, 3D hero, Shop by Category, Wholesalers banner, Best Sellers, promo banners, trust strip, About band and light footer
+- Award-level motion engine in `app.js`: Lenis smooth scrolling (CDN, native fallback), scroll progress bar, staggered reveals, split-text headings, animated counters, 3D tilt cards with layered depth, magnetic buttons, ripples, fly-to-cart animation, mouse + scroll parallax, floating 3D toy shapes (CSS cube, ball, ring, star)
+- Kid-friendly ambient doodles and section decorations, one-time brand preloader, `prefers-reduced-motion` respected throughout
+- Persistent cart drawer and wishlist (`localStorage`), header badges, shop filters by category / collection / age / price / new arrivals / wishlist, global search
+- Fully responsive: desktop, tablet and phone (slide-in mobile nav with tap-to-open dropdowns and in-menu search)
+- Transparent product / category / promo cutouts generated from the original renders
+- Animated two-step B2B sample modal with validation, locally stored submissions and confetti
 
 AI gallery sheets are stored in `assets/images/galleries/`. The homepage and form artwork are stored in `assets/images/hero/hero-premium-v2.png` and `assets/images/modal/sample-premium-v2.png`.
 

@@ -1,14 +1,35 @@
+/* ============================================================
+   PLAYJOY — app.js
+   Shared data, shell (header/footer), cart, wishlist, product cards,
+   B2B sample modal and the award-level motion engine.
+   ============================================================ */
 const PRODUCTS = [
-  {id:'ride-car',name:'Happy Ride Car',category:'Ride Ons',age:'1–4 Years',price:1299,old:1699,rating:4.8,reviews:120,tag:'Bestseller',image:'assets/images/products/happy_ride_car.png',gallery:'assets/images/galleries/ride-car.png',sku:'PJ-RC-001',desc:'A sturdy little ride built for big first adventures. Smooth steering, supportive seating and a smile children instantly love.',color:'#ff5a66'},
-  {id:'rings',name:'Rainbow Stacking Rings',category:'Educational',age:'6+ Months',price:499,old:699,rating:4.7,reviews:98,tag:'Top Rated',image:'assets/images/products/rainbow_stacking_rings.png',gallery:'assets/images/galleries/rings.png',sku:'PJ-ED-014',desc:'Chunky, easy-grip rings that turn colour, size and coordination into joyful early learning.',color:'#ffbd2e'},
-  {id:'teddy',name:'Soft Teddy Bear',category:'Soft Toys',age:'All Ages',price:699,old:999,rating:4.9,reviews:210,tag:'Most Loved',image:'assets/images/products/soft_teddy_bear.png',gallery:'assets/images/galleries/teddy.png',sku:'PJ-ST-008',desc:'Cloud-soft fur, a friendly face and a classic bow—made for cuddles, comfort and forever friendship.',color:'#b77a52'},
-  {id:'monster',name:'RC Monster Truck',category:'Remote Control',age:'6+ Years',price:1499,old:1999,rating:4.6,reviews:86,tag:'New',image:'assets/images/products/rc_monster_truck.png',gallery:'assets/images/galleries/monster.png',sku:'PJ-RC-029',desc:'Big tyres, responsive steering and rugged suspension bring off-road excitement to every race.',color:'#ff792e'},
-  {id:'blocks',name:'Building Blocks Set',category:'Educational',age:'6+ Years',price:799,old:1049,rating:4.8,reviews:145,tag:'STEM Pick',image:'assets/images/products/building_blocks_set.png',gallery:'assets/images/galleries/blocks.png',sku:'PJ-ED-031',desc:'Bright, durable blocks that make open-ended building, problem solving and imagination click together.',color:'#3378ee'},
-  {id:'dino',name:'Dinosaur Toy Set',category:'Action Figures',age:'3+ Years',price:999,old:1399,rating:4.7,reviews:102,tag:'Popular',image:'assets/images/products/dinosaur_toy_set.png',gallery:'assets/images/galleries/dino.png',sku:'PJ-AF-018',desc:'Four friendly prehistoric favourites with tactile detail for roaring stories and curious explorers.',color:'#55aa62'},
-  {id:'truck',name:'Construction Truck Set',category:'Vehicle Toys',age:'3+ Years',price:899,old:1199,rating:4.5,reviews:74,tag:'25% Off',image:'assets/images/products/construction_truck_set.png',gallery:'assets/images/galleries/truck.png',sku:'PJ-VT-022',desc:'A chunky working dumper with oversized wheels, ready for sandpit jobs and building-site stories.',color:'#f6b51f'},
-  {id:'bike',name:'Mini Sports Bike',category:'Ride Ons',age:'3+ Years',price:1499,old:1999,rating:4.6,reviews:68,tag:'Fast Seller',image:'assets/images/products/mini_sports_bike.png',gallery:'assets/images/galleries/bike.png',sku:'PJ-RO-026',desc:'Sporty looks meet stable training wheels in a confidence-building first motorcycle for young riders.',color:'#ef334e'},
-  {id:'kitchen',name:'Kitchen Play Set',category:'Pretend Play',age:'3+ Years',price:1799,old:2499,rating:4.8,reviews:91,tag:'28% Off',image:'assets/images/products/kitchen_play_set.png',gallery:'assets/images/galleries/kitchen.png',sku:'PJ-PP-011',desc:'A beautifully detailed mini kitchen that serves hours of role play, creativity and make-believe meals.',color:'#f49ab1'}
+  {id:'ride-car',name:'Happy Ride Car',category:'Ride Ons',collections:['Ride Ons','Outdoor','Baby Toys'],age:'1–4 Years',ageMin:12,ageMax:48,isNew:false,price:1299,old:1699,rating:4.8,reviews:120,tag:'Bestseller',image:'assets/images/products/happy_ride_car.png',gallery:'assets/images/galleries/ride-car.png',sku:'PJ-RC-001',desc:'A sturdy little ride built for big first adventures. Smooth steering, supportive seating and a smile children instantly love.',color:'#ff5a66'},
+  {id:'rings',name:'Rainbow Stacking Rings',category:'Educational',collections:['Educational','Baby Toys','Indoor'],age:'6+ Months',ageMin:6,ageMax:36,isNew:false,price:499,old:699,rating:4.7,reviews:98,tag:'Top Rated',image:'assets/images/products/rainbow_stacking_rings.png',gallery:'assets/images/galleries/rings.png',sku:'PJ-ED-014',desc:'Chunky, easy-grip rings that turn colour, size and coordination into joyful early learning.',color:'#ffbd2e'},
+  {id:'teddy',name:'Soft Teddy Bear',category:'Soft Toys',collections:['Soft Toys','Indoor','Baby Toys'],age:'All Ages',ageMin:0,ageMax:144,isNew:false,price:699,old:999,rating:4.9,reviews:210,tag:'Most Loved',image:'assets/images/products/soft_teddy_bear.png',gallery:'assets/images/galleries/teddy.png',sku:'PJ-ST-008',desc:'Cloud-soft fur, a friendly face and a classic bow—made for cuddles, comfort and forever friendship.',color:'#b77a52'},
+  {id:'monster',name:'RC Monster Truck',category:'Remote Control',collections:['Remote Control','Outdoor'],age:'6+ Years',ageMin:72,ageMax:144,isNew:true,price:1499,old:1999,rating:4.6,reviews:86,tag:'New',image:'assets/images/products/rc_monster_truck.png',gallery:'assets/images/galleries/monster.png',sku:'PJ-RC-029',desc:'Big tyres, responsive steering and rugged suspension bring off-road excitement to every race.',color:'#ff792e'},
+  {id:'blocks',name:'Building Blocks Set',category:'Educational',collections:['Educational','Indoor','Games & Puzzles'],age:'6+ Years',ageMin:36,ageMax:144,isNew:false,price:799,old:1049,rating:4.8,reviews:145,tag:'STEM Pick',image:'assets/images/products/building_blocks_set.png',gallery:'assets/images/galleries/blocks.png',sku:'PJ-ED-031',desc:'Bright, durable blocks that make open-ended building, problem solving and imagination click together.',color:'#3378ee'},
+  {id:'dino',name:'Dinosaur Toy Set',category:'Action Figures',collections:['Action Figures','Indoor'],age:'3+ Years',ageMin:36,ageMax:120,isNew:false,price:999,old:1399,rating:4.7,reviews:102,tag:'Popular',image:'assets/images/products/dinosaur_toy_set.png',gallery:'assets/images/galleries/dino.png',sku:'PJ-AF-018',desc:'Four friendly prehistoric favourites with tactile detail for roaring stories and curious explorers.',color:'#55aa62'},
+  {id:'truck',photo:true,name:'Construction Truck Set',category:'Vehicle Toys',collections:['Vehicle Toys','Outdoor'],age:'3+ Years',ageMin:36,ageMax:120,isNew:true,price:899,old:1199,rating:4.5,reviews:74,tag:'25% Off',image:'assets/images/products/construction_truck_set.png',gallery:'assets/images/galleries/truck.png',sku:'PJ-VT-022',desc:'A chunky working dumper with oversized wheels, ready for sandpit jobs and building-site stories.',color:'#f6b51f'},
+  {id:'bike',photo:true,name:'Mini Sports Bike',category:'Ride Ons',collections:['Ride Ons','Outdoor'],age:'3+ Years',ageMin:36,ageMax:96,isNew:true,price:1499,old:1999,rating:4.6,reviews:68,tag:'Fast Seller',image:'assets/images/products/mini_sports_bike.png',gallery:'assets/images/galleries/bike.png',sku:'PJ-RO-026',desc:'Sporty looks meet stable training wheels in a confidence-building first motorcycle for young riders.',color:'#ef334e'},
+  {id:'kitchen',photo:true,name:'Kitchen Play Set',category:'Pretend Play',collections:['Pretend Play','Indoor','Games & Puzzles'],age:'3+ Years',ageMin:36,ageMax:120,isNew:false,price:1799,old:2499,rating:4.8,reviews:91,tag:'28% Off',image:'assets/images/products/kitchen_play_set.png',gallery:'assets/images/galleries/kitchen.png',sku:'PJ-PP-011',desc:'A beautifully detailed mini kitchen that serves hours of role play, creativity and make-believe meals.',color:'#f49ab1'}
 ];
+
+/* Map the many category spellings used across nav / URLs to collection names */
+const CATEGORY_ALIASES = {
+  'ride ons':'Ride Ons','ride on':'Ride Ons','ride on toys':'Ride Ons',
+  'educational':'Educational','educational toys':'Educational','educational & stem':'Educational',
+  'soft toys':'Soft Toys','indoor':'Indoor','indoor toys':'Indoor',
+  'outdoor':'Outdoor','outdoor toys':'Outdoor',
+  'remote control':'Remote Control','remote control toys':'Remote Control',
+  'baby toys':'Baby Toys','action figures':'Action Figures',
+  'games & puzzles':'Games & Puzzles','games and puzzles':'Games & Puzzles','games':'Games & Puzzles',
+  'vehicle toys':'Vehicle Toys','pretend play':'Pretend Play'
+};
+function normalizeCategory(raw){ if(!raw) return ''; const k=String(raw).trim().toLowerCase(); return CATEGORY_ALIASES[k] || raw; }
+function productInCategory(p, cat){ const c=normalizeCategory(cat); return !c || p.category===c || (p.collections||[]).includes(c); }
+const AGE_BUCKETS = {'0-12m':[0,12],'1-3y':[12,36],'3-5y':[36,60],'6plus':[72,999]};
+function productInAge(p, key){ const b=AGE_BUCKETS[key]; if(!b) return true; return p.ageMin < b[1] && p.ageMax >= b[0]; }
 
 const icons = {
   user:'<svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
@@ -16,42 +37,79 @@ const icons = {
   cart:'<svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/><path d="M3 3h2l2.5 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L21 7H6"/></svg>',
   search:'<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>',
   arrow:'<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
-  close:'<svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>'
+  close:'<svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>',
+  check:'<svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>'
 };
 
-const money = n => '\u20B9' + Number(n).toLocaleString('en-IN');
-const getCart = () => JSON.parse(localStorage.getItem('playjoy-cart') || '{}');
+const money = n => '₹' + Number(n).toLocaleString('en-IN');
+const getCart = () => { try { return JSON.parse(localStorage.getItem('playjoy-cart') || '{}'); } catch(e){ return {}; } };
 const saveCart = cart => { localStorage.setItem('playjoy-cart', JSON.stringify(cart)); updateBadges(); renderCartDrawer(); };
 const cartCount = () => Object.values(getCart()).reduce((a,b)=>a+b,0);
 const cartTotal = () => Object.entries(getCart()).reduce((sum,[id,q]) => sum + (PRODUCTS.find(p=>p.id===id)?.price || 0)*q,0);
 
+/* Wishlist (persisted) */
+const getWishlist = () => { try { return JSON.parse(localStorage.getItem('playjoy-wishlist') || '[]'); } catch(e){ return []; } };
+const saveWishlist = list => { localStorage.setItem('playjoy-wishlist', JSON.stringify(list)); updateBadges(); };
+const isWished = id => getWishlist().includes(id);
+
 function addProduct(id, qty=1, open=true){
   const cart=getCart(); cart[id]=(cart[id]||0)+Number(qty); saveCart(cart);
-  toast(`${PRODUCTS.find(p=>p.id===id)?.name || 'Toy'} added to your joy bag`);
-  burst(document.querySelector(`[data-add="${id}"]`));
-  if(open) setTimeout(openCart,180);
+  const p = PRODUCTS.find(x=>x.id===id);
+  toast(`${p?.name || 'Toy'} added to your cart`);
+  const btn = document.querySelector(`[data-add="${id}"]`);
+  burst(btn);
+  if(btn){ btn.classList.add('added'); const label=btn.querySelector('span'); const old=label?label.textContent:''; if(label) label.textContent='Added ✓'; setTimeout(()=>{btn.classList.remove('added'); if(label) label.textContent=old;},1400); }
+  flyToCart(btn?.closest('.product-card')?.querySelector('img') || document.querySelector('#galleryMain'), p);
+  bumpCart();
+  if(open) setTimeout(openCart, 650);
 }
 function changeCart(id,delta){const c=getCart();c[id]=Math.max(0,(c[id]||0)+delta);if(!c[id])delete c[id];saveCart(c)}
 function removeCart(id){const c=getCart();delete c[id];saveCart(c)}
 function updateBadges(){
   const count = cartCount();
   document.querySelectorAll('[data-cart-count], #cart-counter').forEach(el => el.textContent = count);
+  const w = getWishlist().length;
+  document.querySelectorAll('[data-wish-count]').forEach(el => { el.textContent = w; el.dataset.zero = w===0; });
+}
+function bumpCart(){ const b=document.querySelector('.cart-action-btn'); if(!b) return; b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); }
+
+/* Fly-to-cart animation */
+function flyToCart(imgEl, p){
+  const target = document.querySelector('.cart-action-btn');
+  if(!target || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  let src = imgEl && imgEl.tagName==='IMG' ? imgEl.src : (p ? p.image : null);
+  if(!src) return;
+  const from = (imgEl || target).getBoundingClientRect(), to = target.getBoundingClientRect();
+  const fly = document.createElement('img'); fly.src = src; fly.className='fly-img';
+  fly.style.left = (from.left + from.width/2 - 40) + 'px'; fly.style.top = (from.top + from.height/2 - 40) + 'px';
+  document.body.appendChild(fly);
+  const dx = to.left + to.width/2 - (from.left + from.width/2), dy = to.top + to.height/2 - (from.top + from.height/2);
+  fly.animate([
+    {transform:'translate(0,0) scale(1) rotate(0deg)',opacity:1},
+    {transform:`translate(${dx*0.5}px,${dy*0.5 - 120}px) scale(.7) rotate(-14deg)`,opacity:1,offset:.55},
+    {transform:`translate(${dx}px,${dy}px) scale(.15) rotate(10deg)`,opacity:.4}
+  ],{duration:820,easing:'cubic-bezier(.2,.8,.2,1)'}).onfinish=()=>fly.remove();
 }
 
+/* ============================================================
+   SHELL: HEADER
+   ============================================================ */
 function siteHeader(active=''){
+  const catLinks = `
+    <a href="shop.html?category=Ride%20Ons">🚗 Ride On Toys</a>
+    <a href="shop.html?category=Educational">🧩 Educational Toys</a>
+    <a href="shop.html?category=Indoor">🏠 Indoor Toys</a>
+    <a href="shop.html?category=Outdoor">⚽ Outdoor Toys</a>
+    <a href="shop.html?category=Remote%20Control">⚡ Remote Control Toys</a>
+    <a href="shop.html?category=Baby%20Toys">🐥 Baby Toys</a>
+    <a href="shop.html?category=Action%20Figures">🦸 Action Figures</a>
+    <a href="shop.html?category=Games%20%26%20Puzzles">🎲 Games &amp; Puzzles</a>`;
+  const tickerItems = `<span>India's Trusted Toy Manufacturer</span><span class="announcement-sep">|</span><span>Pan India Delivery</span><span class="announcement-sep">|</span><span>B2B &amp; B2C Both</span><span class="announcement-sep">|</span><span class="announcement-highlight">Safe, Non-Toxic, Durable</span>`;
   return `
-  <!-- TOP ANNOUNCEMENT TICKER BAR -->
   <div class="announcement-bar" data-purpose="top-announcement-bar">
     <div class="announcement-container">
-      <div class="announcement-left">
-        <span>India's Trusted Toy Manufacturer</span>
-        <span class="announcement-sep">|</span>
-        <span>Pan India Delivery</span>
-        <span class="announcement-sep">|</span>
-        <span>B2B &amp; B2C Both</span>
-        <span class="announcement-sep">|</span>
-        <span class="announcement-highlight">Safe, Non-Toxic, Durable</span>
-      </div>
+      <div class="announcement-left">${tickerItems}</div>
+      <div class="announcement-marquee" aria-hidden="true"><div>${tickerItems}<span class="announcement-sep">|</span>${tickerItems}<span class="announcement-sep">|</span></div></div>
       <div class="announcement-right">
         <a class="announcement-link" href="get_a_sample.html" onclick="if(window.openSampleModal){event.preventDefault();openSampleModal()}">Become a Distributor</a>
         <span class="announcement-sep">|</span>
@@ -62,15 +120,12 @@ function siteHeader(active=''){
     </div>
   </div>
 
-  <!-- MAIN HEADER (ROW 1 + ROW 2) -->
   <header class="main-header" id="siteMainHeader">
     <div class="header-main-row">
-      <!-- Mobile Menu Toggle Button -->
-      <button class="mobile-nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.category-nav').classList.toggle('mobile-open')">
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleMobileNav()">
         <span></span><span></span><span></span>
       </button>
 
-      <!-- Brand Logo -->
       <a class="brand-logo-wrap" href="index.html" aria-label="PlayJoy Home">
         <div class="brand-logo-text">
           <span class="logo-p">P</span><span class="logo-l">l</span><span class="logo-a">a</span><span class="logo-y">y</span><span class="logo-j">J</span><span class="logo-o">o</span><span class="logo-y2">y</span>
@@ -78,33 +133,27 @@ function siteHeader(active=''){
         <span class="brand-tagline">Small Toys, Big Smiles</span>
       </a>
 
-      <!-- Center Search Bar -->
       <div class="header-search-wrap">
-        <form class="header-search-form" onsubmit="event.preventDefault();goSearch();">
-          <input class="header-search-input" id="globalSearch" type="text" placeholder="Search for toys, games, ride-ons and more..." aria-label="Search toys">
+        <form class="header-search-form" role="search" onsubmit="event.preventDefault();goSearch();">
+          <input class="header-search-input" id="globalSearch" type="text" placeholder="Search for toys, games, ride-ons and more..." aria-label="Search toys" autocomplete="off">
           <button class="header-search-btn" type="submit" aria-label="Submit search">
             <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           </button>
         </form>
       </div>
 
-      <!-- Right Header Actions -->
       <div class="header-actions-wrap">
-        <!-- Account / Login -->
         <a class="header-action-item" href="account.html">
           <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           <span class="action-label">Login / Register</span>
         </a>
-
-        <!-- Wishlist -->
-        <a class="header-action-item" href="shop.html?wishlist=1">
+        <a class="header-action-item" href="shop.html?wishlist=1" aria-label="Wishlist">
           <div class="header-icon-badge-wrap">
             <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span class="header-count-badge wish-badge" data-wish-count data-zero="true">0</span>
           </div>
           <span class="action-label">Wishlist</span>
         </a>
-
-        <!-- Cart -->
         <button class="header-action-item cart-action-btn" onclick="openCart()" aria-label="Open cart">
           <div class="header-icon-badge-wrap">
             <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
@@ -114,29 +163,23 @@ function siteHeader(active=''){
       </div>
     </div>
 
-    <!-- Category Secondary Navbar (Row 2) -->
-    <nav class="category-nav" aria-label="Category Navigation">
+    <nav class="category-nav" id="categoryNav" aria-label="Category Navigation">
       <div class="category-nav-container">
-        <!-- All Categories Dropdown -->
+        <div class="mobile-search">
+          <form role="search" onsubmit="event.preventDefault();goSearch(this.querySelector('input').value)">
+            <input type="text" placeholder="Search toys, games, ride-ons..." aria-label="Search toys">
+            <button type="submit" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+          </form>
+        </div>
         <div class="cat-nav-item has-dropdown">
-          <a class="cat-nav-link" href="shop.html">
+          <a class="cat-nav-link" href="shop.html" data-dropdown-toggle aria-haspopup="true">
             <span>All Categories</span>
             <svg class="cat-caret" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
           </a>
-          <div class="cat-dropdown-menu">
-            <a href="shop.html?category=Ride%20Ons">🚗 Ride On Toys</a>
-            <a href="shop.html?category=Educational">🧩 Educational &amp; STEM</a>
-            <a href="shop.html?category=Soft%20Toys">🧸 Soft &amp; Plush Friends</a>
-            <a href="shop.html?category=Remote%20Control">⚡ Remote Control Toys</a>
-            <a href="shop.html?category=Action%20Figures">🦸 Action Figures</a>
-            <a href="shop.html?category=Vehicle%20Toys">🚛 Construction &amp; Vehicles</a>
-            <a href="shop.html?category=Pretend%20Play">🍳 Pretend Play Sets</a>
-          </div>
+          <div class="cat-dropdown-menu">${catLinks}</div>
         </div>
-
-        <!-- By Age Dropdown -->
         <div class="cat-nav-item has-dropdown">
-          <a class="cat-nav-link" href="shop.html">
+          <a class="cat-nav-link" href="shop.html" data-dropdown-toggle aria-haspopup="true">
             <span>By Age</span>
             <svg class="cat-caret" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
           </a>
@@ -147,35 +190,133 @@ function siteHeader(active=''){
             <a href="shop.html?age=6plus">🎒 6+ Years</a>
           </div>
         </div>
-
         <a class="cat-nav-link" href="shop.html?filter=brands">Brands</a>
         <a class="cat-nav-link" href="shop.html?filter=new">New Arrivals</a>
         <a class="cat-nav-link cat-nav-highlight ${active==='bestsellers'?'active':''}" href="shop.html?sort=rating">Best Sellers</a>
         <a class="cat-nav-link" href="shop.html?category=Ride%20Ons">Ride Ons</a>
         <a class="cat-nav-link" href="shop.html?category=Outdoor">Outdoor Toys</a>
         <a class="cat-nav-link" href="shop.html?category=Educational">Educational Toys</a>
-
-        <a class="cat-nav-link cat-nav-b2b" href="get_a_sample.html" onclick="if(window.openSampleModal){event.preventDefault();openSampleModal()}">
+        <a class="cat-nav-link cat-nav-b2b" href="get_a_sample.html" onclick="if(window.openSampleModal){event.preventDefault();closeMobileNav();openSampleModal()}">
           <span>Bulk Enquiry</span>
         </a>
       </div>
     </nav>
-  </header>`;
+  </header>
+  <div class="nav-backdrop" onclick="closeMobileNav()"></div>`;
 }
 
+/* Mobile nav + dropdown behaviour */
+function toggleMobileNav(){ document.body.classList.contains('nav-open') ? closeMobileNav() : openMobileNav(); }
+function openMobileNav(){ document.body.classList.add('nav-open'); document.querySelector('.mobile-nav-toggle')?.setAttribute('aria-expanded','true'); if(window.lenis) window.lenis.stop(); }
+function closeMobileNav(){ document.body.classList.remove('nav-open'); document.querySelector('.mobile-nav-toggle')?.setAttribute('aria-expanded','false'); document.querySelectorAll('.has-dropdown.open').forEach(d=>d.classList.remove('open')); if(window.lenis && !document.body.classList.contains('cart-open')) window.lenis.start(); }
+function initDropdowns(){
+  document.querySelectorAll('[data-dropdown-toggle]').forEach(link=>{
+    link.addEventListener('click', e=>{
+      const item = link.closest('.has-dropdown');
+      const touchLike = matchMedia('(hover:none)').matches || innerWidth <= 860;
+      if(touchLike || !item.classList.contains('open')){
+        // first tap opens, second tap (desktop) follows the link
+        if(touchLike || matchMedia('(hover:none)').matches){ e.preventDefault(); }
+        else if(!item.classList.contains('open')){ e.preventDefault(); }
+        document.querySelectorAll('.has-dropdown.open').forEach(d=>{ if(d!==item) d.classList.remove('open'); });
+        item.classList.toggle('open');
+      }
+    });
+  });
+  document.addEventListener('click', e=>{ if(!e.target.closest('.has-dropdown')) document.querySelectorAll('.has-dropdown.open').forEach(d=>d.classList.remove('open')); });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ document.querySelectorAll('.has-dropdown.open').forEach(d=>d.classList.remove('open')); closeMobileNav(); closeCart(); if(window.closeSampleModal) closeSampleModal(); } });
+  window.addEventListener('resize', ()=>{ if(innerWidth>860) closeMobileNav(); });
+}
+
+/* ============================================================
+   SHELL: FOOTER (reference layout)
+   ============================================================ */
 function siteFooter(){
-  return `<section class="promise"><div class="container promise-grid"><div><span>01</span><b>Child-safe always</b><small>BIS compliant materials</small></div><div><span>02</span><b>Made for real play</b><small>Durability tested</small></div><div><span>03</span><b>Delivery, India-wide</b><small>Tracked to your door</small></div><div><span>04</span><b>Easy, human help</b><small>We are here for you</small></div></div></section>
-  <footer class="footer"><div class="footer-orb orb-one"></div><div class="footer-orb orb-two"></div><div class="container footer-top"><div class="footer-intro"><a class="logo light" href="index.html"><b class="l1">P</b><b class="l2">l</b><b class="l3">a</b><b class="l4">y</b><b class="l5">J</b><b class="l6">o</b><b class="l7">y</b><small>Small toys. Big smiles.</small></a><h2>Let’s make<br>play wonderful.</h2><p>Original toys, thoughtful design and a little everyday magic.</p></div><div><h4>Discover</h4><a href="shop.html">All toys</a><a href="shop.html?sort=rating">Best sellers</a><a href="shop.html?category=Educational">Educational</a><a href="shop.html?category=Ride%20Ons">Ride ons</a></div><div><h4>PlayJoy</h4><a href="about.html">Our story</a><a href="contact.html">Contact us</a><a href="contact.html#faq">Help & FAQs</a><a href="account.html">My account</a></div><div><h4>For business</h4><a href="get_a_sample.html" onclick="if(window.openSampleModal){event.preventDefault();openSampleModal()}">Get a sample</a><a href="get_a_sample.html" onclick="if(window.openSampleModal){event.preventDefault();openSampleModal()}">Bulk enquiry</a><a href="get_a_sample.html" onclick="if(window.openSampleModal){event.preventDefault();openSampleModal()}">Become a distributor</a><div class="newsletter"><input placeholder="Email for happy news"><button aria-label="Subscribe">${icons.arrow}</button></div></div></div><div class="container footer-bottom"><span>© 2026 PlayJoy. Designed for brighter tomorrows.</span><span>Instagram · YouTube · LinkedIn</span></div></footer>`;
+  const sampleClick = `onclick="if(window.openSampleModal){event.preventDefault();openSampleModal()}"`;
+  return `
+  <footer class="site-footer">
+    <div class="footer-blob b1"></div><div class="footer-blob b2"></div>
+    <div class="container footer-grid">
+      <div class="footer-brand reveal">
+        <a class="brand-logo-wrap" href="index.html" aria-label="PlayJoy Home">
+          <div class="brand-logo-text"><span class="logo-p">P</span><span class="logo-l">l</span><span class="logo-a">a</span><span class="logo-y">y</span><span class="logo-j">J</span><span class="logo-o">o</span><span class="logo-y2">y</span></div>
+          <span class="brand-tagline">Small Toys, Big Smiles</span>
+        </a>
+        <p>A Proud Indian Toy Manufacturer</p>
+      </div>
+      <div class="footer-links reveal" style="--d:.05s"><h4>Shop</h4>
+        <a href="shop.html">All Products</a><a href="shop.html?filter=new">New Arrivals</a><a href="shop.html?sort=rating">Best Sellers</a><a href="shop.html?age=1-3y">By Age</a><a href="shop.html">By Category</a>
+      </div>
+      <div class="footer-links reveal" style="--d:.1s"><h4>B2B</h4>
+        <a href="get_a_sample.html" ${sampleClick}>Get a Sample</a><a href="get_a_sample.html" ${sampleClick}>Bulk Enquiry</a><a href="get_a_sample.html" ${sampleClick}>Become a Distributor</a><a href="account.html">B2B Login</a>
+      </div>
+      <div class="footer-links reveal" style="--d:.15s"><h4>Support</h4>
+        <a href="contact.html#faq">Track Order</a><a href="contact.html#faq">Shipping Policy</a><a href="contact.html#faq">Return &amp; Refund</a><a href="contact.html#faq">FAQs</a><a href="contact.html">Contact Us</a>
+      </div>
+      <div class="footer-links reveal" style="--d:.2s"><h4>Company</h4>
+        <a href="about.html">About Us</a><a href="about.html">Our Manufacturing</a><a href="about.html">Quality &amp; Safety</a><a href="contact.html">Careers</a><a href="about.html">Blog</a>
+      </div>
+      <div class="footer-connect reveal" style="--d:.25s"><h4>Connect With Us</h4>
+        <div class="social-row">
+          <a class="ig" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.2.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8C2.4 4 4 2.4 7.2 2.3c1.3-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg></a>
+          <a class="fb" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.3l-.5 3.5h-2.8v8.4A12 12 0 0 0 24 12z"/></svg></a>
+          <a class="yt" href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg></a>
+          <a class="in" href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1zM7.1 20.5H3.6V9h3.5v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.5c0 1 .8 1.8 1.8 1.8h20.4c1 0 1.8-.8 1.8-1.8V1.7C24 .8 23.2 0 22.2 0z"/></svg></a>
+        </div>
+        <form class="newsletter" onsubmit="event.preventDefault();toast('Thanks! You are on the PlayJoy list 🎉');this.reset()">
+          <input type="email" placeholder="Enter your email" aria-label="Email address" required>
+          <button type="submit" aria-label="Subscribe">${icons.arrow}</button>
+        </form>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 PlayJoy Toys. All Rights Reserved.</span>
+      <nav><a href="contact.html#faq">Terms &amp; Conditions</a><i>|</i><a href="contact.html#faq">Privacy Policy</a><i>|</i><a href="shop.html">Sitemap</a></nav>
+    </div>
+  </footer>`;
 }
 
-function cartDrawer(){return `<div class="drawer-backdrop" onclick="closeCart()"></div><aside class="cart-drawer" aria-label="Shopping cart"><div class="drawer-head"><div><small>YOUR JOY BAG</small><h2>Cart <span data-cart-count>0</span></h2></div><button onclick="closeCart()">${icons.close}</button></div><div class="drawer-items" id="drawerItems"></div><div class="drawer-foot"><div class="drawer-total"><span>Subtotal</span><b id="drawerTotal">${money(0)}</b></div><small>Taxes included. Shipping calculated at checkout.</small><a class="btn btn-primary btn-block" href="checkout.html">Checkout securely ${icons.arrow}</a><a class="drawer-view" href="cart.html">View full cart</a></div></aside>`}
-function renderCartDrawer(){const root=document.querySelector('#drawerItems');if(!root)return;const entries=Object.entries(getCart());root.innerHTML=entries.length?entries.map(([id,q])=>{const p=PRODUCTS.find(x=>x.id===id);if(!p)return'';return `<div class="drawer-item"><a href="product_details.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a><div><small>${p.category}</small><h3>${p.name}</h3><b>${money(p.price)}</b><div class="mini-qty"><button onclick="changeCart('${id}',-1)">−</button><span>${q}</span><button onclick="changeCart('${id}',1)">+</button></div></div><button class="remove-x" onclick="removeCart('${id}')">${icons.close}</button></div>`}).join(''):`<div class="drawer-empty"><div class="empty-ball">◯</div><h3>Your joy bag is empty</h3><p>There is always room for a little more wonder.</p><a class="btn btn-dark" href="shop.html">Explore toys</a></div>`;document.querySelector('#drawerTotal').textContent=money(cartTotal())}
-function openCart(){document.body.classList.add('cart-open');renderCartDrawer()}
-function closeCart(){document.body.classList.remove('cart-open')}
-function toggleWish(btn){btn.classList.toggle('active');toast(btn.classList.contains('active')?'Saved to your wishlist':'Removed from wishlist')}
-function goSearch(){const q=document.querySelector('#globalSearch')?.value.trim();location.href='shop.html'+(q?'?q='+encodeURIComponent(q):'')}
-function toast(message){let t=document.querySelector('.toast');if(!t){t=document.createElement('div');t.className='toast';document.body.appendChild(t)}t.innerHTML=`<b>✓</b><span>${message}</span>`;t.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove('show'),2600)}
-function burst(el){if(!el)return;for(let i=0;i<7;i++){const s=document.createElement('i');s.className='spark';s.style.cssText=`--x:${(Math.random()-.5)*90}px;--y:${-20-Math.random()*60}px;--c:${['#ff3974','#ffc62f','#3aa7ff','#50c78d'][i%4]}`;el.appendChild(s);setTimeout(()=>s.remove(),800)}}
+/* ============================================================
+   PRODUCT CARD (3D layered)
+   ============================================================ */
+function productCard(p, i=0){
+  const off=Math.round((1-p.price/p.old)*100);
+  const sub = p.id==='ride-car' ? 'Push Ride On (1–4 Years)' : (p.age==='All Ages' ? 'For All Ages' : p.age);
+  const wished = isWished(p.id);
+  return `<article class="product-card reveal tilt ${p.photo?'photo':''}" style="--toy:${p.color};--d:${(i%6)*.06}s" data-category="${p.category}" data-id="${p.id}">
+    <div class="card-shine"></div><span class="tag">${p.tag}</span>
+    <button class="heart ${wished?'active':''}" aria-label="Save ${p.name} to wishlist" aria-pressed="${wished}" data-wish="${p.id}" onclick="toggleWish(this,'${p.id}')">${icons.heart}</button>
+    <a href="product_details.html?id=${p.id}" class="product-image" aria-hidden="true" tabindex="-1"><span class="blob"></span></a>
+    <a href="product_details.html?id=${p.id}" class="product-img-link"><img src="${p.image}" alt="${p.name}" loading="lazy"></a>
+    <div class="product-copy">
+      <h3><a href="product_details.html?id=${p.id}">${p.name}</a></h3>
+      <div class="product-sub-line">${sub}</div>
+      <div class="rating"><span>${'★'.repeat(Math.round(p.rating))}${'☆'.repeat(5-Math.round(p.rating))}</span> (${p.reviews})</div>
+      <div class="price-row"><b>${money(p.price)}</b><s>${money(p.old)}</s><em>${off}% OFF</em></div>
+      <button class="btn btn-primary add-btn" data-add="${p.id}" onclick="addProduct('${p.id}')">${icons.cart}<span>Add to Cart</span></button>
+    </div>
+  </article>`;
+}
+
+/* ============================================================
+   CART DRAWER, TOAST, SPARKS
+   ============================================================ */
+function cartDrawer(){return `<div class="drawer-backdrop" onclick="closeCart()"></div><aside class="cart-drawer" aria-label="Shopping cart"><div class="drawer-head"><div><small>YOUR CART</small><h2>Cart <span data-cart-count>0</span></h2></div><button onclick="closeCart()" aria-label="Close cart">${icons.close}</button></div><div class="drawer-items" id="drawerItems"></div><div class="drawer-foot"><div class="drawer-total"><span>Subtotal</span><b id="drawerTotal">${money(0)}</b></div><small>Taxes included. Shipping calculated at checkout.</small><a class="btn btn-primary btn-block" href="checkout.html">Checkout securely ${icons.arrow}</a><a class="drawer-view" href="cart.html">View full cart</a></div></aside>`}
+function renderCartDrawer(){const root=document.querySelector('#drawerItems');if(!root)return;const entries=Object.entries(getCart());root.innerHTML=entries.length?entries.map(([id,q],i)=>{const p=PRODUCTS.find(x=>x.id===id);if(!p)return'';return `<div class="drawer-item" style="animation-delay:${i*.06}s"><a href="product_details.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a><div><small>${p.category}</small><h3>${p.name}</h3><b>${money(p.price)}</b><div class="mini-qty"><button onclick="changeCart('${id}',-1)" aria-label="Decrease">−</button><span>${q}</span><button onclick="changeCart('${id}',1)" aria-label="Increase">+</button></div></div><button class="remove-x" onclick="removeCart('${id}')" aria-label="Remove">${icons.close}</button></div>`}).join(''):`<div class="drawer-empty"><div class="empty-ball"></div><h3>Your cart is empty</h3><p>There is always room for a little more wonder.</p><a class="btn btn-dark" href="shop.html" onclick="closeCart()">Explore toys</a></div>`;document.querySelector('#drawerTotal').textContent=money(cartTotal())}
+function openCart(){document.body.classList.add('cart-open');renderCartDrawer();if(window.lenis)window.lenis.stop()}
+function closeCart(){document.body.classList.remove('cart-open');if(window.lenis&&!document.body.classList.contains('nav-open'))window.lenis.start()}
+function toggleWish(btn,id){
+  if(!id) id = btn.dataset.wish || btn.closest('[data-id]')?.dataset.id;
+  let list=getWishlist(); const on=!list.includes(id);
+  list = on ? [...list,id] : list.filter(x=>x!==id); saveWishlist(list);
+  document.querySelectorAll(`[data-wish="${id}"]`).forEach(b=>{b.classList.toggle('active',on);b.setAttribute('aria-pressed',on)});
+  if(btn && !btn.dataset.wish) btn.classList.toggle('active',on);
+  if(on) burst(btn);
+  toast(on?'Saved to your wishlist ♥':'Removed from wishlist');
+}
+function goSearch(v){const q=(v ?? document.querySelector('#globalSearch')?.value ?? '').trim();location.href='shop.html'+(q?'?q='+encodeURIComponent(q):'')}
+function toast(message){let t=document.querySelector('.toast');if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.innerHTML=`<b>✓</b><span>${message}</span>`;t.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove('show'),2600)}
+function burst(el){if(!el)return;for(let i=0;i<9;i++){const s=document.createElement('i');s.className='spark';s.style.cssText=`--x:${(Math.random()-.5)*110}px;--y:${-20-Math.random()*70}px;--c:${['#ff3974','#ffc62f','#3aa7ff','#50c78d','#a855f7'][i%5]}`;el.appendChild(s);setTimeout(()=>s.remove(),800)}}
 
 /* ============================================================
    GLOBAL B2B SAMPLE MODAL (MATCHING USER IMAGES 1 & 2)
@@ -532,14 +673,14 @@ window.openSampleModal = function(productName = '') {
   }
   modalGoToStep(1);
   modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden'; if(window.lenis) window.lenis.stop();
 };
 
 window.closeSampleModal = function() {
   const modal = document.getElementById('globalSampleModalBackdrop');
   if (modal) {
     modal.classList.remove('open');
-    document.body.style.overflow = '';
+    document.body.style.overflow = ''; if(window.lenis && !document.body.classList.contains('cart-open')) window.lenis.start();
   }
 };
 
@@ -740,45 +881,173 @@ function triggerConfetti() {
   }
 }
 
-function initMotion(){
-  const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.09});
-  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-  if(matchMedia('(pointer:fine) and (prefers-reduced-motion:no-preference)').matches){
-    document.querySelectorAll('.tilt').forEach(card=>{card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.setProperty('--rx',`${-y*9}deg`);card.style.setProperty('--ry',`${x*11}deg`);card.style.setProperty('--mx',`${x*100+50}%`);card.style.setProperty('--my',`${y*100+50}%`)});card.addEventListener('pointerleave',()=>{card.style.setProperty('--rx','0deg');card.style.setProperty('--ry','0deg')})});
-    document.querySelectorAll('.magnetic').forEach(btn=>{btn.addEventListener('pointermove',e=>{const r=btn.getBoundingClientRect();btn.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.12}px,${(e.clientY-r.top-r.height/2)*.12}px)`});btn.addEventListener('pointerleave',()=>btn.style.transform='')});
 
-    // Hero section award-level interactive parallax
-    const heroSection = document.querySelector('.hero-section-v2');
-    if (heroSection) {
-      const doodle1 = document.getElementById('doodleBadge1');
-      const doodle2 = document.getElementById('doodleBadge2');
-      const photoCard = document.getElementById('heroPhotoCard');
-      
-      heroSection.addEventListener('pointermove', e => {
-        const rect = heroSection.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        
-        if (doodle1) doodle1.style.transform = `translate(${x * -22}px, ${y * -22}px) rotate(${-6 + x * 6}deg)`;
-        if (doodle2) doodle2.style.transform = `translate(${x * 25}px, ${y * 25}px) rotate(${8 + y * 6}deg)`;
-        if (photoCard) {
-          photoCard.style.setProperty('--rx', `${-y * 10}deg`);
-          photoCard.style.setProperty('--ry', `${x * 12}deg`);
-        }
-      });
+/* ============================================================
+   MOTION ENGINE (award-level, kid-friendly, reduced-motion aware)
+   ============================================================ */
+const REDUCED = matchMedia('(prefers-reduced-motion:reduce)').matches;
+const FINE_POINTER = matchMedia('(pointer:fine)').matches;
 
-      heroSection.addEventListener('pointerleave', () => {
-        if (doodle1) doodle1.style.transform = '';
-        if (doodle2) doodle2.style.transform = '';
-        if (photoCard) {
-          photoCard.style.setProperty('--rx', '0deg');
-          photoCard.style.setProperty('--ry', '0deg');
-        }
-      });
+/* Smooth scrolling (Lenis) — loads from CDN, falls back to native */
+function initSmoothScroll(){
+  if(REDUCED || window.lenis) return;
+  const boot = () => {
+    if(!window.Lenis) return;
+    const lenis = new Lenis({ lerp:.085, smoothWheel:true, wheelMultiplier:.95, touchMultiplier:1.4 });
+    window.lenis = lenis;
+    const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
+    requestAnimationFrame(raf);
+    document.documentElement.classList.add('lenis','lenis-smooth');
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href');if(id.length>1&&document.querySelector(id)){e.preventDefault();lenis.scrollTo(id,{offset:-110})}}));
+    if(location.hash && document.querySelector(location.hash)) setTimeout(()=>lenis.scrollTo(location.hash,{offset:-110}),400);
+    if(document.body.classList.contains('cart-open')||document.body.classList.contains('nav-open')) lenis.stop();
+  };
+  if(window.Lenis){ boot(); return; }
+  const s=document.createElement('script'); s.src='https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js'; s.async=true; s.onload=boot; document.head.appendChild(s);
+}
+
+/* Preloader — once per browser session */
+function initPreloader(){
+  if(REDUCED || sessionStorage.getItem('pj-loaded')) return;
+  sessionStorage.setItem('pj-loaded','1');
+  const el=document.createElement('div'); el.className='preloader'; el.setAttribute('aria-hidden','true');
+  el.innerHTML=`<div><div class="pl-logo"><span>P</span><span>l</span><span>a</span><span>y</span><span>J</span><span>o</span><span>y</span></div><div class="pl-sub">Small Toys, Big Smiles</div><div class="pl-ball"></div></div>`;
+  document.body.prepend(el);
+  const start=performance.now();
+  const done=()=>{const wait=Math.max(0,750-(performance.now()-start));setTimeout(()=>{el.classList.add('done');setTimeout(()=>el.remove(),700)},wait)};
+  if(document.readyState==='complete') done(); else window.addEventListener('load',done,{once:true});
+  setTimeout(done,2400);
+}
+
+/* Scroll progress + header shrink + back-to-top + parallax layers (single rAF) */
+function initScrollFX(){
+  const bar=document.createElement('div'); bar.className='scroll-progress'; document.body.appendChild(bar);
+  const header=document.querySelector('.main-header');
+  const topBtn=document.querySelector('.fab-top');
+  let ticking=false;
+  const update=()=>{
+    const y=window.scrollY||document.documentElement.scrollTop;
+    const h=document.documentElement.scrollHeight-innerHeight;
+    bar.style.transform=`scaleX(${h>0?Math.min(1,y/h):0})`;
+    if(header) header.classList.toggle('scrolled',y>40);
+    if(topBtn) topBtn.classList.toggle('visible',y>420);
+    document.querySelectorAll('.reveal:not(.visible),.reveal-left:not(.visible),.reveal-right:not(.visible),.reveal-pop:not(.visible),.split:not(.visible)').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<innerHeight-30&&r.bottom>0){el.classList.add('visible');el.querySelectorAll('[data-count]').forEach(animateCount);setTimeout(()=>el.classList.add('settled'),1100)}});
+    if(!REDUCED){
+      document.querySelectorAll('.bg-doodles span').forEach(s=>{s.style.transform=`translate3d(0,${-y*s.dataset.speed}px,0) rotate(${y*s.dataset.rot}deg)`});
+      document.querySelectorAll('.section-doodles span').forEach(s=>{const r=s.closest('section').getBoundingClientRect();const rel=(r.top-innerHeight/2)*s.dataset.speed;s.style.transform=`translate3d(0,${rel}px,0) rotate(${rel*.4}deg)`});
+      const hero=document.querySelector('.hero-section-v2');
+      if(hero && y<hero.offsetHeight){document.querySelectorAll('.hero-section-v2 .shape').forEach(s=>{s.style.setProperty('--sy',`${y*(s.dataset.depth||.2)*.6}px`)});const bg=hero.querySelector('.hero-bg');if(bg)bg.style.setProperty('--py',`${y*.12}px`)}
     }
+    ticking=false;
+  };
+  window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(update);ticking=true}},{passive:true});
+  update();
+}
+
+/* Playful fixed background doodles */
+function initDoodles(){
+  if(REDUCED || document.querySelector('.bg-doodles')) return;
+  const wrap=document.createElement('div'); wrap.className='bg-doodles'; wrap.setAttribute('aria-hidden','true');
+  const glyphs=['★','●','✦','♥','▲','✿','◆','☆'];
+  const colors=['#E60067','#FBBF24','#0284C7','#10B981','#8B5CF6','#FB923C'];
+  const count = innerWidth<700 ? 8 : 16;
+  let html='';
+  for(let i=0;i<count;i++){
+    const g=glyphs[i%glyphs.length], c=colors[i%colors.length];
+    html+=`<span data-speed="${(.05+Math.random()*.2).toFixed(3)}" data-rot="${(Math.random()*.06-.03).toFixed(3)}" style="left:${Math.random()*100}%;top:${20+Math.random()*260}vh;color:${c};font-size:${14+Math.random()*24}px">${g}</span>`;
+  }
+  wrap.innerHTML=html; document.body.prepend(wrap);
+}
+
+/* Split headings into words for staggered reveals */
+function splitText(el){
+  if(el.dataset.split) return; el.dataset.split='1';
+  const words=el.textContent.trim().split(/\s+/);
+  el.innerHTML=words.map((w,i)=>`<span class="w"><span style="transition-delay:${i*.06}s">${w}</span></span>`).join(' ');
+}
+
+/* Animated counters */
+function animateCount(el){
+  if(el.dataset.done) return; el.dataset.done='1';
+  const target=+el.dataset.count, suffix=el.dataset.suffix||'', dur=1400, start=performance.now();
+  const step=t=>{const p=Math.min(1,(t-start)/dur);const e=1-Math.pow(1-p,3);el.textContent=Math.round(target*e).toLocaleString('en-IN')+suffix;if(p<1)requestAnimationFrame(step)};
+  requestAnimationFrame(step);
+}
+
+/* Ripple on buttons */
+function initRipples(){
+  document.addEventListener('pointerdown',e=>{
+    const b=e.target.closest('.btn,.hero-btn-b2c,.hero-btn-b2b,.wholesale-btn,.b2b-btn-submit,.ref-btn');
+    if(!b||REDUCED) return;
+    const r=b.getBoundingClientRect(),d=Math.max(r.width,r.height);
+    const s=document.createElement('span'); s.className='ripple';
+    s.style.cssText=`width:${d}px;height:${d}px;left:${e.clientX-r.left-d/2}px;top:${e.clientY-r.top-d/2}px`;
+    b.appendChild(s); setTimeout(()=>s.remove(),650);
+  });
+}
+
+/* Reveal / tilt / magnetic — safe to call repeatedly (e.g. after re-render) */
+function initMotion(){
+  const io = window.__pjObserver || (window.__pjObserver = new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting) return;
+    e.target.classList.add('visible'); setTimeout(()=>e.target.classList.add('settled'),1100);
+    e.target.querySelectorAll?.('[data-count]').forEach(animateCount);
+    if(e.target.dataset.count) animateCount(e.target);
+    io.unobserve(e.target);
+  }),{threshold:.12,rootMargin:'0px 0px -40px 0px'}));
+  document.querySelectorAll('.split').forEach(splitText);
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-pop,.split,[data-count]').forEach(el=>{ if(el.dataset.obs) return; el.dataset.obs='1'; io.observe(el); });
+  if(REDUCED){ document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-pop,.split').forEach(el=>el.classList.add('visible')); document.querySelectorAll('[data-count]').forEach(animateCount); }
+
+  if(FINE_POINTER && !REDUCED){
+    document.querySelectorAll('.tilt,.cat-tile,.promo-card,.about-photo-card').forEach(card=>{
+      if(card.dataset.tilt) return; card.dataset.tilt='1';
+      const strength = card.classList.contains('cat-tile') ? 14 : card.classList.contains('product-card') ? 9 : 6;
+      card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.setProperty('--rx',`${-y*strength}deg`);card.style.setProperty('--ry',`${x*strength*1.2}deg`);card.style.setProperty('--mx',`${x*100+50}%`);card.style.setProperty('--my',`${y*100+50}%`);card.querySelectorAll('[data-depth]').forEach(l=>{const d=+l.dataset.depth;l.style.setProperty('--tx',`${x*d*40}px`);l.style.setProperty('--ty',`${y*d*40}px`)})});
+      card.addEventListener('pointerleave',()=>{card.style.setProperty('--rx','0deg');card.style.setProperty('--ry','0deg');card.querySelectorAll('[data-depth]').forEach(l=>{l.style.setProperty('--tx','0px');l.style.setProperty('--ty','0px')})});
+    });
+    document.querySelectorAll('.magnetic').forEach(btn=>{
+      if(btn.dataset.mag) return; btn.dataset.mag='1';
+      btn.addEventListener('pointermove',e=>{const r=btn.getBoundingClientRect();btn.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.14}px,${(e.clientY-r.top-r.height/2)*.14}px)`});
+      btn.addEventListener('pointerleave',()=>btn.style.transform='');
+    });
+
+    // Hero: mouse parallax on background + 3D shapes
+    const hero=document.querySelector('.hero-section-v2');
+    if(hero && !hero.dataset.par){
+      hero.dataset.par='1';
+      const bg=hero.querySelector('.hero-bg'), shapes=hero.querySelectorAll('.shape');
+      hero.addEventListener('pointermove',e=>{
+        const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+        if(bg) bg.style.setProperty('--px',`${x*-18}px`);
+        shapes.forEach(s=>{const d=+s.dataset.depth||.3;s.style.setProperty('--tx',`${x*d*90}px`);s.style.setProperty('--ty',`${y*d*70}px`)});
+      });
+      hero.addEventListener('pointerleave',()=>{if(bg)bg.style.setProperty('--px','0px');shapes.forEach(s=>{s.style.setProperty('--tx','0px');s.style.setProperty('--ty','0px')})});
+    }
+    // Wholesale banner: parallax art
+    const wb=document.querySelector('.wholesale-banner');
+    if(wb && !wb.dataset.par){wb.dataset.par='1';const art=wb.querySelector('.wholesale-art img');wb.addEventListener('pointermove',e=>{const r=wb.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;if(art){art.style.setProperty('--tx',`${x*22}px`);art.style.setProperty('--ty',`${y*16}px`)}});wb.addEventListener('pointerleave',()=>{if(art){art.style.setProperty('--tx','0px');art.style.setProperty('--ty','0px')}})}
   }
 }
+
+/* Section doodle decorations */
+function decorateSections(){
+  if(REDUCED) return;
+  const glyphs=['★','●','✦','♥','▲','✿'];
+  const colors=['#E60067','#FBBF24','#0284C7','#10B981','#8B5CF6','#FB923C'];
+  document.querySelectorAll('section.section').forEach((sec,si)=>{
+    if(sec.querySelector('.section-doodles')) return;
+    const wrap=document.createElement('div'); wrap.className='section-doodles'; wrap.setAttribute('aria-hidden','true');
+    let html=''; for(let i=0;i<5;i++){html+=`<span data-speed="${(.08+Math.random()*.18).toFixed(3)}" style="left:${Math.random()*96}%;top:${Math.random()*90}%;color:${colors[(si+i)%colors.length]};font-size:${16+Math.random()*22}px">${glyphs[(si+i)%glyphs.length]}</span>`}
+    wrap.innerHTML=html; sec.prepend(wrap);
+  });
+}
+
+/* ============================================================
+   SHELL INIT
+   ============================================================ */
 function initShell(){
+  initPreloader();
   document.querySelectorAll('[data-site-header]').forEach(x=>x.innerHTML=siteHeader(x.dataset.siteHeader));
   document.querySelectorAll('[data-site-footer]').forEach(x=>x.innerHTML=siteFooter());
   document.body.insertAdjacentHTML('beforeend',cartDrawer());
@@ -788,33 +1057,28 @@ function initShell(){
   }
   updateBadges();
   renderCartDrawer();
-  document.querySelector('#globalSearch')?.addEventListener('keydown',e=>{if(e.key==='Enter')goSearch()});
-  initMotion();
+  document.querySelector('#globalSearch')?.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();goSearch()}});
+  initDropdowns();
   initFloatingButtons();
+  initDoodles();
+  decorateSections();
+  initMotion();
+  initRipples();
+  initScrollFX();
+  initSmoothScroll();
+  // keep header cart in sync across tabs
+  window.addEventListener('storage',e=>{if(e.key==='playjoy-cart'||e.key==='playjoy-wishlist'){updateBadges();renderCartDrawer()}});
 }
 function initFloatingButtons(){
-  // WhatsApp floating button
   const waBtn = document.createElement('a');
   waBtn.href = 'https://wa.me/919999999999?text=Hi%20PlayJoy!%20I%27m%20interested%20in%20your%20toys.';
-  waBtn.target = '_blank';
-  waBtn.rel = 'noopener noreferrer';
-  waBtn.className = 'fab-whatsapp';
-  waBtn.setAttribute('aria-label','Chat on WhatsApp');
+  waBtn.target = '_blank'; waBtn.rel = 'noopener noreferrer'; waBtn.className = 'fab-whatsapp'; waBtn.setAttribute('aria-label','Chat on WhatsApp');
   waBtn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span class="wa-tooltip">Chat with us!</span>`;
   document.body.appendChild(waBtn);
-
-  // Back-to-top button
   const topBtn = document.createElement('button');
-  topBtn.className = 'fab-top';
-  topBtn.setAttribute('aria-label','Scroll to top');
+  topBtn.className = 'fab-top'; topBtn.setAttribute('aria-label','Scroll to top');
   topBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>';
-  topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  topBtn.addEventListener('click',()=>{ if(window.lenis) window.lenis.scrollTo(0); else window.scrollTo({top:0,behavior:'smooth'}); });
   document.body.appendChild(topBtn);
-
-  // Show/hide back-to-top on scroll
-  let ticking = false;
-  window.addEventListener('scroll',()=>{
-    if(!ticking){window.requestAnimationFrame(()=>{topBtn.classList.toggle('visible',window.scrollY>400);ticking=false});ticking=true}
-  });
 }
 document.addEventListener('DOMContentLoaded',initShell);

@@ -1,4 +1,118 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Shop Toys | PlayJoy - Small Toys, Big Smiles</title><meta name="description" content="Shop safe, durable and joyful PlayJoy toys for every age."><link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96"/><link rel="icon" type="image/svg+xml" href="favicon.svg"/><link rel="shortcut icon" href="favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/><meta name="apple-mobile-web-app-title" content="PlayJoy"/><link rel="manifest" href="site.webmanifest"/><link rel="stylesheet" href="styles.css"></head><body><div data-site-header="shop"></div><section class="page-hero"><div class="container"><h1>Find their new favourite toy</h1><p>Thoughtfully designed toys for curious minds, little adventurers and big imaginations.</p></div></section><main class="container"><div class="breadcrumb"><a href="index.html">Home</a> › Shop Toys</div><section class="section" style="padding-top:12px"><div class="catalog-layout"><aside class="filters"><div class="filter-group"><h3>Categories</h3><label><input type="radio" name="cat" value="" checked> All Toys</label><label><input type="radio" name="cat" value="Ride Ons"> Ride Ons</label><label><input type="radio" name="cat" value="Educational"> Educational</label><label><input type="radio" name="cat" value="Soft Toys"> Soft Toys</label><label><input type="radio" name="cat" value="Remote Control"> Remote Control</label><label><input type="radio" name="cat" value="Action Figures"> Action Figures</label></div><div class="filter-group"><h3>Maximum Price</h3><input id="priceRange" type="range" min="500" max="2500" value="2500" step="100" style="width:100%"><div class="row" style="justify-content:space-between;font-size:12px;color:#718096"><span>₹500</span><b id="priceLabel">₹2,500</b></div></div><button class="btn btn-outline btn-sm" style="width:100%" id="clearFilters">Clear filters</button></aside><div><div class="catalog-top"><p id="resultCount" style="color:#68758a;margin:0"></p><select id="sort"><option value="featured">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option><option value="rating">Top Rated</option></select></div><div class="products" id="productGrid"></div></div></div></section></main><div data-site-footer></div><script src="app.js"></script><script>
-function render(){const p=new URLSearchParams(location.search),q=(p.get('q')||'').toLowerCase(),selected=document.querySelector('input[name=cat]:checked').value,max=+document.querySelector('#priceRange').value,sort=document.querySelector('#sort').value;let list=PRODUCTS.filter(x=>(!selected||x.category===selected)&&x.price<=max&&(!q||(x.name+' '+x.category).toLowerCase().includes(q)));if(sort==='low')list.sort((a,b)=>a.price-b.price);if(sort==='high')list.sort((a,b)=>b.price-a.price);if(sort==='rating')list.sort((a,b)=>b.rating-a.rating);document.querySelector('#resultCount').textContent=list.length+' joyful toys found';document.querySelector('#productGrid').innerHTML=list.length?list.map(productCard).join(''):'<div class="empty"><h2>No toys found</h2><p>Try a different category or price range.</p></div>';setTimeout(initMotion,30)}
-document.addEventListener('DOMContentLoaded',()=>{const p=new URLSearchParams(location.search),cat=p.get('category');if(cat){const radio=[...document.querySelectorAll('input[name=cat]')].find(x=>x.value===cat);if(radio)radio.checked=true}if(p.get('sort'))document.querySelector('#sort').value=p.get('sort');document.querySelectorAll('input[name=cat],#sort,#priceRange').forEach(x=>x.addEventListener('input',()=>{document.querySelector('#priceLabel').textContent=money(document.querySelector('#priceRange').value);render()}));document.querySelector('#clearFilters').onclick=()=>{document.querySelector('input[name=cat][value=""]').checked=true;document.querySelector('#priceRange').value=2500;document.querySelector('#sort').value='featured';history.replaceState({},'', 'shop.html');render()};render()});
-</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shop Toys | PlayJoy - Small Toys, Big Smiles</title>
+<meta name="description" content="Shop safe, durable and joyful PlayJoy toys for every age.">
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="shortcut icon" href="favicon.ico"/>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
+<meta name="apple-mobile-web-app-title" content="PlayJoy"/>
+<link rel="manifest" href="site.webmanifest"/>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div data-site-header="shop"></div>
+<section class="page-hero">
+  <div class="container">
+    <h1 class="split" id="shopTitle">Find their new favourite toy</h1>
+    <p id="shopSub">Thoughtfully designed toys for curious minds, little adventurers and big imaginations.</p>
+  </div>
+</section>
+<main class="container">
+  <div class="breadcrumb"><a href="index.html">Home</a> › <span id="crumb">Shop Toys</span></div>
+  <section class="section" style="padding-top:12px">
+    <div class="catalog-layout">
+      <aside class="filters reveal-left">
+        <div class="filter-group">
+          <h3>Categories</h3>
+          <label><input type="radio" name="cat" value="" checked> All Toys</label>
+          <label><input type="radio" name="cat" value="Ride Ons"> Ride On Toys</label>
+          <label><input type="radio" name="cat" value="Educational"> Educational Toys</label>
+          <label><input type="radio" name="cat" value="Indoor"> Indoor Toys</label>
+          <label><input type="radio" name="cat" value="Outdoor"> Outdoor Toys</label>
+          <label><input type="radio" name="cat" value="Remote Control"> Remote Control Toys</label>
+          <label><input type="radio" name="cat" value="Baby Toys"> Baby Toys</label>
+          <label><input type="radio" name="cat" value="Soft Toys"> Soft Toys</label>
+          <label><input type="radio" name="cat" value="Action Figures"> Action Figures</label>
+          <label><input type="radio" name="cat" value="Games & Puzzles"> Games &amp; Puzzles</label>
+        </div>
+        <div class="filter-group">
+          <h3>Age</h3>
+          <label><input type="radio" name="age" value="" checked> All Ages</label>
+          <label><input type="radio" name="age" value="0-12m"> 0 – 12 Months</label>
+          <label><input type="radio" name="age" value="1-3y"> 1 – 3 Years</label>
+          <label><input type="radio" name="age" value="3-5y"> 3 – 5 Years</label>
+          <label><input type="radio" name="age" value="6plus"> 6+ Years</label>
+        </div>
+        <div class="filter-group">
+          <h3>Maximum Price</h3>
+          <input id="priceRange" type="range" min="500" max="2500" value="2500" step="100" aria-label="Maximum price">
+          <div class="row" style="justify-content:space-between;font-size:12px;color:#718096;font-weight:700"><span>₹500</span><b id="priceLabel">₹2,500</b></div>
+        </div>
+        <div class="filter-group">
+          <label><input type="checkbox" id="onlyNew"> New Arrivals only</label>
+          <label><input type="checkbox" id="onlyWish"> Wishlist only</label>
+        </div>
+        <button class="btn btn-outline btn-sm btn-block" id="clearFilters">Clear filters</button>
+      </aside>
+      <div>
+        <div id="activeChip"></div>
+        <div class="catalog-top">
+          <p id="resultCount" style="color:#68758a;margin:0;font-weight:700"></p>
+          <select id="sort" aria-label="Sort products">
+            <option value="featured">Featured</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+            <option value="new">Newest</option>
+          </select>
+        </div>
+        <div class="products" id="productGrid"></div>
+      </div>
+    </div>
+  </section>
+</main>
+<div data-site-footer></div>
+<script src="app.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const params = new URLSearchParams(location.search);
+function render(){
+  const q=(params.get('q')||'').toLowerCase();
+  const selected=$('input[name=cat]:checked').value;
+  const age=$('input[name=age]:checked').value;
+  const max=+$('#priceRange').value, sort=$('#sort').value;
+  const onlyNew=$('#onlyNew').checked, onlyWish=$('#onlyWish').checked, wish=getWishlist();
+  let list=PRODUCTS.filter(x=>productInCategory(x,selected)&&productInAge(x,age)&&x.price<=max&&(!onlyNew||x.isNew)&&(!onlyWish||wish.includes(x.id))&&(!q||(x.name+' '+x.category+' '+(x.collections||[]).join(' ')+' '+x.desc).toLowerCase().includes(q)));
+  if(sort==='low')list.sort((a,b)=>a.price-b.price);
+  if(sort==='high')list.sort((a,b)=>b.price-a.price);
+  if(sort==='rating')list.sort((a,b)=>b.rating-a.rating||b.reviews-a.reviews);
+  if(sort==='new')list.sort((a,b)=>(b.isNew?1:0)-(a.isNew?1:0));
+  $('#resultCount').textContent=list.length+' joyful toy'+(list.length===1?'':'s')+' found';
+  const chips=[]; if(q)chips.push(`Search: “${q}”`); if(selected)chips.push(normalizeCategory(selected)); if(age)chips.push($('input[name=age]:checked').parentElement.textContent.trim()); if(onlyNew)chips.push('New Arrivals'); if(onlyWish)chips.push('Wishlist');
+  $('#activeChip').innerHTML=chips.length?`<span class="filter-chip">${chips.join(' · ')} <button type="button" aria-label="Clear filters" onclick="clearAll()">×</button></span>`:'';
+  $('#productGrid').innerHTML=list.length?list.map(productCard).join(''):`<div class="empty"><div style="font-size:54px">${onlyWish?'💝':'🧸'}</div><h2>${onlyWish?'Your wishlist is empty':'No toys found'}</h2><p>${onlyWish?'Tap the heart on any toy to save it here.':'Try a different category, age or price range.'}</p><a class="btn btn-primary" href="shop.html">Browse all toys</a></div>`;
+  setTimeout(initMotion,30);
+}
+function clearAll(){ $('input[name=cat][value=""]').checked=true; $('input[name=age][value=""]').checked=true; $('#priceRange').value=2500; $('#priceLabel').textContent=money(2500); $('#sort').value='featured'; $('#onlyNew').checked=false; $('#onlyWish').checked=false; params.delete('q'); history.replaceState({},'','shop.html'); $('#shopTitle').textContent='Find their new favourite toy'; $('#crumb').textContent='Shop Toys'; render(); }
+document.addEventListener('DOMContentLoaded',()=>{
+  const cat=normalizeCategory(params.get('category')); if(cat){const r=[...document.querySelectorAll('input[name=cat]')].find(x=>x.value===cat); if(r){r.checked=true; $('#shopTitle').textContent=cat.replace(/ Toys$/,'')+' Toys'; $('#crumb').textContent=cat;}}
+  const age=params.get('age'); if(age){const r=[...document.querySelectorAll('input[name=age]')].find(x=>x.value===age); if(r){r.checked=true; $('#shopTitle').textContent='Toys for '+r.parentElement.textContent.trim();}}
+  if(params.get('sort'))$('#sort').value=params.get('sort');
+  if(params.get('sort')==='rating'){$('#shopTitle').textContent='Best Sellers';$('#shopSub').textContent='Parent-approved favourites, loved by thousands of families.'}
+  if(params.get('filter')==='new'){$('#onlyNew').checked=true;$('#shopTitle').textContent='New Arrivals';$('#shopSub').textContent='Fresh from the PlayJoy workshop — the newest toys in our range.'}
+  if(params.get('filter')==='brands'){$('#shopTitle').textContent='PlayJoy Originals';$('#shopSub').textContent='Every toy here is designed and manufactured by PlayJoy in India.'}
+  if(params.get('wishlist')==='1'){$('#onlyWish').checked=true;$('#shopTitle').textContent='Your Wishlist';$('#shopSub').textContent='Toys you have saved for later. Tap the heart to add or remove.';$('#crumb').textContent='Wishlist'}
+  if(params.get('q')){$('#shopTitle').textContent='Results for “'+params.get('q')+'”'; const g=$('#globalSearch'); if(g)g.value=params.get('q');}
+  document.querySelectorAll('input[name=cat],input[name=age],#sort,#priceRange,#onlyNew,#onlyWish').forEach(x=>x.addEventListener('input',()=>{$('#priceLabel').textContent=money($('#priceRange').value);render()}));
+  $('#clearFilters').onclick=clearAll;
+  window.addEventListener('storage',e=>{if(e.key==='playjoy-wishlist'&&$('#onlyWish').checked)render()});
+  document.addEventListener('click',e=>{ if(e.target.closest('[data-wish]') && $('#onlyWish').checked) setTimeout(render,350); });
+  render();
+});
+</script>
+</body>
+</html>
